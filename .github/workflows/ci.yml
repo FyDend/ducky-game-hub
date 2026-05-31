@@ -116,6 +116,8 @@ jobs:
         run: |
           ssh "${{ secrets.HOST_USER }}"@"${{ secrets.HOST_IP }}" "
             cd /home/${{ secrets.HOST_USER }}/Proyectos/RetroCloud-Patolinux &&
+            git stash &&
             git pull origin main &&
+            git stash pop &&
             docker compose up -d --pull always
           "
