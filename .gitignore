@@ -18,3 +18,9 @@ bridge_api/__pycache__/
 *.cache
 *.docx
 Plan_*.md
+
+# Datos y configuraciones dinámicas de qBittorrent
+qbittorrent/config/qBittorrent/logs/
+qbittorrent/config/qBittorrent/lockfile
+qbittorrent/config/qBittorrent/qBittorrent-data.conf
+qbittorrent/config/qBittorrent/rss/
