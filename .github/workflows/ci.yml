@@ -78,24 +78,43 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Verify deployment secrets
+        run: |
+          MISSING_SECRETS=0
+          if [ -z "${{ secrets.HOST_IP }}" ]; then
+            echo "::error::Falta el secreto 'HOST_IP' en GitHub. Configuralo con la IP de Tailscale de tu PC (ej. 100.x.y.z)."
+            MISSING_SECRETS=1
+          fi
+          if [ -z "${{ secrets.HOST_USER }}" ]; then
+            echo "::error::Falta el secreto 'HOST_USER' en GitHub. Configuralo con el nombre de usuario de tu PC (ej. fydend)."
+            MISSING_SECRETS=1
+          fi
+          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
+            echo "::error::Falta el secreto 'SSH_PRIVATE_KEY' en GitHub. Configuralo con tu clave privada SSH."
+            MISSING_SECRETS=1
+          fi
+          if [ $MISSING_SECRETS -eq 1 ]; then
+            exit 1
+          fi
+
       - name: Connect to Tailscale VPN
         uses: tailscale/github-action@v2
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_CLIENT_ID }}
           oauth-secret: ${{ secrets.TAILSCALE_CLIENT_SECRET }}
           tags: tag:ci
-        env:
-          TS_API_KEY: ${{ secrets.TAILSCALE_CLIENT_SECRET }}
+
       - name: Configure SSH agent and keys
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.HOST_IP }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H "${{ secrets.HOST_IP }}" >> ~/.ssh/known_hosts
 
       - name: Deploy to k3s via SSH
         run: |
-          ssh ${{ secrets.HOST_USER }}@${{ secrets.HOST_IP }} "
+          ssh "${{ secrets.HOST_USER }}"@"${{ secrets.HOST_IP }}" "
             cd /home/${{ secrets.HOST_USER }}/Proyectos/RetroCloud-Patolinux &&
             git pull origin main &&
             docker compose up -d --pull always
