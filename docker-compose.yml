@@ -1,0 +1,53 @@
+services:
+
+  bridge_api:
+    build: ./bridge_api
+    container_name: bridge_api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./bridge_api:/app
+      - ./store_front:/app/store_front
+      - ./.secrets/bridge_ssh_key:/root/.ssh/id_ed25519:ro
+      - ${ROMS_PATH}:/roms
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+
+  store_front:
+    build: ./store_front
+    container_name: store_front
+    network_mode: host
+    environment:
+      - DISPLAY=:0
+      - WAYLAND_DISPLAY
+      - XDG_RUNTIME_DIR=/run/user/${PUID}
+    volumes:
+      - ./store_front:/app
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /run/user/${PUID}:/run/user/${PUID}:ro
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/input:/dev/input
+    restart: "no"
+    shm_size: '2gb'
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WEBUI_PORT=${QBIT_PORT}
+    volumes:
+      - ./qbittorrent/config:/config
+      - ${ROMS_PATH}:/roms
+    ports:
+      - ${QBIT_PORT}:${QBIT_PORT}
+      - ${QBIT_TORRENT_PORT}:${QBIT_TORRENT_PORT}
+      - ${QBIT_TORRENT_PORT}:${QBIT_TORRENT_PORT}/udp
+    extra_hosts:
+      - "localhost:127.0.0.1"
+    restart: unless-stopped
+
+

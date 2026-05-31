@@ -1,0 +1,1013 @@
+(N) 2026-05-28T22:06:12 - qBittorrent v5.2.0 started. Process ID: 49819
+(N) 2026-05-28T22:06:12 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:12 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:12 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:13 - qBittorrent v5.2.0 started. Process ID: 49827
+(N) 2026-05-28T22:06:13 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:13 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:13 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:14 - qBittorrent v5.2.0 started. Process ID: 49835
+(N) 2026-05-28T22:06:14 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:14 - Torrent removed. Torrent: "Minerva_Myrient"
+(N) 2026-05-28T22:06:14 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:14 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:15 - Torrent content removed. Torrent: "Minerva_Myrient"
+(N) 2026-05-28T22:06:15 - qBittorrent v5.2.0 started. Process ID: 49843
+(N) 2026-05-28T22:06:15 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:15 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:15 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:16 - qBittorrent v5.2.0 started. Process ID: 49851
+(N) 2026-05-28T22:06:16 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:16 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:16 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:17 - qBittorrent v5.2.0 started. Process ID: 49859
+(N) 2026-05-28T22:06:17 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:17 - Detected an attempt to add a duplicate torrent. Source: magnet:?xt=urn:btih:c98fbaa2a36ee48e3d9423be02cdbefd9281bc7d&dn=Minerva_Myrient. Existing torrent: "Minerva_Myrient". Torrent infohash: c98fbaa2a36ee48e3d9423be02cdbefd9281bc7d. Result: Merging of trackers is disabled
+(N) 2026-05-28T22:06:17 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:17 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:18 - qBittorrent v5.2.0 started. Process ID: 49867
+(N) 2026-05-28T22:06:18 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:18 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:18 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:19 - qBittorrent v5.2.0 started. Process ID: 49875
+(N) 2026-05-28T22:06:19 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:19 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:19 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:20 - qBittorrent v5.2.0 started. Process ID: 49883
+(N) 2026-05-28T22:06:20 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:20 - Added tracker to torrent. Torrent: "Minerva_Myrient". Tracker: "udp://tracker.torrent.eu.org:451/announce"
+(N) 2026-05-28T22:06:20 - Added tracker to torrent. Torrent: "Minerva_Myrient". Tracker: "udp://open.demonii.com:1337/announce"
+(N) 2026-05-28T22:06:20 - Added tracker to torrent. Torrent: "Minerva_Myrient". Tracker: "udp://tracker.srv00.com:6969/announce"
+(N) 2026-05-28T22:06:20 - Added tracker to torrent. Torrent: "Minerva_Myrient". Tracker: "udp://tracker.opentrackr.org:1337/announce"
+(N) 2026-05-28T22:06:20 - Added tracker to torrent. Torrent: "Minerva_Myrient". Tracker: "udp://tracker.qu.ax:6969/announce"
+(N) 2026-05-28T22:06:20 - Added tracker to torrent. Torrent: "Minerva_Myrient". Tracker: "udp://open.stealth.si:80/announce"
+(N) 2026-05-28T22:06:20 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:20 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:21 - qBittorrent v5.2.0 started. Process ID: 49891
+(N) 2026-05-28T22:06:21 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:26 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:26 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:26 - qBittorrent v5.2.0 started. Process ID: 49899
+(N) 2026-05-28T22:06:26 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:32 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:32 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:32 - qBittorrent v5.2.0 started. Process ID: 49907
+(N) 2026-05-28T22:06:32 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:37 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:37 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:37 - qBittorrent v5.2.0 started. Process ID: 49915
+(N) 2026-05-28T22:06:37 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:42 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:42 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:43 - qBittorrent v5.2.0 started. Process ID: 49923
+(N) 2026-05-28T22:06:43 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:48 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:48 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:48 - qBittorrent v5.2.0 started. Process ID: 49931
+(N) 2026-05-28T22:06:48 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:53 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:53 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:53 - qBittorrent v5.2.0 started. Process ID: 49939
+(N) 2026-05-28T22:06:53 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:06:59 - qBittorrent termination initiated
+(N) 2026-05-28T22:06:59 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:06:59 - qBittorrent v5.2.0 started. Process ID: 49947
+(N) 2026-05-28T22:06:59 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:04 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:04 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:04 - qBittorrent v5.2.0 started. Process ID: 49955
+(N) 2026-05-28T22:07:04 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:09 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:09 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:09 - qBittorrent v5.2.0 started. Process ID: 49963
+(N) 2026-05-28T22:07:09 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:15 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:15 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:15 - qBittorrent v5.2.0 started. Process ID: 49971
+(N) 2026-05-28T22:07:15 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:20 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:20 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:20 - qBittorrent v5.2.0 started. Process ID: 49979
+(N) 2026-05-28T22:07:20 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:23 - Torrent download finished. Torrent: "Minerva_Myrient"
+(N) 2026-05-28T22:07:23 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:23 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:23 - qBittorrent v5.2.0 started. Process ID: 49988
+(N) 2026-05-28T22:07:23 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:23 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:23 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:24 - qBittorrent v5.2.0 started. Process ID: 49996
+(N) 2026-05-28T22:07:24 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:24 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:24 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:25 - qBittorrent v5.2.0 started. Process ID: 50004
+(N) 2026-05-28T22:07:25 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:25 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:25 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:26 - qBittorrent v5.2.0 started. Process ID: 50012
+(N) 2026-05-28T22:07:26 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:26 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:26 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:27 - qBittorrent v5.2.0 started. Process ID: 50021
+(N) 2026-05-28T22:07:27 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:27 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:27 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:28 - qBittorrent v5.2.0 started. Process ID: 50033
+(N) 2026-05-28T22:07:28 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:28 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:28 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:29 - qBittorrent v5.2.0 started. Process ID: 50041
+(N) 2026-05-28T22:07:29 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:29 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:29 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:30 - qBittorrent v5.2.0 started. Process ID: 50050
+(N) 2026-05-28T22:07:30 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:30 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:30 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:31 - qBittorrent v5.2.0 started. Process ID: 50058
+(N) 2026-05-28T22:07:31 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:31 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:31 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:32 - qBittorrent v5.2.0 started. Process ID: 50066
+(N) 2026-05-28T22:07:32 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:32 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:32 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:33 - qBittorrent v5.2.0 started. Process ID: 50074
+(N) 2026-05-28T22:07:33 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:34 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:34 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:34 - qBittorrent v5.2.0 started. Process ID: 50082
+(N) 2026-05-28T22:07:34 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:35 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:35 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:35 - qBittorrent v5.2.0 started. Process ID: 50090
+(N) 2026-05-28T22:07:35 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:36 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:36 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:36 - qBittorrent v5.2.0 started. Process ID: 50098
+(N) 2026-05-28T22:07:36 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:37 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:37 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:37 - qBittorrent v5.2.0 started. Process ID: 50106
+(N) 2026-05-28T22:07:37 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:38 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:38 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:38 - qBittorrent v5.2.0 started. Process ID: 50114
+(N) 2026-05-28T22:07:38 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:39 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:39 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:39 - qBittorrent v5.2.0 started. Process ID: 50122
+(N) 2026-05-28T22:07:39 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:40 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:40 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:40 - qBittorrent v5.2.0 started. Process ID: 50130
+(N) 2026-05-28T22:07:40 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:41 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:41 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:41 - qBittorrent v5.2.0 started. Process ID: 50138
+(N) 2026-05-28T22:07:41 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:42 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:42 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:42 - qBittorrent v5.2.0 started. Process ID: 50146
+(N) 2026-05-28T22:07:42 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:43 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:43 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:43 - qBittorrent v5.2.0 started. Process ID: 50154
+(N) 2026-05-28T22:07:43 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:44 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:44 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:44 - qBittorrent v5.2.0 started. Process ID: 50162
+(N) 2026-05-28T22:07:44 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:45 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:45 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:45 - qBittorrent v5.2.0 started. Process ID: 50170
+(N) 2026-05-28T22:07:45 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:46 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:46 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:46 - qBittorrent v5.2.0 started. Process ID: 50178
+(N) 2026-05-28T22:07:46 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:47 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:47 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:47 - qBittorrent v5.2.0 started. Process ID: 50186
+(N) 2026-05-28T22:07:47 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:48 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:48 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:48 - qBittorrent v5.2.0 started. Process ID: 50194
+(N) 2026-05-28T22:07:48 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:49 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:49 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:50 - qBittorrent v5.2.0 started. Process ID: 50202
+(N) 2026-05-28T22:07:50 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:50 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:50 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:51 - qBittorrent v5.2.0 started. Process ID: 50210
+(N) 2026-05-28T22:07:51 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:51 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:51 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:52 - qBittorrent v5.2.0 started. Process ID: 50218
+(N) 2026-05-28T22:07:52 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:52 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:52 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:53 - qBittorrent v5.2.0 started. Process ID: 50226
+(N) 2026-05-28T22:07:53 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:53 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:53 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:54 - qBittorrent v5.2.0 started. Process ID: 50234
+(N) 2026-05-28T22:07:54 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:54 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:54 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:55 - qBittorrent v5.2.0 started. Process ID: 50242
+(N) 2026-05-28T22:07:55 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:55 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:55 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:56 - qBittorrent v5.2.0 started. Process ID: 50250
+(N) 2026-05-28T22:07:56 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:56 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:56 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:57 - qBittorrent v5.2.0 started. Process ID: 50258
+(N) 2026-05-28T22:07:57 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:57 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:57 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:58 - qBittorrent v5.2.0 started. Process ID: 50266
+(N) 2026-05-28T22:07:58 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:58 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:58 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:07:59 - qBittorrent v5.2.0 started. Process ID: 50274
+(N) 2026-05-28T22:07:59 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:07:59 - qBittorrent termination initiated
+(N) 2026-05-28T22:07:59 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:00 - qBittorrent v5.2.0 started. Process ID: 50282
+(N) 2026-05-28T22:08:00 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:00 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:00 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:01 - qBittorrent v5.2.0 started. Process ID: 50290
+(N) 2026-05-28T22:08:01 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:01 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:01 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:02 - qBittorrent v5.2.0 started. Process ID: 50298
+(N) 2026-05-28T22:08:02 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:02 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:02 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:03 - qBittorrent v5.2.0 started. Process ID: 50306
+(N) 2026-05-28T22:08:03 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:03 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:03 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:04 - qBittorrent v5.2.0 started. Process ID: 50314
+(N) 2026-05-28T22:08:04 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:04 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:04 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:05 - qBittorrent v5.2.0 started. Process ID: 50322
+(N) 2026-05-28T22:08:05 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:05 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:05 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:06 - qBittorrent v5.2.0 started. Process ID: 50330
+(N) 2026-05-28T22:08:06 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:06 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:06 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:07 - qBittorrent v5.2.0 started. Process ID: 50338
+(N) 2026-05-28T22:08:07 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:07 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:07 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:08 - qBittorrent v5.2.0 started. Process ID: 50346
+(N) 2026-05-28T22:08:08 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:08 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:08 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:09 - qBittorrent v5.2.0 started. Process ID: 50354
+(N) 2026-05-28T22:08:09 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:09 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:09 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:10 - qBittorrent v5.2.0 started. Process ID: 50362
+(N) 2026-05-28T22:08:10 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:10 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:10 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:11 - qBittorrent v5.2.0 started. Process ID: 50370
+(N) 2026-05-28T22:08:11 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:11 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:11 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:12 - qBittorrent v5.2.0 started. Process ID: 50378
+(N) 2026-05-28T22:08:12 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:12 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:12 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:13 - qBittorrent v5.2.0 started. Process ID: 50386
+(N) 2026-05-28T22:08:13 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:13 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:13 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:14 - qBittorrent v5.2.0 started. Process ID: 50394
+(N) 2026-05-28T22:08:14 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:14 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:14 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:15 - qBittorrent v5.2.0 started. Process ID: 50402
+(N) 2026-05-28T22:08:15 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:15 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:15 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:16 - qBittorrent v5.2.0 started. Process ID: 50410
+(N) 2026-05-28T22:08:16 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:16 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:16 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:17 - qBittorrent v5.2.0 started. Process ID: 50418
+(N) 2026-05-28T22:08:17 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:17 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:17 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:18 - qBittorrent v5.2.0 started. Process ID: 50426
+(N) 2026-05-28T22:08:18 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:18 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:18 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:19 - qBittorrent v5.2.0 started. Process ID: 50434
+(N) 2026-05-28T22:08:19 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:19 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:19 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:20 - qBittorrent v5.2.0 started. Process ID: 50442
+(N) 2026-05-28T22:08:20 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:20 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:20 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:21 - qBittorrent v5.2.0 started. Process ID: 50450
+(N) 2026-05-28T22:08:21 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:21 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:21 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:22 - qBittorrent v5.2.0 started. Process ID: 50458
+(N) 2026-05-28T22:08:22 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:22 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:22 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:23 - qBittorrent v5.2.0 started. Process ID: 50466
+(N) 2026-05-28T22:08:23 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:23 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:23 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:24 - qBittorrent v5.2.0 started. Process ID: 50474
+(N) 2026-05-28T22:08:24 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:24 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:24 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:25 - qBittorrent v5.2.0 started. Process ID: 50482
+(N) 2026-05-28T22:08:25 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:25 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:25 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:26 - qBittorrent v5.2.0 started. Process ID: 50490
+(N) 2026-05-28T22:08:26 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:26 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:26 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:27 - qBittorrent v5.2.0 started. Process ID: 50498
+(N) 2026-05-28T22:08:27 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:28 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:28 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:28 - qBittorrent v5.2.0 started. Process ID: 50506
+(N) 2026-05-28T22:08:28 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:29 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:29 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:29 - qBittorrent v5.2.0 started. Process ID: 50514
+(N) 2026-05-28T22:08:29 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:30 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:30 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:30 - qBittorrent v5.2.0 started. Process ID: 50522
+(N) 2026-05-28T22:08:30 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:31 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:31 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:31 - qBittorrent v5.2.0 started. Process ID: 50530
+(N) 2026-05-28T22:08:31 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:32 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:32 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:32 - qBittorrent v5.2.0 started. Process ID: 50538
+(N) 2026-05-28T22:08:32 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:33 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:33 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:33 - qBittorrent v5.2.0 started. Process ID: 50546
+(N) 2026-05-28T22:08:33 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:34 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:34 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:34 - qBittorrent v5.2.0 started. Process ID: 50554
+(N) 2026-05-28T22:08:34 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:35 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:35 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:35 - qBittorrent v5.2.0 started. Process ID: 50562
+(N) 2026-05-28T22:08:35 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:36 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:36 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:36 - qBittorrent v5.2.0 started. Process ID: 50570
+(N) 2026-05-28T22:08:36 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:37 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:37 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:37 - qBittorrent v5.2.0 started. Process ID: 50578
+(N) 2026-05-28T22:08:37 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:38 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:38 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:38 - qBittorrent v5.2.0 started. Process ID: 50586
+(N) 2026-05-28T22:08:38 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:39 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:39 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:39 - qBittorrent v5.2.0 started. Process ID: 50594
+(N) 2026-05-28T22:08:39 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:40 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:40 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:40 - qBittorrent v5.2.0 started. Process ID: 50602
+(N) 2026-05-28T22:08:40 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:41 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:41 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:41 - qBittorrent v5.2.0 started. Process ID: 50610
+(N) 2026-05-28T22:08:41 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:42 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:42 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:43 - qBittorrent v5.2.0 started. Process ID: 50618
+(N) 2026-05-28T22:08:43 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:43 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:43 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:44 - qBittorrent v5.2.0 started. Process ID: 50626
+(N) 2026-05-28T22:08:44 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:44 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:44 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:45 - qBittorrent v5.2.0 started. Process ID: 50634
+(N) 2026-05-28T22:08:45 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:45 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:45 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:46 - qBittorrent v5.2.0 started. Process ID: 50642
+(N) 2026-05-28T22:08:46 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:46 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:46 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:47 - qBittorrent v5.2.0 started. Process ID: 50650
+(N) 2026-05-28T22:08:47 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:47 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:47 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:48 - qBittorrent v5.2.0 started. Process ID: 50658
+(N) 2026-05-28T22:08:48 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:48 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:48 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:49 - qBittorrent v5.2.0 started. Process ID: 50666
+(N) 2026-05-28T22:08:49 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:49 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:49 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:50 - qBittorrent v5.2.0 started. Process ID: 50674
+(N) 2026-05-28T22:08:50 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:50 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:50 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:51 - qBittorrent v5.2.0 started. Process ID: 50682
+(N) 2026-05-28T22:08:51 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:51 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:51 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:52 - qBittorrent v5.2.0 started. Process ID: 50690
+(N) 2026-05-28T22:08:52 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:52 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:52 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:53 - qBittorrent v5.2.0 started. Process ID: 50698
+(N) 2026-05-28T22:08:53 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:53 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:53 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:54 - qBittorrent v5.2.0 started. Process ID: 50706
+(N) 2026-05-28T22:08:54 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:54 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:54 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:55 - qBittorrent v5.2.0 started. Process ID: 50714
+(N) 2026-05-28T22:08:55 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:55 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:55 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:56 - qBittorrent v5.2.0 started. Process ID: 50722
+(N) 2026-05-28T22:08:56 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:56 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:56 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:57 - qBittorrent v5.2.0 started. Process ID: 50730
+(N) 2026-05-28T22:08:57 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:57 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:57 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:58 - qBittorrent v5.2.0 started. Process ID: 50738
+(N) 2026-05-28T22:08:58 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:58 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:58 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:08:59 - qBittorrent v5.2.0 started. Process ID: 50746
+(N) 2026-05-28T22:08:59 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:08:59 - qBittorrent termination initiated
+(N) 2026-05-28T22:08:59 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:00 - qBittorrent v5.2.0 started. Process ID: 50754
+(N) 2026-05-28T22:09:00 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:00 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:00 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:01 - qBittorrent v5.2.0 started. Process ID: 50762
+(N) 2026-05-28T22:09:01 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:01 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:01 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:02 - qBittorrent v5.2.0 started. Process ID: 50770
+(N) 2026-05-28T22:09:02 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:02 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:02 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:03 - qBittorrent v5.2.0 started. Process ID: 50778
+(N) 2026-05-28T22:09:03 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:03 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:03 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:04 - qBittorrent v5.2.0 started. Process ID: 50786
+(N) 2026-05-28T22:09:04 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:04 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:04 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:05 - qBittorrent v5.2.0 started. Process ID: 50794
+(N) 2026-05-28T22:09:05 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:05 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:05 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:06 - qBittorrent v5.2.0 started. Process ID: 50802
+(N) 2026-05-28T22:09:06 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:06 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:06 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:07 - qBittorrent v5.2.0 started. Process ID: 50810
+(N) 2026-05-28T22:09:07 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:07 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:07 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:08 - qBittorrent v5.2.0 started. Process ID: 50818
+(N) 2026-05-28T22:09:08 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:08 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:08 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:09 - qBittorrent v5.2.0 started. Process ID: 50826
+(N) 2026-05-28T22:09:09 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:09 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:09 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:10 - qBittorrent v5.2.0 started. Process ID: 50834
+(N) 2026-05-28T22:09:10 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:10 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:10 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:11 - qBittorrent v5.2.0 started. Process ID: 50842
+(N) 2026-05-28T22:09:11 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:11 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:11 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:12 - qBittorrent v5.2.0 started. Process ID: 50850
+(N) 2026-05-28T22:09:12 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:12 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:12 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:13 - qBittorrent v5.2.0 started. Process ID: 50858
+(N) 2026-05-28T22:09:13 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:13 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:13 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:14 - qBittorrent v5.2.0 started. Process ID: 50866
+(N) 2026-05-28T22:09:14 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:14 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:14 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:15 - qBittorrent v5.2.0 started. Process ID: 50874
+(N) 2026-05-28T22:09:15 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:15 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:15 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:16 - qBittorrent v5.2.0 started. Process ID: 50882
+(N) 2026-05-28T22:09:16 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:16 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:16 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:17 - qBittorrent v5.2.0 started. Process ID: 50890
+(N) 2026-05-28T22:09:17 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:17 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:17 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:18 - qBittorrent v5.2.0 started. Process ID: 50898
+(N) 2026-05-28T22:09:18 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:18 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:18 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:19 - qBittorrent v5.2.0 started. Process ID: 50906
+(N) 2026-05-28T22:09:19 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:19 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:19 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:20 - qBittorrent v5.2.0 started. Process ID: 50914
+(N) 2026-05-28T22:09:20 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:20 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:20 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:21 - qBittorrent v5.2.0 started. Process ID: 50922
+(N) 2026-05-28T22:09:21 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:22 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:22 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:22 - qBittorrent v5.2.0 started. Process ID: 50930
+(N) 2026-05-28T22:09:22 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:23 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:23 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:23 - qBittorrent v5.2.0 started. Process ID: 50938
+(N) 2026-05-28T22:09:23 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:24 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:24 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:24 - qBittorrent v5.2.0 started. Process ID: 50946
+(N) 2026-05-28T22:09:24 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:25 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:25 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:25 - qBittorrent v5.2.0 started. Process ID: 50954
+(N) 2026-05-28T22:09:25 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:26 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:26 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:26 - qBittorrent v5.2.0 started. Process ID: 50962
+(N) 2026-05-28T22:09:26 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:27 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:27 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:27 - qBittorrent v5.2.0 started. Process ID: 50970
+(N) 2026-05-28T22:09:27 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:28 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:28 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:28 - qBittorrent v5.2.0 started. Process ID: 50978
+(N) 2026-05-28T22:09:28 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:29 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:29 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:29 - qBittorrent v5.2.0 started. Process ID: 50986
+(N) 2026-05-28T22:09:29 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:30 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:30 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:30 - qBittorrent v5.2.0 started. Process ID: 50994
+(N) 2026-05-28T22:09:30 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:31 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:31 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:31 - qBittorrent v5.2.0 started. Process ID: 51002
+(N) 2026-05-28T22:09:31 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:32 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:32 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:32 - qBittorrent v5.2.0 started. Process ID: 51010
+(N) 2026-05-28T22:09:32 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:33 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:33 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:33 - qBittorrent v5.2.0 started. Process ID: 51018
+(N) 2026-05-28T22:09:33 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:34 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:34 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:34 - qBittorrent v5.2.0 started. Process ID: 51026
+(N) 2026-05-28T22:09:34 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:35 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:35 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:35 - qBittorrent v5.2.0 started. Process ID: 51034
+(N) 2026-05-28T22:09:35 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:36 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:36 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:37 - qBittorrent v5.2.0 started. Process ID: 51042
+(N) 2026-05-28T22:09:37 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:37 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:37 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:38 - qBittorrent v5.2.0 started. Process ID: 51050
+(N) 2026-05-28T22:09:38 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:38 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:38 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:39 - qBittorrent v5.2.0 started. Process ID: 51058
+(N) 2026-05-28T22:09:39 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:39 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:39 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:40 - qBittorrent v5.2.0 started. Process ID: 51066
+(N) 2026-05-28T22:09:40 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:40 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:40 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:41 - qBittorrent v5.2.0 started. Process ID: 51074
+(N) 2026-05-28T22:09:41 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:41 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:41 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:42 - qBittorrent v5.2.0 started. Process ID: 51082
+(N) 2026-05-28T22:09:42 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:42 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:42 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:43 - qBittorrent v5.2.0 started. Process ID: 51090
+(N) 2026-05-28T22:09:43 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:43 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:43 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:44 - qBittorrent v5.2.0 started. Process ID: 51098
+(N) 2026-05-28T22:09:44 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:44 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:44 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:45 - qBittorrent v5.2.0 started. Process ID: 51106
+(N) 2026-05-28T22:09:45 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:45 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:45 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:46 - qBittorrent v5.2.0 started. Process ID: 51114
+(N) 2026-05-28T22:09:46 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:46 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:46 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:47 - qBittorrent v5.2.0 started. Process ID: 51122
+(N) 2026-05-28T22:09:47 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:47 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:47 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:48 - qBittorrent v5.2.0 started. Process ID: 51130
+(N) 2026-05-28T22:09:48 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:48 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:48 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:49 - qBittorrent v5.2.0 started. Process ID: 51138
+(N) 2026-05-28T22:09:49 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:49 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:49 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:50 - qBittorrent v5.2.0 started. Process ID: 51146
+(N) 2026-05-28T22:09:50 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:50 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:50 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:51 - qBittorrent v5.2.0 started. Process ID: 51154
+(N) 2026-05-28T22:09:51 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:51 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:51 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:52 - qBittorrent v5.2.0 started. Process ID: 51162
+(N) 2026-05-28T22:09:52 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:52 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:52 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:53 - qBittorrent v5.2.0 started. Process ID: 51170
+(N) 2026-05-28T22:09:53 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:53 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:53 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:54 - qBittorrent v5.2.0 started. Process ID: 51178
+(N) 2026-05-28T22:09:54 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:54 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:54 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:55 - qBittorrent v5.2.0 started. Process ID: 51186
+(N) 2026-05-28T22:09:55 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:55 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:55 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:56 - qBittorrent v5.2.0 started. Process ID: 51194
+(N) 2026-05-28T22:09:56 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:56 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:56 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:57 - qBittorrent v5.2.0 started. Process ID: 51202
+(N) 2026-05-28T22:09:57 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:57 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:57 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:58 - qBittorrent v5.2.0 started. Process ID: 51210
+(N) 2026-05-28T22:09:58 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:58 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:58 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:09:59 - qBittorrent v5.2.0 started. Process ID: 51218
+(N) 2026-05-28T22:09:59 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:09:59 - qBittorrent termination initiated
+(N) 2026-05-28T22:09:59 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:00 - qBittorrent v5.2.0 started. Process ID: 51226
+(N) 2026-05-28T22:10:00 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:00 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:00 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:01 - qBittorrent v5.2.0 started. Process ID: 51234
+(N) 2026-05-28T22:10:01 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:01 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:01 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:02 - qBittorrent v5.2.0 started. Process ID: 51242
+(N) 2026-05-28T22:10:02 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:02 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:02 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:03 - qBittorrent v5.2.0 started. Process ID: 51250
+(N) 2026-05-28T22:10:03 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:03 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:03 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:04 - qBittorrent v5.2.0 started. Process ID: 51258
+(N) 2026-05-28T22:10:04 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:04 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:04 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:05 - qBittorrent v5.2.0 started. Process ID: 51266
+(N) 2026-05-28T22:10:05 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:05 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:05 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:06 - qBittorrent v5.2.0 started. Process ID: 51274
+(N) 2026-05-28T22:10:06 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:06 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:06 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:07 - qBittorrent v5.2.0 started. Process ID: 51282
+(N) 2026-05-28T22:10:07 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:07 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:07 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:08 - qBittorrent v5.2.0 started. Process ID: 51290
+(N) 2026-05-28T22:10:08 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:08 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:08 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:09 - qBittorrent v5.2.0 started. Process ID: 51298
+(N) 2026-05-28T22:10:09 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:09 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:09 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:10 - qBittorrent v5.2.0 started. Process ID: 51306
+(N) 2026-05-28T22:10:10 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:10 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:10 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:11 - qBittorrent v5.2.0 started. Process ID: 51314
+(N) 2026-05-28T22:10:11 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:11 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:11 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:12 - qBittorrent v5.2.0 started. Process ID: 51322
+(N) 2026-05-28T22:10:12 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:12 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:12 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:13 - qBittorrent v5.2.0 started. Process ID: 51330
+(N) 2026-05-28T22:10:13 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:13 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:13 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:14 - qBittorrent v5.2.0 started. Process ID: 51338
+(N) 2026-05-28T22:10:14 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:15 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:15 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:15 - qBittorrent v5.2.0 started. Process ID: 51346
+(N) 2026-05-28T22:10:15 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:16 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:16 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:16 - qBittorrent v5.2.0 started. Process ID: 51354
+(N) 2026-05-28T22:10:16 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:17 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:17 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:17 - qBittorrent v5.2.0 started. Process ID: 51362
+(N) 2026-05-28T22:10:17 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:18 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:18 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:18 - qBittorrent v5.2.0 started. Process ID: 51370
+(N) 2026-05-28T22:10:18 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:19 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:19 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:19 - qBittorrent v5.2.0 started. Process ID: 51378
+(N) 2026-05-28T22:10:19 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:20 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:20 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:20 - qBittorrent v5.2.0 started. Process ID: 51386
+(N) 2026-05-28T22:10:20 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:21 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:21 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:21 - qBittorrent v5.2.0 started. Process ID: 51394
+(N) 2026-05-28T22:10:21 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:22 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:22 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:22 - qBittorrent v5.2.0 started. Process ID: 51402
+(N) 2026-05-28T22:10:22 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:23 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:23 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:23 - qBittorrent v5.2.0 started. Process ID: 51410
+(N) 2026-05-28T22:10:23 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:24 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:24 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:24 - qBittorrent v5.2.0 started. Process ID: 51418
+(N) 2026-05-28T22:10:24 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:25 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:25 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:25 - qBittorrent v5.2.0 started. Process ID: 51426
+(N) 2026-05-28T22:10:25 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:26 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:26 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:26 - qBittorrent v5.2.0 started. Process ID: 51434
+(N) 2026-05-28T22:10:26 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:27 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:27 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:27 - qBittorrent v5.2.0 started. Process ID: 51442
+(N) 2026-05-28T22:10:27 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:28 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:28 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:28 - qBittorrent v5.2.0 started. Process ID: 51450
+(N) 2026-05-28T22:10:28 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:29 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:29 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:29 - qBittorrent v5.2.0 started. Process ID: 51458
+(N) 2026-05-28T22:10:29 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:30 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:30 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:31 - qBittorrent v5.2.0 started. Process ID: 51466
+(N) 2026-05-28T22:10:31 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:31 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:31 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:32 - qBittorrent v5.2.0 started. Process ID: 51474
+(N) 2026-05-28T22:10:32 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:32 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:32 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:33 - qBittorrent v5.2.0 started. Process ID: 51482
+(N) 2026-05-28T22:10:33 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:33 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:33 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:34 - qBittorrent v5.2.0 started. Process ID: 51490
+(N) 2026-05-28T22:10:34 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:34 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:34 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:35 - qBittorrent v5.2.0 started. Process ID: 51498
+(N) 2026-05-28T22:10:35 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:35 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:35 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:36 - qBittorrent v5.2.0 started. Process ID: 51506
+(N) 2026-05-28T22:10:36 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:36 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:36 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:37 - qBittorrent v5.2.0 started. Process ID: 51514
+(N) 2026-05-28T22:10:37 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:37 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:37 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:38 - qBittorrent v5.2.0 started. Process ID: 51522
+(N) 2026-05-28T22:10:38 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:38 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:38 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:39 - qBittorrent v5.2.0 started. Process ID: 51530
+(N) 2026-05-28T22:10:39 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:39 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:39 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:40 - qBittorrent v5.2.0 started. Process ID: 51538
+(N) 2026-05-28T22:10:40 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:40 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:40 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:41 - qBittorrent v5.2.0 started. Process ID: 51546
+(N) 2026-05-28T22:10:41 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:41 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:41 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:42 - qBittorrent v5.2.0 started. Process ID: 51554
+(N) 2026-05-28T22:10:42 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:42 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:42 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:43 - qBittorrent v5.2.0 started. Process ID: 51562
+(N) 2026-05-28T22:10:43 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:43 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:43 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:44 - qBittorrent v5.2.0 started. Process ID: 51570
+(N) 2026-05-28T22:10:44 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:44 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:44 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:45 - qBittorrent v5.2.0 started. Process ID: 51578
+(N) 2026-05-28T22:10:45 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:45 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:45 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:46 - qBittorrent v5.2.0 started. Process ID: 51586
+(N) 2026-05-28T22:10:46 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:46 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:46 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:47 - qBittorrent v5.2.0 started. Process ID: 51594
+(N) 2026-05-28T22:10:47 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:47 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:47 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:48 - qBittorrent v5.2.0 started. Process ID: 51602
+(N) 2026-05-28T22:10:48 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:48 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:48 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:49 - qBittorrent v5.2.0 started. Process ID: 51610
+(N) 2026-05-28T22:10:49 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:49 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:49 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:50 - qBittorrent v5.2.0 started. Process ID: 51618
+(N) 2026-05-28T22:10:50 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:50 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:50 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:51 - qBittorrent v5.2.0 started. Process ID: 51626
+(N) 2026-05-28T22:10:51 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:51 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:51 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:52 - qBittorrent v5.2.0 started. Process ID: 51634
+(N) 2026-05-28T22:10:52 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:52 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:52 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:53 - qBittorrent v5.2.0 started. Process ID: 51642
+(N) 2026-05-28T22:10:53 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:53 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:53 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:54 - qBittorrent v5.2.0 started. Process ID: 51650
+(N) 2026-05-28T22:10:54 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:54 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:54 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:55 - qBittorrent v5.2.0 started. Process ID: 51658
+(N) 2026-05-28T22:10:55 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:55 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:55 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:56 - qBittorrent v5.2.0 started. Process ID: 51666
+(N) 2026-05-28T22:10:56 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:56 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:56 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:57 - qBittorrent v5.2.0 started. Process ID: 51674
+(N) 2026-05-28T22:10:57 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:57 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:57 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:58 - qBittorrent v5.2.0 started. Process ID: 51682
+(N) 2026-05-28T22:10:58 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:58 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:58 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:10:59 - qBittorrent v5.2.0 started. Process ID: 51690
+(N) 2026-05-28T22:10:59 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:10:59 - qBittorrent termination initiated
+(N) 2026-05-28T22:10:59 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:00 - qBittorrent v5.2.0 started. Process ID: 51698
+(N) 2026-05-28T22:11:00 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:00 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:00 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:01 - qBittorrent v5.2.0 started. Process ID: 51706
+(N) 2026-05-28T22:11:01 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:01 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:01 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:02 - qBittorrent v5.2.0 started. Process ID: 51714
+(N) 2026-05-28T22:11:02 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:02 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:02 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:03 - qBittorrent v5.2.0 started. Process ID: 51722
+(N) 2026-05-28T22:11:03 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:03 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:03 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:04 - qBittorrent v5.2.0 started. Process ID: 51730
+(N) 2026-05-28T22:11:04 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:04 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:04 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:05 - qBittorrent v5.2.0 started. Process ID: 51738
+(N) 2026-05-28T22:11:05 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:05 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:05 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:06 - qBittorrent v5.2.0 started. Process ID: 51746
+(N) 2026-05-28T22:11:06 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:06 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:06 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:07 - qBittorrent v5.2.0 started. Process ID: 51754
+(N) 2026-05-28T22:11:07 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:07 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:07 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:08 - qBittorrent v5.2.0 started. Process ID: 51762
+(N) 2026-05-28T22:11:08 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:08 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:08 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:09 - qBittorrent v5.2.0 started. Process ID: 51770
+(N) 2026-05-28T22:11:09 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:09 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:09 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:10 - qBittorrent v5.2.0 started. Process ID: 51778
+(N) 2026-05-28T22:11:10 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:11 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:11 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:11 - qBittorrent v5.2.0 started. Process ID: 51786
+(N) 2026-05-28T22:11:11 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:12 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:12 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:12 - qBittorrent v5.2.0 started. Process ID: 51794
+(N) 2026-05-28T22:11:12 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:13 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:13 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:13 - qBittorrent v5.2.0 started. Process ID: 51802
+(N) 2026-05-28T22:11:13 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:14 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:14 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:14 - qBittorrent v5.2.0 started. Process ID: 51810
+(N) 2026-05-28T22:11:14 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:15 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:15 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:15 - qBittorrent v5.2.0 started. Process ID: 51818
+(N) 2026-05-28T22:11:15 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:11:16 - qBittorrent termination initiated
+(N) 2026-05-28T22:11:16 - qBittorrent is now ready to exit
+(N) 2026-05-28T22:11:16 - qBittorrent v5.2.0 started. Process ID: 51826
+(N) 2026-05-28T22:11:16 - Using config directory: /config/qBittorrent
+(N) 2026-05-28T22:27:29 - Torrent removed. Torrent: "Minerva_Myrient"

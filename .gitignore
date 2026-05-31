@@ -1,0 +1,20 @@
+# Secretos y configuracion local
+.env
+.secrets/
+
+# Datos generados en runtime
+bridge_api/games_db.json
+bridge_api/catalog.db
+data/
+
+# Entorno virtual Python
+bridge_api/venv/
+bridge_api/__pycache__/
+**/__pycache__/
+*.pyc
+
+# Archivos grandes y personales
+*.PUP
+*.cache
+*.docx
+Plan_*.md

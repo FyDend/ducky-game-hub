@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Super Mario World",
+    "console": "Super Nintendo",
+    "core": "snes9x",
+    "path": "/roms/snes/Super Mario World.smc",
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png",
+    "year": 1990,
+    "isFavorite": true
+  },
+  {
+    "id": 2,
+    "title": "The Legend of Zelda",
+    "console": "NES",
+    "core": "nestopia",
+    "path": "/roms/nes/Legend of Zelda.nes",
+    "image": "https://upload.wikimedia.org/wikipedia/en/4/41/Legend_of_zelda_cover_%28with_cartridge%29_gold.png",
+    "year": 1986,
+    "isFavorite": true
+  },
+  {
+    "id": 3,
+    "title": "Sonic the Hedgehog",
+    "console": "Sega Genesis",
+    "core": "genesis_plus_gx",
+    "path": "/roms/megadrive/Sonic.md",
+    "image": "https://upload.wikimedia.org/wikipedia/en/b/ba/Sonic_the_Hedgehog_1_Genesis_box_art.jpg",
+    "year": 1991,
+    "isFavorite": false
+  },
+  {
+    "id": 4,
+    "title": "Super Metroid",
+    "console": "Super Nintendo",
+    "core": "snes9x",
+    "path": "/roms/snes/Super Metroid.smc",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/e4/Smetroidbox.jpg",
+    "year": 1994,
+    "isFavorite": false
+  }
+]

@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+pymysql
+qbittorrent-api
+aiofiles
+websockets
