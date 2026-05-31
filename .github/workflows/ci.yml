@@ -13,6 +13,7 @@ env:
 
 jobs:
   build-and-push:
+    name: build y testeo de imagenes
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -69,7 +70,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
-    name: Continuous Deployment (CD)
+    name: deploy de imagenes en contenedores
     needs: build-and-push
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -81,7 +82,8 @@ jobs:
       - name: Connect to Tailscale VPN
         uses: tailscale/github-action@v2
         with:
-          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          oauth-client-id: ${{ secrets.TAILSCALE_CLIENT_ID }}
+          oauth-client-secret: ${{ secrets.TAILSCALE_CLIENT_SECRET }}
 
       - name: Configure SSH agent and keys
         run: |
