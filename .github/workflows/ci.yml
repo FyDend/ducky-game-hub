@@ -78,30 +78,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Check secrets availability
-        run: |
-          echo "=== DIAGNOSTICO DE SECRETOS ==="
-          if [ -z "${{ secrets.TAILSCALE_CLIENT_ID }}" ]; then
-            echo "TAILSCALE_CLIENT_ID está COMPLETAMENTE VACÍO"
-          else
-            echo "TAILSCALE_CLIENT_ID tiene contenido (longitud: ${#CLIENT_ID_TEMP})"
-          fi
-          if [ -z "${{ secrets.TAILSCALE_CLIENT_SECRET }}" ]; then
-            echo "TAILSCALE_CLIENT_SECRET está COMPLETAMENTE VACÍO"
-          else
-            echo "TAILSCALE_CLIENT_SECRET tiene contenido"
-          fi
-          echo "==============================="
-        env:
-          CLIENT_ID_TEMP: ${{ secrets.TAILSCALE_CLIENT_ID }}
-
       - name: Connect to Tailscale VPN
         uses: tailscale/github-action@v2
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_CLIENT_ID }}
           oauth-secret: ${{ secrets.TAILSCALE_CLIENT_SECRET }}
-
+          tags: tag:ci
+        env:
+          TS_API_KEY: ${{ secrets.TAILSCALE_CLIENT_SECRET }}
       - name: Configure SSH agent and keys
         run: |
           mkdir -p ~/.ssh
