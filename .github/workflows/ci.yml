@@ -1,4 +1,4 @@
-name: Continuos Integration
+name: Continuous Integration
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
 
       # 2. Configuración de Buildx (multi-architecture)
       - name: Setup Buildx
-        uses: actions/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v3
 
       # 3. Autenticación en GHCR
       - name: Log in to GitHub Container Registry (GHCR)
