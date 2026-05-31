@@ -8,8 +8,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME_BRIDGE:FyDend/ducky-game-hub/bridge_api
-  IMAGE_NAME_STORE:FyDend/ducky-game-hub/store_front
+  IMAGE_NAME_BRIDGE: ${{ github.repository_owner }}/ducky-game-hub-bridge-api
+  IMAGE_NAME_STORE: ${{ github.repository_owner }}/ducky-game-hub-store-front
 
 jobs:
   build-and-push:
