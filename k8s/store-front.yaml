@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-front
+  namespace: ducky-game-hub
+  labels:
+    app: store-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: store-front
+  template:
+    metadata:
+      labels:
+        app: store-front
+    spec:
+      hostNetwork: true
+      hostPID: true
+      hostIPC: true
+      containers:
+        - name: store-front
+          image: ghcr.io/fydend/ducky-game-hub-store-front:latest
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+          env:
+            - name: DISPLAY
+              value: ":0"
+            - name: WAYLAND_DISPLAY
+              value: "wayland-0"
+            - name: XDG_RUNTIME_DIR
+              value: "/run/user/$PUID"
+          envFrom:
+            - configMapRef:
+                name: ducky-game-hub-config
+          volumeMounts:
+            - name: app-volume
+              mountPath: /app
+            - name: x11-unix
+              mountPath: /tmp/.X11-unix
+              readOnly: true
+            - name: xdg-runtime
+              mountPath: /run/user/$PUID
+              readOnly: true
+            - name: dri-dev
+              mountPath: /dev/dri
+            - name: input-dev
+              mountPath: /dev/input
+      volumes:
+        - name: app-volume
+          hostPath:
+            path: $WORKSPACE_PATH/store_front
+            type: Directory
+        - name: x11-unix
+          hostPath:
+            path: /tmp/.X11-unix
+            type: Directory
+        - name: xdg-runtime
+          hostPath:
+            path: /run/user/$PUID
+            type: Directory
+        - name: dri-dev
+          hostPath:
+            path: /dev/dri
+            type: Directory
+        - name: input-dev
+          hostPath:
+            path: /dev/input
+            type: Directory

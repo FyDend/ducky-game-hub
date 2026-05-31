@@ -3,7 +3,7 @@ import os
 import json
 import re
 import subprocess
-from config import SETTINGS_FILE, HOST_USER, HOST_IP, SAVE_SYNC_HOST, SAVE_SYNC_USER, SAVE_SYNC_PATH
+from config import SETTINGS_FILE, HOST_USER, HOST_IP
 from services.ssh_helper import run_ssh_command
 
 router = APIRouter()
@@ -374,37 +374,9 @@ def wizard_complete(ajustes: dict):
     except Exception as e:
         return {"estado": "Error", "detalle": str(e)}
 
-def execute_saves_sync(direction: str):
-    if not SAVE_SYNC_HOST:
-        print("[API] Sync de saves abortado: SAVE_SYNC_HOST no configurado.", flush=True)
-        return
-        
-    user_part = f"{SAVE_SYNC_USER}@" if SAVE_SYNC_USER else ""
-    remote_target = f"{user_part}{SAVE_SYNC_HOST}:{SAVE_SYNC_PATH}"
-    
-    local_saves = f"/home/{HOST_USER}/.config/retroarch/saves/"
-    
-    if direction == "push":
-        cmd = f"rsync -avz -e 'ssh -o StrictHostKeyChecking=no' '{local_saves}' '{remote_target}/saves/'"
-    else:
-        cmd = f"rsync -avz -e 'ssh -o StrictHostKeyChecking=no' '{remote_target}/saves/' '{local_saves}'"
-        
-    print(f"[API] Iniciando rsync de saves ({direction})...", flush=True)
-    res = run_ssh_command(cmd)
-    if res.returncode == 0:
-        print(f"[API] Sync de saves ({direction}) completado con éxito.", flush=True)
-    else:
-        print(f"[API] Error en sync de saves ({direction}): {res.stderr}", flush=True)
 
-@router.post("/saves/sync")
-def sync_saves(direction: str, background_tasks: BackgroundTasks):
-    if not SAVE_SYNC_HOST:
-        return {"estado": "Error", "detalle": "SAVE_SYNC_HOST no está configurado en el archivo .env"}
-    if direction not in ["push", "pull"]:
-        return {"estado": "Error", "detalle": "Dirección inválida. Debe ser 'push' o 'pull'"}
-        
-    background_tasks.add_task(execute_saves_sync, direction)
-    return {"estado": "OK", "mensaje": f"Sincronización de partidas ({direction}) iniciada en segundo plano."}
+
+
 
 @router.post("/salir")
 def salir_retrocloud(background_tasks: BackgroundTasks):

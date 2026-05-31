@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bridge-api
+  namespace: ducky-game-hub
+  labels:
+    app: bridge-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bridge-api
+  template:
+    metadata:
+      labels:
+        app: bridge-api
+    spec:
+      containers:
+        - name: bridge-api
+          image: ghcr.io/fydend/ducky-game-hub-bridge-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: ducky-game-hub-config
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          volumeMounts:
+            - name: roms-volume
+              mountPath: /roms
+            - name: ssh-key-volume
+              mountPath: /root/.ssh
+              readOnly: true
+            - name: app-data-volume
+              mountPath: /app/settings.json
+              subPath: settings.json
+            - name: db-volume
+              mountPath: /app/games_db.json
+              subPath: games_db.json
+      volumes:
+        - name: roms-volume
+          hostPath:
+            path: $WORKSPACE_PATH/data/roms
+            type: DirectoryOrCreate
+        - name: ssh-key-volume
+          secret:
+            secretName: bridge-ssh-key
+            defaultMode: 256
+        - name: app-data-volume
+          hostPath:
+            path: $WORKSPACE_PATH/bridge_api/settings.json
+            type: FileOrCreate
+        - name: db-volume
+          hostPath:
+            path: $WORKSPACE_PATH/bridge_api/games_db.json
+            type: FileOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bridge-api-service
+  namespace: ducky-game-hub
+spec:
+  selector:
+    app: bridge-api
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: LoadBalancer

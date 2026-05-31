@@ -1,10 +1,10 @@
 [Unit]
-Description=RetroCloud Gamepad Daemon
+Description=Ducky Game Hub Gamepad Daemon
 After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 WORKSPACE_PATH/daemon/retrocloud_gamepad_daemon.py
+ExecStart=/usr/bin/python3 WORKSPACE_PATH/daemon/ducky_game_hub_gamepad_daemon.py
 Restart=on-failure
 Environment=DISPLAY=:0
 

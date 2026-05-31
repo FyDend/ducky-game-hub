@@ -772,3 +772,27 @@
 (N) 2026-05-30T20:37:36 - Saving resume data completed.
 (N) 2026-05-30T20:37:36 - BitTorrent session successfully finished.
 (N) 2026-05-30T20:37:36 - qBittorrent is now ready to exit
+(N) 2026-05-31T16:17:45 - qBittorrent v5.2.0 started. Process ID: 150
+(N) 2026-05-31T16:17:45 - Using config directory: /config/qBittorrent
+(N) 2026-05-31T16:17:45 - Trying to listen on the following list of IP addresses: "0.0.0.0:60881,[::]:60881"
+(I) 2026-05-31T16:17:45 - Peer ID: "-qB5200-"
+(I) 2026-05-31T16:17:45 - HTTP User-Agent: "qBittorrent/5.2.0"
+(I) 2026-05-31T16:17:45 - Distributed Hash Table (DHT) support: ON
+(I) 2026-05-31T16:17:45 - Local Peer Discovery support: ON
+(I) 2026-05-31T16:17:45 - Peer Exchange (PeX) support: ON
+(I) 2026-05-31T16:17:45 - Anonymous mode: OFF
+(I) 2026-05-31T16:17:45 - Encryption support: ON
+(I) 2026-05-31T16:17:45 - UPnP/NAT-PMP support: ON
+(I) 2026-05-31T16:17:45 - Successfully listening on IP. IP: "127.0.0.1". Port: "TCP/60881"
+(I) 2026-05-31T16:17:45 - Successfully listening on IP. IP: "127.0.0.1". Port: "UTP/60881"
+(I) 2026-05-31T16:17:45 - Successfully listening on IP. IP: "172.18.0.2". Port: "TCP/60881"
+(I) 2026-05-31T16:17:45 - Successfully listening on IP. IP: "172.18.0.2". Port: "UTP/60881"
+(I) 2026-05-31T16:17:45 - Successfully listening on IP. IP: "::1". Port: "TCP/60881"
+(I) 2026-05-31T16:17:45 - Successfully listening on IP. IP: "::1". Port: "UTP/60881"
+(I) 2026-05-31T16:17:45 - IP geolocation database loaded. Type: DBIP-Country-Lite. Build time: Thu Apr 30 22:53:09 2026.
+(N) 2026-05-31T16:17:45 - Using built-in WebUI.
+(W) 2026-05-31T16:17:45 - Couldn't load WebUI translation for selected locale (C).
+(N) 2026-05-31T16:17:45 - WebUI: Now listening on IP: *, port: 8080
+(I) 2026-05-31T16:17:45 - Detected external IP. IP: "181.26.31.105"
+(W) 2026-05-31T16:20:21 - UPnP/NAT-PMP port mapping failed. Message: "could not map port using UPnP[172.18.0.2]: no router found"
+(W) 2026-05-31T16:20:21 - UPnP/NAT-PMP port mapping failed. Message: "could not map port using UPnP[172.18.0.2]: no router found"

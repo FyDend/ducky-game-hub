@@ -1046,6 +1046,11 @@ document.addEventListener('DOMContentLoaded', () => {
               document.body.setAttribute('data-theme', currentTheme);
           }
 
+          // Popular Ruta de ROMs
+          if (document.getElementById('cfg-roms-path')) {
+              document.getElementById('cfg-roms-path').value = settings.roms_path || '';
+          }
+
           // Popular Mapeo Perfil
           populateProfilesSelect(settings.controls.profile);
           
@@ -2741,6 +2746,11 @@ document.addEventListener('DOMContentLoaded', () => {
           // Guardar el modo de pantalla elegido EXPLICITAMENTE
           activeSettings.screen_mode = mode;
           
+          // Guardar ruta de ROMs
+          if (document.getElementById('cfg-roms-path')) {
+              activeSettings.roms_path = document.getElementById('cfg-roms-path').value.trim() || '';
+          }
+          
           const originalText = saveSettingsBtn.textContent;
           saveSettingsBtn.textContent = 'GUARDANDO AJUSTES...';
           saveSettingsBtn.disabled = true;
@@ -2878,16 +2888,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Botón Salir de RetroCloud ---
+  // --- Botón Salir de DUCKY GAME HUB ---
   const navExit = document.getElementById('nav-exit');
   if (navExit) {
       navExit.addEventListener('click', () => {
-          showConfirmModal('SALIR DE RETROCLOUD?', () => {
+          showConfirmModal('SALIR DEL JUEGO?', () => {
               fetch(`${API_BASE_URL}/salir`, { method: 'POST' })
                   .catch(() => {});
               setTimeout(() => {
                   window.close();
                   // Fallback si window.close() no funciona (navegadores lo bloquean)
-                  document.body.innerHTML = `<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#06080c;font-family:'Press Start 2P',cursive;color:#00a8ff;font-size:1rem;text-align:center;">CERRANDO RETROCLOUD...<br><br><span style="font-size:0.6rem;color:#aaa;">Podes cerrar esta ventana.</span></div>`;
+                  document.body.innerHTML = `<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#06080c;font-family:'Press Start 2P',cursive;color:#00a8ff;font-size:1rem;text-align:center;">CERRANDO DUCKY GAME HUB...<br><br><span style="font-size:0.6rem;color:#aaa;">Podes cerrar esta ventana.</span></div>`;
               }, 500);
           }, () => {});
       });
@@ -2897,60 +2908,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('retro_theme') || 'neon';
   document.body.setAttribute('data-theme', savedTheme);
 
-  // --- FASE 3.4 — SYNC DE SAVES ---
-  const syncPushBtn = document.getElementById('sync-push-btn');
-  const syncPullBtn = document.getElementById('sync-pull-btn');
 
-  function handleSaveSync(direction) {
-      const btn = direction === 'push' ? syncPushBtn : syncPullBtn;
-      if (!btn) return;
-      
-      const originalText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = 'SINCRONIZANDO...';
-      btn.style.background = '#fbc531';
-      btn.style.color = 'black';
-      
-      showToast(`Sincronización de partidas (${direction}) iniciada...`, 'info');
-      
-      fetch(`${API_BASE_URL}/saves/sync?direction=${direction}`, { method: 'POST' })
-        .then(res => res.json())
-        .then(data => {
-            if (data.estado === 'OK') {
-                showToast(`¡Sincronización (${direction}) completada en segundo plano!`, 'success');
-                btn.textContent = '✓ EXITOSO';
-                btn.style.background = '#2ecc71';
-                btn.style.color = 'white';
-            } else {
-                showToast(`Error de Sync: ${data.detalle}`, 'error');
-                btn.textContent = '⚠ ERROR';
-                btn.style.background = '#e84118';
-                btn.style.color = 'white';
-            }
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.disabled = false;
-                btn.style.background = '';
-                btn.style.color = '';
-            }, 2500);
-        })
-        .catch(err => {
-            console.error("Error en sync de saves:", err);
-            showToast("Error de conexión al sincronizar partidas.", "error");
-            btn.textContent = '⚠ ERROR';
-            btn.style.background = '#e84118';
-            btn.style.color = 'white';
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.disabled = false;
-                btn.style.background = '';
-                btn.style.color = '';
-            }, 2500);
-        });
-  }
-
-  if (syncPushBtn) syncPushBtn.addEventListener('click', () => handleSaveSync('push'));
-  if (syncPullBtn) syncPullBtn.addEventListener('click', () => handleSaveSync('pull'));
 
 
   // Función global para el toggle de pantalla en ajustes (llamada desde onclick en HTML)
@@ -3279,6 +3237,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       activeSettings.audio.selected_sink = (document.getElementById('wizard-audio-sink') || {}).value || '';
+      activeSettings.roms_path = (document.getElementById('wizard-roms-path') || {}).value.trim() || '';
       activeSettings.first_run = false;
       
       showToast("Guardando ajustes iniciales...", "info");

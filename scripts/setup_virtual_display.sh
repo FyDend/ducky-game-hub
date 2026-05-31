@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# retrocloud-virtual-display setup script
+# ducky-game-hub-virtual-display setup script
 # Configura una pantalla virtual para transmisión con Sunshine en Hyprland (Lua API)
 
 export XDG_RUNTIME_DIR="/run/user/1000"
@@ -13,17 +13,17 @@ fi
 
 echo "Detectada instancia de Hyprland: $HYPRLAND_INSTANCE_SIGNATURE"
 
-# 0. Asegurar el dispositivo de audio virtual retrocloud-audio en PipeWire/PulseAudio
-if ! pactl list sinks short | grep -q "retrocloud-audio"; then
-    echo "Creando sumidero de audio virtual 'retrocloud-audio'..."
-    pactl load-module module-null-sink sink_name=retrocloud-audio sink_properties=device.description="RetroCloud-Audio" >/dev/null
+# 0. Asegurar el dispositivo de audio virtual ducky-game-hub-audio en PipeWire/PulseAudio
+if ! pactl list sinks short | grep -q "ducky-game-hub-audio"; then
+    echo "Creando sumidero de audio virtual 'ducky-game-hub-audio'..."
+    pactl load-module module-null-sink sink_name=ducky-game-hub-audio sink_properties=device.description="Ducky-Game-Hub-Audio" >/dev/null
 else
-    echo "El sumidero de audio virtual 'retrocloud-audio' ya existe."
+    echo "El sumidero de audio virtual 'ducky-game-hub-audio' ya existe."
 fi
 
 # NOTA: Comentamos la redirección manual de audio por defecto para que Sunshine gestione
 # de forma nativa su propio sumidero virtual de alto rendimiento ('sink-sunshine-stereo').
-# pactl set-default-sink retrocloud-audio
+# pactl set-default-sink ducky-game-hub-audio
 
 # Redirigir el audio de los sumideros virtuales a la TV física conectada por HDMI/DP
 HDMI_SINK=$(pactl list sinks short | grep -E 'hdmi|hdmi-stereo' | awk '{print $2}' | head -n 1)
@@ -34,7 +34,7 @@ if [ -n "$HDMI_SINK" ]; then
         pactl unload-module "$mod" >/dev/null 2>&1
     done
     pactl load-module module-loopback source=sink-sunshine-stereo.monitor sink="$HDMI_SINK" latency_msec=30 >/dev/null 2>&1
-    pactl load-module module-loopback source=retrocloud-audio.monitor sink="$HDMI_SINK" latency_msec=30 >/dev/null 2>&1
+    pactl load-module module-loopback source=ducky-game-hub-audio.monitor sink="$HDMI_SINK" latency_msec=30 >/dev/null 2>&1
 else
     echo "No se detectó salida física HDMI para audio loopback."
 fi
@@ -93,19 +93,19 @@ hyprctl eval "hl.dispatch(hl.dsp.workspace.move({ workspace = $TARGET_WORKSPACE,
 echo "Registrando reglas de ventana en Hyprland para los emuladores..."
 EMU_PATTERNS=("xenia" "Xenia" "xemu" "Xemu" "pcsx2" "PCSX2" "rpcs3" "RPCS3" "dolphin" "Dolphin" "retroarch" "RetroArch" "steam" "Steam")
 
-# Registrar regla para evitar salvapantallas y ubicar RetroCloud en el escritorio correcto
+# Registrar regla para evitar salvapantallas y ubicar Ducky Game Hub en el escritorio correcto
 if [ "$TARGET_MONITOR" = "TV-STREAM" ]; then
-    echo "Modo Streaming activo: vinculando la ventana de RetroCloud al workspace $TARGET_WORKSPACE..."
-    hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*RetroCloud.*' }, workspace = '$TARGET_WORKSPACE', idle_inhibit = 'always' })" >/dev/null
-    hyprctl eval "hl.window_rule({ match = { class = 'retrocloud-app' }, workspace = '$TARGET_WORKSPACE', idle_inhibit = 'always' })" >/dev/null
+    echo "Modo Streaming activo: vinculando la ventana de Ducky Game Hub al workspace $TARGET_WORKSPACE..."
+    hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*Ducky Game Hub.*' }, workspace = '$TARGET_WORKSPACE', idle_inhibit = 'always' })" >/dev/null
+    hyprctl eval "hl.window_rule({ match = { class = 'ducky-game-hub' }, workspace = '$TARGET_WORKSPACE', idle_inhibit = 'always' })" >/dev/null
     hyprctl dispatch movetoworkspacesilent "$TARGET_WORKSPACE,class:^python3$" >/dev/null 2>&1
-    hyprctl dispatch movetoworkspacesilent "$TARGET_WORKSPACE,class:^retrocloud-app$" >/dev/null 2>&1
+    hyprctl dispatch movetoworkspacesilent "$TARGET_WORKSPACE,class:^ducky-game-hub$" >/dev/null 2>&1
 else
-    echo "Modo Local/Dual activo: asegurando que RetroCloud se mantenga en el workspace 1..."
-    hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*RetroCloud.*' }, workspace = '1', idle_inhibit = 'always' })" >/dev/null
-    hyprctl eval "hl.window_rule({ match = { class = 'retrocloud-app' }, workspace = '1', idle_inhibit = 'always' })" >/dev/null
+    echo "Modo Local/Dual activo: asegurando que Ducky Game Hub se mantenga en el workspace 1..."
+    hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*Ducky Game Hub.*' }, workspace = '1', idle_inhibit = 'always' })" >/dev/null
+    hyprctl eval "hl.window_rule({ match = { class = 'ducky-game-hub' }, workspace = '1', idle_inhibit = 'always' })" >/dev/null
     hyprctl dispatch movetoworkspacesilent "1,class:^python3$" >/dev/null 2>&1
-    hyprctl dispatch movetoworkspacesilent "1,class:^retrocloud-app$" >/dev/null 2>&1
+    hyprctl dispatch movetoworkspacesilent "1,class:^ducky-game-hub$" >/dev/null 2>&1
 fi
 for pat in "${EMU_PATTERNS[@]}"; do
     hyprctl eval "hl.window_rule({ match = { class = '.*'$pat'.*' }, workspace = '$TARGET_WORKSPACE silent', idle_inhibit = 'always' })" >/dev/null
@@ -117,10 +117,7 @@ hyprctl eval "hl.window_rule({ match = { class = 'steam_proton' }, workspace = '
 
 # 5. Asegurar que el daemon de salida universal por joystick esté activo en segundo plano
 echo "Reiniciando daemon de salida universal por joystick a través de systemd..."
-systemctl --user stop retrocloud-gamepad
-systemctl --user start retrocloud-gamepad
+systemctl --user stop ducky-game-hub-gamepad
+systemctl --user start ducky-game-hub-gamepad
 
 echo "¡Pantalla virtual 'TV-STREAM' configurada y aislada correctamente!"
-
-
-

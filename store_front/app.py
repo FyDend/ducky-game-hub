@@ -8,7 +8,7 @@ from PyQt6.QtWebEngineWidgets import QWebEngineView
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("RetroCloud Sovereign Game Pass")
+        self.setWindowTitle("Ducky Game Hub Sovereign Game Pass")
         
         # Iniciar en pantalla completa nativa
         self.showFullScreen()
@@ -54,9 +54,9 @@ if __name__ == "__main__":
     ]
     app = QApplication(sys_args)
     
-    # Definir nombre de la aplicación para que Hyprland la capture con la clase "retrocloud-app"
-    app.setApplicationName("retrocloud-app")
-    app.setApplicationDisplayName("RetroCloud")
+    # Definir nombre de la aplicación para que Hyprland la capture con la clase "ducky-game-hub"
+    app.setApplicationName("ducky-game-hub")
+    app.setApplicationDisplayName("Ducky Game Hub")
     
     window = MainWindow()
     window.show()

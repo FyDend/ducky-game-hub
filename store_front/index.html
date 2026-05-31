@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RetroCloud Sovereign Game Pass</title>
+  <title>Ducky Game Hub Sovereign Game Pass</title>
   <!-- Fuente Pixel Art -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,7 +11,7 @@
 <body class="couch-mode">
   <!-- Premium Splash Screen -->
   <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #06080c; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease;">
-      <h1 style="font-family: 'Press Start 2P', cursive; font-size: 1.5rem; color: var(--accent-cyan); text-shadow: 3px 3px 0px #000, 0 0 20px rgba(0, 168, 255, 0.4); margin-bottom: 15px; letter-spacing: 2px;">RETROCLOUD</h1>
+      <h1 style="font-family: 'Press Start 2P', cursive; font-size: 1.5rem; color: var(--accent-cyan); text-shadow: 3px 3px 0px #000, 0 0 20px rgba(0, 168, 255, 0.4); margin-bottom: 15px; letter-spacing: 2px;">DUCKY GAME HUB</h1>
       <div style="font-family: 'Press Start 2P', cursive; font-size: 0.5rem; color: var(--accent-gold); margin-bottom: 40px; animation: pulse-download 1s infinite;">SOVEREIGN GAME PASS</div>
       
       <!-- Premium Progress Bar -->
@@ -26,7 +26,7 @@
     <!-- Sidebar -->
     <aside class="retro-sidebar">
       <div class="logo">
-        <h1>RETROCLOUD</h1>
+        <h1>DUCKY GAME HUB</h1>
         <p>>_ OS v2.0</p>
       </div>
 
@@ -37,7 +37,7 @@
         <button id="nav-favorites" class="nav-btn">FAVORITOS</button>
         <button id="nav-steam" class="nav-btn">STEAM BIG PICTURE</button>
         <button id="nav-settings" class="nav-btn">CONFIGURACION</button>
-        <button id="nav-exit" class="nav-btn" style="margin-top: auto; border-color: #e84118; color: #e84118;">SALIR DE RETROCLOUD</button>
+        <button id="nav-exit" class="nav-btn" style="margin-top: auto; border-color: #e84118; color: #e84118;">SALIR DEL JUEGO</button>
       </nav>
       
       <div class="sidebar-search">
@@ -315,24 +315,22 @@
             </div>
         </div>
 
-        <!-- Sincronización de Partidas Guardadas -->
-        <div class="retro-panel-section" style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+        <!-- Ruta de las ROMs -->
+        <div class="retro-panel-section" style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 12px;">
             <div>
-                <h3 style="color: var(--accent-cyan); font-family: 'Press Start 2P'; font-size: 0.75rem; margin-bottom: 8px;">PARTIDAS GUARDADAS EN LA NUBE</h3>
-                <p style="color: var(--text-secondary); font-size: 0.85rem;">Sincroniza tus archivos de guardado (Saves) con el servidor de respaldo remoto.</p>
+                <h3 style="color: var(--accent-cyan); font-family: 'Press Start 2P'; font-size: 0.75rem; margin-bottom: 8px;">RUTA DE LAS ROMS</h3>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; font-family: 'Outfit', sans-serif; line-height: 1.5; margin: 0;">
+                    Define la carpeta física en tu PC donde guardas tus juegos organizados por consola.
+                </p>
             </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <button id="sync-push-btn" class="btn-primary" style="background: #00a8ff; border-color: #00a8ff; color: white; font-family: 'Press Start 2P'; font-size: 0.65rem; box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);">☁ SUBIR PARTIDAS (PUSH)</button>
-                <button id="sync-pull-btn" class="btn-secondary" style="background: #a0a8c0; border-color: #a0a8c0; color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; box-shadow: 0 0 10px rgba(160, 168, 192, 0.25);">☁ DESCARGAR PARTIDAS (PULL)</button>
-            </div>
+            <input type="text" id="cfg-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; padding: 12px; border: 1px solid var(--glass-border); font-family: 'Outfit'; font-size: 0.85rem; width: 100%; border-radius: var(--border-radius-md);">
         </div>
 
         <!-- Ajustes Avanzados / Administración -->
         <div class="retro-panel-section" style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 15px;">
             <div>
                 <h3 style="color: var(--accent-cyan); font-family: 'Press Start 2P'; font-size: 0.75rem; margin-bottom: 8px;">ACCIONES DEL SISTEMA</h3>
-                <p style="color: var(--text-secondary); font-size: 0.85rem;">Mantenimiento y administración global de la base de datos de RetroCloud.</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Mantenimiento y administración global de la base de datos de Ducky Game Hub.</p>
             </div>
             <button id="rebuild-catalog-btn" class="btn-secondary" style="background: #fbc531; border-color: #fbc531; color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(251, 197, 49, 0.25);">↻ RECONSTRUIR CATALOGO GLOBAL (MINERVA)</button>
         </div>
@@ -422,7 +420,7 @@
       <div class="modal-overlay" style="background: rgba(4, 5, 8, 0.95);"></div>
       <div class="modal-content retro-panel wizard-card" style="max-width: 800px; width: 90%; max-height: 95vh; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
           <div class="wizard-header" style="text-align: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px;">
-              <h2 id="wizard-title" style="font-size: 0.95rem; color: var(--accent-cyan); font-family: 'Press Start 2P', cursive; text-shadow: 2px 2px 0px #000; margin-bottom: 15px;">RETROCLOUD SETUP</h2>
+              <h2 id="wizard-title" style="font-size: 0.95rem; color: var(--accent-cyan); font-family: 'Press Start 2P', cursive; text-shadow: 2px 2px 0px #000; margin-bottom: 15px;">DUCKY GAME HUB SETUP</h2>
               <div class="wizard-steps-indicator" style="display: flex; gap: 0.8rem; justify-content: center;">
                   <span class="step-dot active" data-step="1"></span>
                   <span class="step-dot" data-step="2"></span>
@@ -435,7 +433,7 @@
           <div class="wizard-body" style="min-height: 220px; display: flex; flex-direction: column; justify-content: center;">
               <!-- Step 1: Welcome -->
               <div class="wizard-step" id="wizard-step-1" style="display: flex; flex-direction: column; gap: 15px;">
-                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;">BIENVENIDO A RETROCLOUD v2</h3>
+                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;">BIENVENIDO A DUCKY GAME HUB</h3>
                   <p style="font-family: 'Outfit', sans-serif; font-size: 0.95rem; text-align: center; color: var(--text-secondary); line-height: 1.6;">
                       Tu consola personal de emulación modular y optimizada para Smart TVs (Couch Mode).
                   </p>
@@ -459,6 +457,10 @@
                       <p style="font-family: 'Outfit', sans-serif; font-size: 0.78rem; color: var(--text-secondary); margin: 0;">
                           La IP predeterminada <code style="color: #00a8ff;">172.18.0.1</code> funciona en la mayoría de instalaciones Docker. Si el test falla, verificá con <code style="color: #00a8ff;">ip route | grep docker</code> en tu terminal.
                       </p>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 580px; margin-top: 10px;">
+                      <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-gold);">📂 RUTA DE TUS ROMS EN EL HOST:</label>
+                      <input type="text" id="wizard-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 12px; font-family: 'Outfit'; font-size: 0.85rem; border-radius: var(--border-radius-md); width: 100%;">
                   </div>
                   <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%; margin-top: 5px;">
                       <button id="btn-test-ssh" class="btn-primary" style="background: var(--accent-cyan); border-color: var(--accent-cyan); color: black; font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px 24px; border-radius: var(--border-radius-md); box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);">PROBAR CONEXION SSH</button>

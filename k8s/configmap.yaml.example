@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ducky-game-hub-config
+  namespace: ducky-game-hub
+data:
+  ROMS_PATH: "/roms"
+  HOST_USER: "$HOST_USER"
+  PUID: "$PUID"
+  PGID: "$PGID"
+  TZ: "$TZ"
+  TARGET_MONITOR: "TV-STREAM"
+  HOST_MONITOR: "DP-1"
+  TARGET_WORKSPACE: "10"

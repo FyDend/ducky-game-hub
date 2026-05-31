@@ -15,8 +15,8 @@ USER_SYSTEMD_DIR="$HOME/.config/systemd/user"
 mkdir -p "$USER_SYSTEMD_DIR"
 
 # Generar archivo de servicio personalizado
-SERVICE_TEMPLATE="$PROJECT_DIR/daemon/retrocloud-gamepad.service"
-SERVICE_TARGET="$USER_SYSTEMD_DIR/retrocloud-gamepad.service"
+SERVICE_TEMPLATE="$PROJECT_DIR/daemon/ducky-game-hub-gamepad.service"
+SERVICE_TARGET="$USER_SYSTEMD_DIR/ducky-game-hub-gamepad.service"
 
 if [ ! -f "$SERVICE_TEMPLATE" ]; then
     echo "[Daemon Installer] ERROR: No se encontró la plantilla del servicio en $SERVICE_TEMPLATE"
@@ -31,10 +31,10 @@ echo "[Daemon Installer] Recargando systemd de usuario..."
 systemctl --user daemon-reload
 
 echo "[Daemon Installer] Habilitando el servicio para que inicie con la sesión..."
-systemctl --user enable retrocloud-gamepad.service
+systemctl --user enable ducky-game-hub-gamepad.service
 
 echo "[Daemon Installer] Iniciando el servicio..."
-systemctl --user restart retrocloud-gamepad.service
+systemctl --user restart ducky-game-hub-gamepad.service
 
 echo "[Daemon Installer] ¡Instalación completada con éxito!"
-echo "[Daemon Installer] Puedes verificar el estado con: systemctl --user status retrocloud-gamepad.service"
+echo "[Daemon Installer] Puedes verificar el estado con: systemctl --user status ducky-game-hub-gamepad.service"

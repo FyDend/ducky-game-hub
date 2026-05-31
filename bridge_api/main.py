@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from services.catalog_service import migrate_json_to_sqlite
 from routers import catalog, downloads, system, emulator, gamepad
 
-app = FastAPI(title="RetroCloud Bridge API")
+app = FastAPI(title="Ducky Game Hub Bridge API")
 
 app.add_middleware(
     CORSMiddleware,
