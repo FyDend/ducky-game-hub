@@ -437,7 +437,7 @@ body {
 }
 
 /* TV Focus Highlight - sin animacion infinita para no consumir GPU */
-.game-card.focused, .nav-btn.focused, .action-btn.focused, .btn-primary.focused, .btn-secondary.focused, .fav-btn.focused, .back-btn.focused, #search-input.focused, #console-filter.focused, #sort-filter.focused, #refresh-library-btn.focused, #downloads-view button.focused, #settings-view button.focused, #settings-view select.focused {
+.game-card.focused, .nav-btn.focused, .action-btn.focused, .btn-primary.focused, .btn-secondary.focused, .fav-btn.focused, .back-btn.focused, #search-input.focused, #console-filter.focused, #sort-filter.focused, #refresh-library-btn.focused, #downloads-view button.focused, #settings-view button.focused, #settings-view select.focused, #controls-mapping-modal select.focused, input[type="text"].focused, select.focused, select:hover {
   border-color: var(--accent-gold) !important;
   box-shadow: 0 0 14px var(--accent-gold-glow), 0 0 2px var(--accent-gold) !important;
   outline: 2px solid var(--accent-gold) !important;
@@ -804,6 +804,7 @@ body[data-theme="minimal"] {
   border: 1px solid var(--glass-border);
   box-shadow: 0 0 30px rgba(0, 168, 255, 0.1);
   animation: modal-zoom-in 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 35px !important;
 }
 
 .step-dot {
@@ -831,5 +832,10 @@ body[data-theme="minimal"] {
   50% { width: 65%; }
   85% { width: 90%; }
   100% { width: 100%; }
+}
+
+/* Forzar que el modal selector de opciones personalizadas siempre se dibuje al frente del mapeador */
+#selector-modal {
+  z-index: 2200 !important;
 }
 

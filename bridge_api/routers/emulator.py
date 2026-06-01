@@ -51,12 +51,33 @@ def jugar_retroarch(core: str, rom_path: str, console: str = None):
     host_monitor = versatility.get("host_monitor", "DP-1")
     
     controls = settings.get("controls", {})
+    gp_configs = []
+    
+    # Gamepad 1 (gamepad)
     gp = controls.get("gamepad", {})
-    gp_parts = []
-    for sdl_name, physical in gp.items():
-        gp_parts.append(f"{sdl_name}:{physical}")
-    gp_str = ",".join(gp_parts)
-    sdl_config = f"0500a5d049190000b08cbd08fd7f0000,Gamepad,platform:Linux,{gp_str},"
+    if gp:
+        gp_parts = [f"{sdl_name}:{physical}" for sdl_name, physical in gp.items()]
+        gp_configs.append(f"0500a5d049190000b08cbd08fd7f0000,Gamepad1,platform:Linux,{','.join(gp_parts)},")
+        
+    # Gamepad 2
+    gp2 = controls.get("gamepad2", {})
+    if gp2:
+        gp2_parts = [f"{sdl_name}:{physical}" for sdl_name, physical in gp2.items()]
+        gp_configs.append(f"0500a5d049190000b08cbd08fd7f0001,Gamepad2,platform:Linux,{','.join(gp2_parts)},")
+        
+    # Gamepad 3
+    gp3 = controls.get("gamepad3", {})
+    if gp3:
+        gp3_parts = [f"{sdl_name}:{physical}" for sdl_name, physical in gp3.items()]
+        gp_configs.append(f"0500a5d049190000b08cbd08fd7f0002,Gamepad3,platform:Linux,{','.join(gp3_parts)},")
+        
+    # Gamepad 4
+    gp4 = controls.get("gamepad4", {})
+    if gp4:
+        gp4_parts = [f"{sdl_name}:{physical}" for sdl_name, physical in gp4.items()]
+        gp_configs.append(f"0500a5d049190000b08cbd08fd7f0003,Gamepad4,platform:Linux,{','.join(gp4_parts)},")
+        
+    sdl_config = "\n".join(gp_configs)
 
     env_str = (
         "export DISPLAY=:0 && "

@@ -323,7 +323,10 @@
                     Define la carpeta física en tu PC donde guardas tus juegos organizados por consola.
                 </p>
             </div>
-            <input type="text" id="cfg-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; padding: 12px; border: 1px solid var(--glass-border); font-family: 'Outfit'; font-size: 0.85rem; width: 100%; border-radius: var(--border-radius-md);">
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <input type="text" id="cfg-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; padding: 12px; border: 1px solid var(--glass-border); font-family: 'Outfit'; font-size: 0.85rem; flex: 1; border-radius: var(--border-radius-md);">
+                <button id="btn-browse-roms" class="btn-secondary" style="font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; white-space: nowrap; margin: 0;">📂 EXAMINAR</button>
+            </div>
         </div>
 
         <!-- Ajustes Avanzados / Administración -->
@@ -332,7 +335,8 @@
                 <h3 style="color: var(--accent-cyan); font-family: 'Press Start 2P'; font-size: 0.75rem; margin-bottom: 8px;">ACCIONES DEL SISTEMA</h3>
                 <p style="color: var(--text-secondary); font-size: 0.85rem;">Mantenimiento y administración global de la base de datos de Ducky Game Hub.</p>
             </div>
-            <button id="rebuild-catalog-btn" class="btn-secondary" style="background: #fbc531; border-color: #fbc531; color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(251, 197, 49, 0.25);">↻ RECONSTRUIR CATALOGO GLOBAL (MINERVA)</button>
+            <button id="rebuild-catalog-btn" class="btn-secondary" style="background: #fbc531; border-color: #fbc531; color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(251, 197, 49, 0.25); margin-bottom: 5px;">↻ RECONSTRUIR CATALOGO GLOBAL (MINERVA)</button>
+            <button id="run-wizard-btn" class="btn-secondary" style="background: var(--accent-cyan); border-color: var(--accent-cyan); color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);">⚙ EJECUTAR ASISTENTE DE CONFIGURACION (WIZARD)</button>
         </div>
 
         <!-- Guardar Botón Final -->
@@ -453,14 +457,17 @@
                       <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
                           Edita el archivo <code style="background: rgba(0,168,255,0.15); padding: 2px 6px; border-radius: 4px; color: #00a8ff;">.env</code> en la raíz del proyecto:
                       </p>
-                      <code style="display: block; background: rgba(0,0,0,0.4); padding: 10px; border-radius: var(--border-radius-sm); font-size: 0.78rem; color: #4cd137; border: 1px solid rgba(76,209,55,0.2); font-family: monospace;">HOST_IP=172.18.0.1  # IP del host en la red Docker<br>HOST_USER=tu_usuario  # Tu usuario de Linux</code>
+                      <code id="wizard-ssh-info" style="display: block; background: rgba(0,0,0,0.4); padding: 10px; border-radius: var(--border-radius-sm); font-size: 0.78rem; color: #4cd137; border: 1px solid rgba(76,209,55,0.2); font-family: monospace;">HOST_IP=172.18.0.1  # IP del host en la red Docker<br>HOST_USER=tu_usuario  # Tu usuario de Linux</code>
                       <p style="font-family: 'Outfit', sans-serif; font-size: 0.78rem; color: var(--text-secondary); margin: 0;">
                           La IP predeterminada <code style="color: #00a8ff;">172.18.0.1</code> funciona en la mayoría de instalaciones Docker. Si el test falla, verificá con <code style="color: #00a8ff;">ip route | grep docker</code> en tu terminal.
                       </p>
                   </div>
                   <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 580px; margin-top: 10px;">
                       <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-gold);">📂 RUTA DE TUS ROMS EN EL HOST:</label>
-                      <input type="text" id="wizard-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 12px; font-family: 'Outfit'; font-size: 0.85rem; border-radius: var(--border-radius-md); width: 100%;">
+                      <div style="display: flex; gap: 10px; width: 100%;">
+                          <input type="text" id="wizard-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 12px; font-family: 'Outfit'; font-size: 0.85rem; border-radius: var(--border-radius-md); flex: 1;">
+                          <button id="btn-browse-wizard-roms" class="btn-secondary" style="font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; white-space: nowrap; margin: 0;">📂 EXAMINAR</button>
+                      </div>
                   </div>
                   <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%; margin-top: 5px;">
                       <button id="btn-test-ssh" class="btn-primary" style="background: var(--accent-cyan); border-color: var(--accent-cyan); color: black; font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px 24px; border-radius: var(--border-radius-md); box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);">PROBAR CONEXION SSH</button>
@@ -647,10 +654,14 @@
                   <select id="cfg-player" style="background: #2f3640; color: white; border: 1px solid var(--glass-border); padding: 8px 12px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md);">
                       <option value="p1">JUGADOR 1 (P1)</option>
                       <option value="p2">JUGADOR 2 (P2)</option>
+                      <option value="p3">JUGADOR 3 (P3)</option>
+                      <option value="p4">JUGADOR 4 (P4)</option>
                   </select>
                   <select id="cfg-profile" style="background: #2f3640; color: white; border: 1px solid var(--glass-border); padding: 8px 12px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md);">
                       <option value="gamepad">MANDO (GAMEPAD 1)</option>
                       <option value="gamepad2">MANDO (GAMEPAD 2)</option>
+                      <option value="gamepad3">MANDO (GAMEPAD 3)</option>
+                      <option value="gamepad4">MANDO (GAMEPAD 4)</option>
                       <option value="keyboard">TECLADO (KEYBOARD)</option>
                   </select>
               </div>
@@ -666,6 +677,27 @@
           </div>
           
           <button id="close-mapping-btn" class="btn-primary" style="background: var(--accent-gold); border-color: var(--accent-gold); color: black; font-family: 'Press Start 2P'; font-size: 0.7rem; padding: 14px; width: 100%; font-weight: bold; border-radius: var(--border-radius-md);">GUARDAR Y VOLVER</button>
+      </div>
+  </div>
+
+  <!-- Modal Dedicado de Explorador de Carpetas -->
+  <div id="folder-explorer-modal" class="modal hidden" style="z-index: 2200;">
+      <div class="modal-overlay" style="background: rgba(4, 5, 8, 0.95);"></div>
+      <div class="modal-content retro-panel" style="max-width: 650px; width: 90%; max-height: 80vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; padding: 25px; min-height: auto;">
+          <h2 style="font-size: 0.80rem; color: var(--accent-cyan); font-family: 'Press Start 2P', cursive; text-shadow: 2px 2px 0px #000; margin: 0; border-bottom: 1px solid var(--glass-border); padding-bottom: 12px;">EXPLORADOR DE CARPETAS</h2>
+          
+          <!-- Ruta actual -->
+          <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: var(--border-radius-sm); border: 1px solid rgba(255,255,255,0.05); font-family: monospace; font-size: 0.8rem; word-break: break-all; color: var(--accent-gold);" id="explorer-current-path">/home/fydend</div>
+          
+          <!-- Lista de carpetas -->
+          <div id="explorer-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 40vh; overflow-y: auto; background: rgba(0,0,0,0.2); padding: 10px; border-radius: var(--border-radius-md); border: 1px solid rgba(255,255,255,0.03);">
+              <!-- Cargado dinámicamente -->
+          </div>
+          
+          <div style="display: flex; gap: 12px; margin-top: 10px; width: 100%;">
+              <button id="explorer-select-btn" class="btn-primary" style="flex: 1; font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px;">SELECCIONAR</button>
+              <button id="explorer-close-btn" class="btn-secondary" style="background: var(--btn-delete); border-color: var(--btn-delete); font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; color: white;">CANCELAR</button>
+          </div>
       </div>
   </div>
 

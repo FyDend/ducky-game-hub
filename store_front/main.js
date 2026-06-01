@@ -264,11 +264,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let gamepadInterval = null;
   let lastButtonStates = {};
   let isKeyboardActive = false;
+  let activeInputEl = null;
   let isGamePlaying = false;
   let isGamePaused = false;
   let isConfirmOpen = false;
   let isSelectorOpen = false;
   let activeSelectorEl = null;
+  let isExplorerOpen = false;
+  let activeExplorerTargetInput = null;
+  let explorerCurrentPath = "";
 
   // Custom modal DOM nodes
   const confirmModal = document.getElementById('confirm-modal');
@@ -285,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let socket = null;
   let activeSettings = {
       video: { crt_shader: true, bilinear_filtering: true, aspect_ratio: "16:9", show_fps: true },
-      versatility: { target_workspace: "10", target_monitor: "TV-STREAM", host_monitor: "DP-1" },
+      versatility: { target_workspace: "1", target_monitor: "DP-1", host_monitor: "DP-1" },
       audio: { selected_sink: "" },
       controls: {
           profile: "keyboard",
@@ -397,14 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
                       }
                   }
                   
-                  // Mapear botón o eje en caliente si estamos en proceso de remapeo de mando
-                  if (currentMappingAction && document.getElementById('cfg-profile').value === 'gamepad') {
+                  const profileSelect = document.getElementById('cfg-profile');
+                  const profileVal = profileSelect ? profileSelect.value : 'gamepad';
+                  if (currentMappingAction && profileVal.startsWith('gamepad')) {
                       if (data.raw.type === "button" && data.raw.value === 1) {
-                          activeSettings.controls.gamepad[currentMappingAction] = `b${data.raw.number}`;
+                          activeSettings.controls[profileVal][currentMappingAction] = `b${data.raw.number}`;
                           currentMappingAction = null;
                           renderMappingGrid();
                       } else if (data.raw.type === "axis" && Math.abs(data.raw.value) > 16000) {
-                          activeSettings.controls.gamepad[currentMappingAction] = `a${data.raw.number}`;
+                          activeSettings.controls[profileVal][currentMappingAction] = `a${data.raw.number}`;
                           currentMappingAction = null;
                           renderMappingGrid();
                       }
@@ -481,6 +486,18 @@ document.addEventListener('DOMContentLoaded', () => {
               }, 180);
           }
       } else if (action === 'cancel') {
+          if (isExplorerOpen) {
+              closeFolderExplorer();
+              return;
+          }
+          if (isKeyboardActive) {
+              hideVirtualKeyboard();
+              return;
+          }
+          if (isSelectorOpen) {
+              hideCustomSelector();
+              return;
+          }
           if (isConfirmOpen) {
               closeConfirmModal(false);
               return;
@@ -491,14 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
               mappingModalEl.classList.add('hidden');
               const openMappingBtnRef = document.getElementById('open-mapping-btn');
               if (openMappingBtnRef) focusElement(openMappingBtnRef);
-              return;
-          }
-          if (isSelectorOpen) {
-              hideCustomSelector();
-              return;
-          }
-          if (isKeyboardActive) {
-              hideVirtualKeyboard();
               return;
           }
           if (!modal.classList.contains('hidden')) {
@@ -602,8 +611,19 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(settings => {
           activeSettings = settings;
           if (activeSettings && activeSettings.controls) {
+              activeSettings.controls.player1_profile = activeSettings.controls.player1_profile || "gamepad";
+              activeSettings.controls.player2_profile = activeSettings.controls.player2_profile || "gamepad2";
+              activeSettings.controls.player3_profile = activeSettings.controls.player3_profile || "gamepad3";
+              activeSettings.controls.player4_profile = activeSettings.controls.player4_profile || "gamepad4";
+
               if (!activeSettings.controls.gamepad2) {
                   activeSettings.controls.gamepad2 = Object.assign({}, activeSettings.controls.gamepad || {});
+              }
+              if (!activeSettings.controls.gamepad3) {
+                  activeSettings.controls.gamepad3 = Object.assign({}, activeSettings.controls.gamepad || {});
+              }
+              if (!activeSettings.controls.gamepad4) {
+                  activeSettings.controls.gamepad4 = Object.assign({}, activeSettings.controls.gamepad || {});
               }
           }
           
@@ -993,8 +1013,19 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(settings => {
           activeSettings = settings;
           if (activeSettings && activeSettings.controls) {
+              activeSettings.controls.player1_profile = activeSettings.controls.player1_profile || "gamepad";
+              activeSettings.controls.player2_profile = activeSettings.controls.player2_profile || "gamepad2";
+              activeSettings.controls.player3_profile = activeSettings.controls.player3_profile || "gamepad3";
+              activeSettings.controls.player4_profile = activeSettings.controls.player4_profile || "gamepad4";
+
               if (!activeSettings.controls.gamepad2) {
                   activeSettings.controls.gamepad2 = Object.assign({}, activeSettings.controls.gamepad || {});
+              }
+              if (!activeSettings.controls.gamepad3) {
+                  activeSettings.controls.gamepad3 = Object.assign({}, activeSettings.controls.gamepad || {});
+              }
+              if (!activeSettings.controls.gamepad4) {
+                  activeSettings.controls.gamepad4 = Object.assign({}, activeSettings.controls.gamepad || {});
               }
           }
           
@@ -1902,6 +1933,168 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
   }
 
+  // --- Folder Explorer Modals and Helpers ---
+  function openFolderExplorer(targetInputEl) {
+      isExplorerOpen = true;
+      activeExplorerTargetInput = targetInputEl;
+      
+      let initialPath = "";
+      if (targetInputEl && targetInputEl.value) {
+          initialPath = targetInputEl.value.trim();
+      }
+      
+      // Si el input está vacío, no es una ruta absoluta, o contiene placeholders del .env o wizard, inicializar en Home (~)
+      if (!initialPath || initialPath === "" || initialPath.includes("tu_disco") || initialPath.includes("usuario") || !initialPath.startsWith("/")) {
+          initialPath = "~";
+      }
+      
+      const folderExplorerModal = document.getElementById('folder-explorer-modal');
+      if (folderExplorerModal) {
+          folderExplorerModal.classList.remove('hidden');
+      }
+      
+      loadExplorerPath(initialPath);
+  }
+
+  function closeFolderExplorer() {
+      if (!isExplorerOpen) return;
+      isExplorerOpen = false;
+      const folderExplorerModal = document.getElementById('folder-explorer-modal');
+      if (folderExplorerModal) {
+          folderExplorerModal.classList.add('hidden');
+      }
+      
+      const elToFocus = activeExplorerTargetInput;
+      activeExplorerTargetInput = null;
+      
+      setTimeout(() => {
+          if (elToFocus) focusElement(elToFocus);
+      }, 150);
+  }
+
+  function loadExplorerPath(path) {
+      let url = `${API_BASE_URL}/explorar`;
+      if (path) {
+          url += `?ruta=${encodeURIComponent(path)}`;
+      }
+      
+      const explorerList = document.getElementById('explorer-list');
+      const explorerCurrentPathEl = document.getElementById('explorer-current-path');
+      
+      if (explorerList) {
+          explorerList.innerHTML = '<div style="color: #aaa; font-family: monospace; font-size: 0.8rem; padding: 10px;">Cargando directorios...</div>';
+      }
+      
+      fetch(url)
+          .then(res => res.json())
+          .then(data => {
+              if (data.estado === 'OK') {
+                  explorerCurrentPath = data.ruta_actual;
+                  if (explorerCurrentPathEl) {
+                      explorerCurrentPathEl.textContent = explorerCurrentPath;
+                  }
+                  
+                  if (!explorerList) return;
+                  explorerList.innerHTML = '';
+                  
+                  // Botón para subir al directorio padre (..)
+                  if (data.padre && data.padre !== explorerCurrentPath) {
+                      const parentBtn = document.createElement('button');
+                      parentBtn.className = 'select-option-btn';
+                      parentBtn.style.padding = '12px';
+                      parentBtn.style.fontSize = '0.65rem';
+                      parentBtn.style.marginBottom = '4px';
+                      parentBtn.innerHTML = '<span style="color: var(--accent-cyan);">📁 .. (Subir un nivel)</span>';
+                      parentBtn.addEventListener('click', () => {
+                          loadExplorerPath(data.padre);
+                      });
+                      explorerList.appendChild(parentBtn);
+                  }
+                  
+                  // Listar los directorios devueltos
+                  if (data.directorios && data.directorios.length > 0) {
+                      data.directorios.forEach(dirName => {
+                          const dirBtn = document.createElement('button');
+                          dirBtn.className = 'select-option-btn';
+                          dirBtn.style.padding = '12px';
+                          dirBtn.style.fontSize = '0.65rem';
+                          dirBtn.innerHTML = `📁 ${dirName}`;
+                          dirBtn.addEventListener('click', () => {
+                              const nextPath = explorerCurrentPath === '/' ? `/${dirName}` : `${explorerCurrentPath}/${dirName}`;
+                              loadExplorerPath(nextPath);
+                          });
+                          explorerList.appendChild(dirBtn);
+                      });
+                  } else {
+                      const emptyMsg = document.createElement('div');
+                      emptyMsg.style.color = '#777';
+                      emptyMsg.style.padding = '10px';
+                      emptyMsg.style.fontFamily = "'Press Start 2P'";
+                      emptyMsg.style.fontSize = '0.5rem';
+                      emptyMsg.style.textAlign = 'center';
+                      emptyMsg.textContent = 'NO HAY SUBDIRECTORIOS';
+                      explorerList.appendChild(emptyMsg);
+                  }
+                  
+                  // Auto-focus al primer elemento disponible para facilitar el control con joystick
+                  setTimeout(() => {
+                      const firstBtn = explorerList.querySelector('button');
+                      if (firstBtn) {
+                          focusElement(firstBtn);
+                      } else {
+                          const selectBtn = document.getElementById('explorer-select-btn');
+                          if (selectBtn) focusElement(selectBtn);
+                      }
+                  }, 100);
+              } else {
+                  if (explorerList) {
+                      explorerList.innerHTML = `<div style="color: var(--btn-delete); font-family: monospace; font-size: 0.8rem; padding: 10px;">Error: ${data.detalle || 'No se pudo cargar'}</div>`;
+                  }
+              }
+          })
+          .catch(err => {
+              console.error("[Explorer] Error cargando directorios:", err);
+              if (explorerList) {
+                  explorerList.innerHTML = '<div style="color: var(--btn-delete); font-family: monospace; font-size: 0.8rem; padding: 10px;">Error de red al cargar carpetas.</div>';
+              }
+          });
+  }
+
+  // Cablear botones del explorador de carpetas
+  const btnBrowseRoms = document.getElementById('btn-browse-roms');
+  if (btnBrowseRoms) {
+      btnBrowseRoms.addEventListener('click', (e) => {
+          e.preventDefault();
+          openFolderExplorer(document.getElementById('cfg-roms-path'));
+      });
+  }
+  const btnBrowseWizardRoms = document.getElementById('btn-browse-wizard-roms');
+  if (btnBrowseWizardRoms) {
+      btnBrowseWizardRoms.addEventListener('click', (e) => {
+          e.preventDefault();
+          openFolderExplorer(document.getElementById('wizard-roms-path'));
+      });
+  }
+  const explorerSelectBtn = document.getElementById('explorer-select-btn');
+  if (explorerSelectBtn) {
+      explorerSelectBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (activeExplorerTargetInput) {
+              activeExplorerTargetInput.value = explorerCurrentPath;
+              activeExplorerTargetInput.dispatchEvent(new Event('input'));
+              activeExplorerTargetInput.dispatchEvent(new Event('change'));
+          }
+          closeFolderExplorer();
+      });
+  }
+  const explorerCloseBtn = document.getElementById('explorer-close-btn');
+  if (explorerCloseBtn) {
+      explorerCloseBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          closeFolderExplorer();
+      });
+  }
+
   selectorCloseBtn.addEventListener('click', hideCustomSelector);
 
   // Intercept native dropdowns to open custom selectors in Couch Mode
@@ -1941,10 +2134,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 
-  // Intercept search input to open virtual keyboard in Couch Mode
-  searchInput.addEventListener('click', () => {
-      if (document.body.classList.contains('couch-mode') && !isKeyboardActive) {
-          showVirtualKeyboard();
+  // Intercept all text inputs to open virtual keyboard in Couch Mode
+  document.addEventListener('click', (e) => {
+      if (e.target && e.target.tagName === 'INPUT' && e.target.type === 'text') {
+          if (document.body.classList.contains('couch-mode') && !isKeyboardActive) {
+              e.preventDefault();
+              showVirtualKeyboard(e.target);
+          }
       }
   });
 
@@ -1972,7 +2168,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const mappingModal = document.getElementById('controls-mapping-modal');
       const isMappingOpen = mappingModal && !mappingModal.classList.contains('hidden');
       
-      if (isConfirmOpen) {
+      if (isExplorerOpen) {
+          focusable = Array.from(document.querySelectorAll('#explorer-list button, #explorer-select-btn, #explorer-close-btn'));
+      } else if (isConfirmOpen) {
           focusable = Array.from(document.querySelectorAll('#confirm-yes-btn, #confirm-no-btn'));
       } else if (isSelectorOpen) {
           focusable = Array.from(document.querySelectorAll('#selector-options-grid button, #selector-close-btn'));
@@ -1992,7 +2190,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (isSettingsVisible) {
           // Incluir nav-btns + todos los controles interactivos de settings (incluyendo botones del mapping grid)
           focusable = Array.from(document.querySelectorAll(
-              '.nav-btn, #settings-view select, #settings-view input[type="checkbox"], #settings-view button, #mapping-grid button'
+              '.nav-btn, #settings-view select, #settings-view input[type="text"], #settings-view input[type="checkbox"], #settings-view button, #mapping-grid button'
           ));
       } else if (isDownloadsVisible) {
           focusable = Array.from(document.querySelectorAll('.nav-btn, #downloads-view button'));
@@ -2085,38 +2283,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleKeypress(key) {
-      if (!searchInput) return;
-      let val = searchInput.value;
+      if (!activeInputEl) return;
+      let val = activeInputEl.value;
       if (key === 'DEL') {
-          searchInput.value = val.substring(0, val.length - 1);
+          activeInputEl.value = val.substring(0, val.length - 1);
       } else if (key === 'ESPACIO') {
-          searchInput.value = val + ' ';
+          activeInputEl.value = val + ' ';
       } else if (key === 'LIMPIAR') {
-          searchInput.value = '';
+          activeInputEl.value = '';
       } else if (key === 'CERRAR') {
           hideVirtualKeyboard();
           return;
       } else {
-          searchInput.value = val + key;
+          activeInputEl.value = val + key;
       }
       
       // Update text preview box in real-time
       if (keyboardPreview) {
-          keyboardPreview.textContent = searchInput.value || '_';
+          keyboardPreview.textContent = activeInputEl.value || '_';
       }
       
-      // Trigger the input event to filter games in real-time
-      searchInput.dispatchEvent(new Event('input'));
+      // Trigger input and change events
+      activeInputEl.dispatchEvent(new Event('input'));
+      activeInputEl.dispatchEvent(new Event('change'));
   }
 
-  function showVirtualKeyboard() {
+  function showVirtualKeyboard(inputEl) {
       if (isKeyboardActive) return;
       isKeyboardActive = true;
+      activeInputEl = inputEl || searchInput;
       virtualKeyboard.classList.remove('hidden');
       
       // Sync preview initially
       if (keyboardPreview) {
-          keyboardPreview.textContent = searchInput.value || '_';
+          keyboardPreview.textContent = activeInputEl.value || '_';
       }
       
       initVirtualKeyboard();
@@ -2133,9 +2333,11 @@ document.addEventListener('DOMContentLoaded', () => {
       isKeyboardActive = false;
       virtualKeyboard.classList.add('hidden');
       
-      // Restore focus to the search input
+      // Restore focus to the input that opened it
+      const elToFocus = activeInputEl;
+      activeInputEl = null;
       setTimeout(() => {
-          if (searchInput) focusElement(searchInput);
+          if (elToFocus) focusElement(elToFocus);
       }, 150);
   }
 
@@ -2153,8 +2355,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (key === 'Enter') {
           if (isCouchActive && focusedElement) {
               e.preventDefault();
-              if (focusedElement === searchInput) {
-                  showVirtualKeyboard();
+              if (focusedElement.tagName === 'INPUT' && focusedElement.type === 'text') {
+                  showVirtualKeyboard(focusedElement);
                   return;
               }
               if (focusedElement.tagName === 'SELECT') {
@@ -2173,24 +2375,27 @@ document.addEventListener('DOMContentLoaded', () => {
               }, 180);
           }
       } else if (key === 'Escape') {
-          // Cerrar modal de mapeo primero
-          const mappingModalEl = document.getElementById('controls-mapping-modal');
-          if (mappingModalEl && !mappingModalEl.classList.contains('hidden')) {
-              mappingModalEl.classList.add('hidden');
-              const openMappingBtnRef = document.getElementById('open-mapping-btn');
-              if (openMappingBtnRef) focusElement(openMappingBtnRef);
+          if (isExplorerOpen) {
+              closeFolderExplorer();
               return;
           }
-          if (isConfirmOpen) {
-              closeConfirmModal(false);
+          if (isKeyboardActive) {
+              hideVirtualKeyboard();
               return;
           }
           if (isSelectorOpen) {
               hideCustomSelector();
               return;
           }
-          if (isKeyboardActive) {
-              hideVirtualKeyboard();
+          if (isConfirmOpen) {
+              closeConfirmModal(false);
+              return;
+          }
+          const mappingModalEl = document.getElementById('controls-mapping-modal');
+          if (mappingModalEl && !mappingModalEl.classList.contains('hidden')) {
+              mappingModalEl.classList.add('hidden');
+              const openMappingBtnRef = document.getElementById('open-mapping-btn');
+              if (openMappingBtnRef) focusElement(openMappingBtnRef);
               return;
           }
           if (!modal.classList.contains('hidden')) {
@@ -2222,23 +2427,28 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Obtener mandos conectados
       const gamepads = navigator.getGamepads();
-      let hasGamepads = false;
+      let gpCount = 0;
       
-      Array.from(gamepads).forEach((gp, idx) => {
+      Array.from(gamepads).forEach((gp) => {
           if (gp !== null) {
+              gpCount++;
               const optGp = document.createElement('option');
-              optGp.value = 'gamepad';
-              optGp.textContent = `🎮 MANDO ${idx + 1}: ${gp.id.substring(0, 20).toUpperCase()}`;
+              const profileVal = gpCount === 1 ? 'gamepad' : `gamepad${gpCount}`;
+              optGp.value = profileVal;
+              optGp.textContent = `🎮 MANDO ${gpCount}: ${gp.id.substring(0, 20).toUpperCase()}`;
               profileSelect.appendChild(optGp);
-              hasGamepads = true;
           }
       });
       
-      if (!hasGamepads) {
-          const optGp = document.createElement('option');
-          optGp.value = 'gamepad';
-          optGp.textContent = '🎮 MANDO GENERAL';
-          profileSelect.appendChild(optGp);
+      // Agregar mandos genéricos del 1 al 4 si no se poblaron mandos físicos
+      if (gpCount < 4) {
+          for (let i = gpCount + 1; i <= 4; i++) {
+              const optGp = document.createElement('option');
+              const profileVal = i === 1 ? 'gamepad' : `gamepad${i}`;
+              optGp.value = profileVal;
+              optGp.textContent = `🎮 MANDO GENERAL ${i}`;
+              profileSelect.appendChild(optGp);
+          }
       }
       
       // Restaurar el valor seleccionado
@@ -2287,7 +2497,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   // Escanear botones
                   gp.buttons.forEach((btn, idx) => {
                       if (btn.pressed && !mapped) {
-                          activeSettings.controls.gamepad[currentMappingAction] = `b${idx}`;
+                          activeSettings.controls[profileVal][currentMappingAction] = `b${idx}`;
                           currentMappingAction = null;
                           mapped = true;
                           renderMappingGrid();
@@ -2297,7 +2507,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   if (!mapped) {
                       gp.axes.forEach((axis, idx) => {
                           if (Math.abs(axis) > 0.65 && !mapped) {
-                              activeSettings.controls.gamepad[currentMappingAction] = `a${idx}`;
+                              activeSettings.controls[profileVal][currentMappingAction] = `a${idx}`;
                               currentMappingAction = null;
                               mapped = true;
                               renderMappingGrid();
@@ -2570,14 +2780,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (playerSelect) {
       playerSelect.addEventListener('change', () => {
-          if (profileSelect) {
-              if (playerSelect.value === 'p2') {
-                  profileSelect.value = 'gamepad2';
-              } else {
-                  if (profileSelect.value === 'gamepad2') {
-                      profileSelect.value = 'gamepad';
-                  }
-              }
+          if (profileSelect && activeSettings && activeSettings.controls) {
+              const playerKey = playerSelect.value;
+              const assignedProfile = activeSettings.controls[playerKey + "_profile"] || (playerKey === 'p1' ? 'gamepad' : (playerKey === 'p2' ? 'gamepad2' : (playerKey === 'p3' ? 'gamepad3' : 'gamepad4')));
+              profileSelect.value = assignedProfile;
           }
           renderMappingGrid();
       });
@@ -2585,12 +2791,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (profileSelect) {
       profileSelect.addEventListener('change', () => {
-          if (playerSelect) {
-              if (profileSelect.value === 'gamepad2') {
-                  playerSelect.value = 'p2';
-              } else {
-                  playerSelect.value = 'p1';
-              }
+          if (playerSelect && activeSettings && activeSettings.controls) {
+              const playerKey = playerSelect.value;
+              activeSettings.controls[playerKey + "_profile"] = profileSelect.value;
           }
           renderMappingGrid();
       });
@@ -2608,6 +2811,17 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           e.stopPropagation();
           controlsMappingModal.classList.remove('hidden');
+          
+          // Poblar la lista de perfiles disponibles (incluyendo mandos físicos)
+          populateProfilesSelect();
+          
+          // Sincronizar el perfil actual del jugador seleccionado
+          if (playerSelect && profileSelect && activeSettings && activeSettings.controls) {
+              const playerKey = playerSelect.value || 'p1';
+              const assignedProfile = activeSettings.controls[playerKey + "_profile"] || (playerKey === 'p1' ? 'gamepad' : (playerKey === 'p2' ? 'gamepad2' : (playerKey === 'p3' ? 'gamepad3' : 'gamepad4')));
+              profileSelect.value = assignedProfile;
+          }
+          
           renderMappingGrid();
           setTimeout(() => {
               const grid = document.getElementById('mapping-grid');
@@ -2684,6 +2898,7 @@ document.addEventListener('DOMContentLoaded', () => {
       saveSettingsBtn.addEventListener('click', (e) => {
           e.preventDefault();
           if (!activeSettings) return;
+          const originalText = saveSettingsBtn.textContent;
           
           if (document.getElementById('cfg-crt')) activeSettings.video.crt_shader = document.getElementById('cfg-crt').checked;
           if (document.getElementById('cfg-bilinear')) activeSettings.video.bilinear_filtering = document.getElementById('cfg-bilinear').checked;
@@ -2751,7 +2966,6 @@ document.addEventListener('DOMContentLoaded', () => {
               activeSettings.roms_path = document.getElementById('cfg-roms-path').value.trim() || '';
           }
           
-          const originalText = saveSettingsBtn.textContent;
           saveSettingsBtn.textContent = 'GUARDANDO AJUSTES...';
           saveSettingsBtn.disabled = true;
           saveSettingsBtn.style.background = 'var(--btn-secondary)';
@@ -2831,6 +3045,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+  const runWizardBtn = document.getElementById('run-wizard-btn');
+  if (runWizardBtn) {
+      runWizardBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          startSetupWizard();
+      });
+  }
+
   if (refreshLibraryBtn) {
       refreshLibraryBtn.addEventListener('click', () => {
           const originalText = refreshLibraryBtn.textContent;
@@ -2887,18 +3109,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 
-  // --- Botón Salir de RetroCloud ---
   // --- Botón Salir de DUCKY GAME HUB ---
   const navExit = document.getElementById('nav-exit');
   if (navExit) {
       navExit.addEventListener('click', () => {
-          showConfirmModal('SALIR DEL JUEGO?', () => {
+          showConfirmModal('¿SALIR A ESCRITORIO?', () => {
               fetch(`${API_BASE_URL}/salir`, { method: 'POST' })
                   .catch(() => {});
               setTimeout(() => {
                   window.close();
                   // Fallback si window.close() no funciona (navegadores lo bloquean)
-                  document.body.innerHTML = `<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#06080c;font-family:'Press Start 2P',cursive;color:#00a8ff;font-size:1rem;text-align:center;">CERRANDO DUCKY GAME HUB...<br><br><span style="font-size:0.6rem;color:#aaa;">Podes cerrar esta ventana.</span></div>`;
+                  document.body.innerHTML = `<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#06080c;font-family:'Press Start 2P',cursive;color:#00a8ff;font-size:1rem;text-align:center;gap:20px;"><div>CERRANDO DUCKY GAME HUB...</div><span style="font-size:0.6rem;color:#aaa;">Podes cerrar esta ventana.</span></div>`;
               }, 500);
           }, () => {});
       });
@@ -3162,6 +3383,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function cargarDatosWizard() {
+      // Sincronizar ajustes cargados del SSH y ROMs
+      if (activeSettings) {
+          const romsPathInput = document.getElementById('wizard-roms-path');
+          if (romsPathInput && activeSettings.roms_path) {
+              romsPathInput.value = activeSettings.roms_path;
+          }
+          const sshInfoCode = document.getElementById('wizard-ssh-info');
+          if (sshInfoCode && activeSettings.host_ip && activeSettings.host_user) {
+              sshInfoCode.innerHTML = `HOST_IP=${activeSettings.host_ip}  # Detectado automáticamente<br>HOST_USER=${activeSettings.host_user}  # Detectado automáticamente (whoami)`;
+          }
+      }
+
       // Cargar pantallas
       fetch(`${API_BASE_URL}/pantallas`)
         .then(res => res.json())

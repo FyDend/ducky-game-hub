@@ -22,8 +22,8 @@ def load_settings():
             "show_fps": False
         },
         "versatility": {
-            "target_workspace": "10",
-            "target_monitor": "TV-STREAM",
+            "target_workspace": "1",
+            "target_monitor": "DP-1",
             "host_monitor": "DP-1"
         },
         "audio": {
@@ -32,27 +32,36 @@ def load_settings():
         "controls": {
             "profile": "gamepad",
             "gamepad": {
-                "a": "b0",
-                "b": "b1",
-                "x": "b2",
-                "y": "b3",
-                "leftshoulder": "b4",
-                "rightshoulder": "b5",
-                "lefttrigger": "b6",
-                "righttrigger": "b7",
-                "back": "b10",
-                "start": "b11",
-                "guide": "b12",
-                "leftstick": "b8",
-                "rightstick": "b9",
-                "dpup": "h0.1",
-                "dpdown": "h0.4",
-                "dpleft": "h0.8",
-                "dpright": "h0.2",
-                "leftx": "a0",
-                "lefty": "a1",
-                "rightx": "a2",
-                "righty": "a5"
+                "a": "b0", "b": "b1", "x": "b2", "y": "b3",
+                "leftshoulder": "b4", "rightshoulder": "b5", "lefttrigger": "b6", "righttrigger": "b7",
+                "back": "b10", "start": "b11", "guide": "b12",
+                "leftstick": "b8", "rightstick": "b9",
+                "dpup": "h0.1", "dpdown": "h0.4", "dpleft": "h0.8", "dpright": "h0.2",
+                "leftx": "a0", "lefty": "a1", "rightx": "a2", "righty": "a5"
+            },
+            "gamepad2": {
+                "a": "b0", "b": "b1", "x": "b2", "y": "b3",
+                "leftshoulder": "b4", "rightshoulder": "b5", "lefttrigger": "b6", "righttrigger": "b7",
+                "back": "b10", "start": "b11", "guide": "b12",
+                "leftstick": "b8", "rightstick": "b9",
+                "dpup": "h0.1", "dpdown": "h0.4", "dpleft": "h0.8", "dpright": "h0.2",
+                "leftx": "a0", "lefty": "a1", "rightx": "a2", "righty": "a5"
+            },
+            "gamepad3": {
+                "a": "b0", "b": "b1", "x": "b2", "y": "b3",
+                "leftshoulder": "b4", "rightshoulder": "b5", "lefttrigger": "b6", "righttrigger": "b7",
+                "back": "b10", "start": "b11", "guide": "b12",
+                "leftstick": "b8", "rightstick": "b9",
+                "dpup": "h0.1", "dpdown": "h0.4", "dpleft": "h0.8", "dpright": "h0.2",
+                "leftx": "a0", "lefty": "a1", "rightx": "a2", "righty": "a5"
+            },
+            "gamepad4": {
+                "a": "b0", "b": "b1", "x": "b2", "y": "b3",
+                "leftshoulder": "b4", "rightshoulder": "b5", "lefttrigger": "b6", "righttrigger": "b7",
+                "back": "b10", "start": "b11", "guide": "b12",
+                "leftstick": "b8", "rightstick": "b9",
+                "dpup": "h0.1", "dpdown": "h0.4", "dpleft": "h0.8", "dpright": "h0.2",
+                "leftx": "a0", "lefty": "a1", "rightx": "a2", "righty": "a5"
             },
             "keyboard": {
                 "up": "up",
@@ -155,28 +164,30 @@ if os.path.exists(config_path):
             set_option("aspect_ratio_index", "21")
             
     controls = ajustes.get("controls", {{}})
-    if controls.get("profile") == "keyboard":
-        kb = controls.get("keyboard", {{}})
-        kb_map = {{
-            "up": "input_player1_up",
-            "down": "input_player1_down",
-            "left": "input_player1_left",
-            "right": "input_player1_right",
-            "a": "input_player1_a",
-            "b": "input_player1_b",
-            "x": "input_player1_x",
-            "y": "input_player1_y",
-            "l1": "input_player1_l",
-            "r1": "input_player1_r",
-            "l2": "input_player1_l2",
-            "r2": "input_player1_r2",
-            "select": "input_player1_select",
-            "start": "input_player1_start",
-            "guide": "input_player1_menu_toggle"
-        }}
-        for key_name, cfg_name in kb_map.items():
-            if key_name in kb:
-                set_option(cfg_name, kb[key_name])
+    for player_num in range(1, 5):
+        player_profile = controls.get(f"player{{player_num}}_profile", "gamepad" if player_num == 1 else f"gamepad{{player_num}}")
+        if player_profile == "keyboard":
+            kb = controls.get("keyboard", {{}})
+            kb_map = {{
+                "up": f"input_player{{player_num}}_up",
+                "down": f"input_player{{player_num}}_down",
+                "left": f"input_player{{player_num}}_left",
+                "right": f"input_player{{player_num}}_right",
+                "a": f"input_player{{player_num}}_a",
+                "b": f"input_player{{player_num}}_b",
+                "x": f"input_player{{player_num}}_x",
+                "y": f"input_player{{player_num}}_y",
+                "l1": f"input_player{{player_num}}_l",
+                "r1": f"input_player{{player_num}}_r",
+                "l2": f"input_player{{player_num}}_l2",
+                "r2": f"input_player{{player_num}}_r2",
+                "select": f"input_player{{player_num}}_select",
+                "start": f"input_player{{player_num}}_start",
+                "guide": f"input_player{{player_num}}_menu_toggle"
+            }}
+            for key_name, cfg_name in kb_map.items():
+                if key_name in kb:
+                    set_option(cfg_name, kb[key_name])
                 
     with open(config_path, "w", encoding="utf-8") as f:
         f.write(content)
@@ -205,14 +216,24 @@ def enfocar_browser():
 
 @router.get("/ajustes")
 def obtener_ajustes():
-    return load_settings()
+    from config import HOST_USER, HOST_IP
+    ajustes = load_settings()
+    ajustes["host_user"] = HOST_USER
+    ajustes["host_ip"] = HOST_IP
+    return ajustes
 
 @router.post("/ajustes")
-def guardar_ajustes(ajustes: dict):
+def guardar_ajustes(ajustes: dict, background_tasks: BackgroundTasks):
     try:
         with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
             json.dump(ajustes, f, indent=2)
         aplicar_retroarch_ajustes(ajustes)
+        
+        # Aplicar workspaces de Hyprland sobre el host en segundo plano
+        def _aplicar_pantalla():
+            run_ssh_command("/home/fydend/Proyectos/RetroCloud-Patolinux/scripts/setup_virtual_display.sh", timeout=10)
+        background_tasks.add_task(_aplicar_pantalla)
+        
         return {"estado": "OK", "mensaje": "Ajustes guardados y aplicados correctamente."}
     except Exception as e:
         return {"estado": "Error", "detalle": str(e)}
@@ -231,6 +252,81 @@ def obtener_pantallas():
             return {"estado": "OK", "pantallas": ["DP-1", "HDMI-A-1", "TV-STREAM"]}
     except Exception:
         return {"estado": "OK", "pantallas": ["DP-1", "HDMI-A-1", "TV-STREAM"]}
+
+@router.get("/explorar")
+def explorar_directorios(ruta: str = None):
+    """Lista las subcarpetas de una ruta en el host para el explorador de archivos Couch Mode."""
+    try:
+        from services.ssh_helper import run_ssh_command
+        import json
+        import base64
+        import os
+
+        # Script a ejecutar en el HOST via SSH
+        script = f"""
+import os, json
+ruta = {repr(ruta)}
+if not ruta:
+    ruta = os.path.expanduser("~")
+ruta = os.path.expanduser(ruta)
+if not os.path.exists(ruta) or not os.path.isdir(ruta):
+    ruta = os.path.expanduser("~")
+ruta = os.path.abspath(ruta)
+
+directorios = []
+try:
+    for item in os.listdir(ruta):
+        full_path = os.path.join(ruta, item)
+        try:
+            if os.path.isdir(full_path) and not item.startswith("."):
+                directorios.append(item)
+        except Exception:
+            pass
+    directorios.sort()
+except Exception:
+    pass
+
+padre = os.path.dirname(ruta) if ruta != "/" else "/"
+print(json.dumps({{
+    "estado": "OK",
+    "ruta_actual": ruta,
+    "padre": padre,
+    "directorios": directorios
+}}))
+"""
+        b64_script = base64.b64encode(script.encode('utf-8')).decode('utf-8')
+        cmd = f"echo '{b64_script}' | base64 -d | python3"
+        resultado = run_ssh_command(cmd, use_bash=True)
+        if resultado.returncode == 0:
+            return json.loads(resultado.stdout)
+        else:
+            print(f"[API] SSH explorar falló, usando local: {resultado.stderr}", flush=True)
+    except Exception as e:
+        print(f"[API] Error de SSH en explorar, usando fallback local: {e}", flush=True)
+
+    # Fallback local (dentro del contenedor)
+    try:
+        import os
+        if not ruta or not os.path.exists(ruta):
+            ruta = "/roms"  # Fallback a la carpeta montada si no hay SSH o ruta inválida
+        
+        ruta = os.path.abspath(ruta)
+        directorios = []
+        for item in os.listdir(ruta):
+            full_path = os.path.join(ruta, item)
+            if os.path.isdir(full_path) and not item.startswith("."):
+                directorios.append(item)
+                
+        directorios.sort()
+        padre = os.path.dirname(ruta) if ruta != "/" else "/"
+        return {
+            "estado": "OK",
+            "ruta_actual": ruta,
+            "padre": padre,
+            "directorios": directorios
+        }
+    except Exception as local_err:
+        return {"estado": "Error", "detalle": str(local_err)}
 
 @router.get("/audio/dispositivos")
 def obtener_dispositivos_audio():
@@ -364,12 +460,18 @@ def test_ssh():
         return {"estado": "Error", "detalle": str(e)}
 
 @router.post("/ajustes/wizard-complete")
-def wizard_complete(ajustes: dict):
+def wizard_complete(ajustes: dict, background_tasks: BackgroundTasks):
     try:
         ajustes["first_run"] = False
         with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
             json.dump(ajustes, f, indent=2)
         aplicar_retroarch_ajustes(ajustes)
+        
+        # Aplicar workspaces de Hyprland sobre el host en segundo plano
+        def _aplicar_pantalla():
+            run_ssh_command("/home/fydend/Proyectos/RetroCloud-Patolinux/scripts/setup_virtual_display.sh", timeout=10)
+        background_tasks.add_task(_aplicar_pantalla)
+        
         return {"estado": "OK", "mensaje": "Setup inicial completado."}
     except Exception as e:
         return {"estado": "Error", "detalle": str(e)}
@@ -384,6 +486,6 @@ def salir_retrocloud(background_tasks: BackgroundTasks):
     def _cerrar():
         import time
         time.sleep(0.5)
-        run_ssh_command("pkill -f 'retrocloud-app' || pkill -f 'store_front/app.py' || pkill -f 'python3.*app.py'; echo done", use_bash=True, timeout=5)
+        run_ssh_command("docker stop store_front || pkill -f 'retrocloud-app' || pkill -f 'store_front/app.py' || pkill -f 'python3.*app.py'; echo done", use_bash=True, timeout=5)
     background_tasks.add_task(_cerrar)
     return {"estado": "OK", "mensaje": "Cerrando RetroCloud..."}

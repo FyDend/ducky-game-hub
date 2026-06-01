@@ -98,14 +98,16 @@ if [ "$TARGET_MONITOR" = "TV-STREAM" ]; then
     echo "Modo Streaming activo: vinculando la ventana de Ducky Game Hub al workspace $TARGET_WORKSPACE..."
     hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*Ducky Game Hub.*' }, workspace = '$TARGET_WORKSPACE', idle_inhibit = 'always' })" >/dev/null
     hyprctl eval "hl.window_rule({ match = { class = 'ducky-game-hub' }, workspace = '$TARGET_WORKSPACE', idle_inhibit = 'always' })" >/dev/null
-    hyprctl dispatch movetoworkspacesilent "$TARGET_WORKSPACE,class:^python3$" >/dev/null 2>&1
-    hyprctl dispatch movetoworkspacesilent "$TARGET_WORKSPACE,class:^ducky-game-hub$" >/dev/null 2>&1
+    hyprctl eval "hl.dispatch(hl.dsp.window.move({ workspace = $TARGET_WORKSPACE, window = 'class:^python3$' }))" >/dev/null 2>&1
+    hyprctl eval "hl.dispatch(hl.dsp.window.move({ workspace = $TARGET_WORKSPACE, window = 'class:^ducky-game-hub$' }))" >/dev/null 2>&1
 else
-    echo "Modo Local/Dual activo: asegurando que Ducky Game Hub se mantenga en el workspace 1..."
-    hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*Ducky Game Hub.*' }, workspace = '1', idle_inhibit = 'always' })" >/dev/null
-    hyprctl eval "hl.window_rule({ match = { class = 'ducky-game-hub' }, workspace = '1', idle_inhibit = 'always' })" >/dev/null
-    hyprctl dispatch movetoworkspacesilent "1,class:^python3$" >/dev/null 2>&1
-    hyprctl dispatch movetoworkspacesilent "1,class:^ducky-game-hub$" >/dev/null 2>&1
+    ACTIVE_WS=$(hyprctl -j activeworkspace | jq -r '.id' 2>/dev/null)
+    ACTIVE_WS=${ACTIVE_WS:-"1"}
+    echo "Modo Local/Dual activo: asegurando que Ducky Game Hub se mantenga en el workspace $ACTIVE_WS..."
+    hyprctl eval "hl.window_rule({ match = { class = 'python3', title = '.*Ducky Game Hub.*' }, workspace = '$ACTIVE_WS', idle_inhibit = 'always' })" >/dev/null
+    hyprctl eval "hl.window_rule({ match = { class = 'ducky-game-hub' }, workspace = '$ACTIVE_WS', idle_inhibit = 'always' })" >/dev/null
+    hyprctl eval "hl.dispatch(hl.dsp.window.move({ workspace = $ACTIVE_WS, window = 'class:^python3$' }))" >/dev/null 2>&1
+    hyprctl eval "hl.dispatch(hl.dsp.window.move({ workspace = $ACTIVE_WS, window = 'class:^ducky-game-hub$' }))" >/dev/null 2>&1
 fi
 for pat in "${EMU_PATTERNS[@]}"; do
     hyprctl eval "hl.window_rule({ match = { class = '.*'$pat'.*' }, workspace = '$TARGET_WORKSPACE silent', idle_inhibit = 'always' })" >/dev/null
@@ -116,8 +118,10 @@ hyprctl eval "hl.window_rule({ match = { class = 'steam_app_.*' }, workspace = '
 hyprctl eval "hl.window_rule({ match = { class = 'steam_proton' }, workspace = '$TARGET_WORKSPACE silent', idle_inhibit = 'always' })" >/dev/null
 
 # 5. Asegurar que el daemon de salida universal por joystick esté activo en segundo plano
-echo "Reiniciando daemon de salida universal por joystick a través de systemd..."
-systemctl --user stop ducky-game-hub-gamepad
-systemctl --user start ducky-game-hub-gamepad
+if systemctl --user list-unit-files 2>/dev/null | grep -q "ducky-game-hub-gamepad"; then
+    echo "Reiniciando daemon de salida universal por joystick a través de systemd..."
+    systemctl --user stop ducky-game-hub-gamepad >/dev/null 2>&1 || true
+    systemctl --user start ducky-game-hub-gamepad >/dev/null 2>&1 || true
+fi
 
 echo "¡Pantalla virtual 'TV-STREAM' configurada y aislada correctamente!"
