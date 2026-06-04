@@ -10,6 +10,8 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME_BRIDGE: ${{ github.repository_owner }}/ducky-game-hub-bridge-api
   IMAGE_NAME_STORE: ${{ github.repository_owner }}/ducky-game-hub-store-front
+  IMAGE_NAME_GAMEPAD: ${{ github.repository_owner }}/ducky-game-hub-gamepad-daemon
+  IMAGE_NAME_SUNSHINE: ${{ github.repository_owner }}/ducky-game-hub-sunshine
 
 jobs:
   build-and-push:
@@ -42,6 +44,8 @@ jobs:
         run: |
           echo "bridge_lc=$(echo ${{ env.IMAGE_NAME_BRIDGE }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
           echo "store_lc=$(echo ${{ env.IMAGE_NAME_STORE }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+          echo "gamepad_lc=$(echo ${{ env.IMAGE_NAME_GAMEPAD }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+          echo "sunshine_lc=$(echo ${{ env.IMAGE_NAME_SUNSHINE }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       # 5. Compilar y subir Bridge API
       - name: Build and push Bridge API
@@ -66,6 +70,32 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ steps.string.outputs.store_lc }}:latest
             ${{ env.REGISTRY }}/${{ steps.string.outputs.store_lc }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # 7. Compilar y subir Gamepad Daemon
+      - name: Build and push Gamepad Daemon
+        uses: docker/build-push-action@v5
+        with:
+          context: ./daemon
+          file: ./daemon/Dockerfile
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ steps.string.outputs.gamepad_lc }}:latest
+            ${{ env.REGISTRY }}/${{ steps.string.outputs.gamepad_lc }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # 8. Compilar y subir Sunshine (comparte Dockerfile con bridge_api)
+      - name: Build and push Sunshine
+        uses: docker/build-push-action@v5
+        with:
+          context: ./bridge_api
+          file: ./bridge_api/Dockerfile
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ steps.string.outputs.sunshine_lc }}:latest
+            ${{ env.REGISTRY }}/${{ steps.string.outputs.sunshine_lc }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -112,12 +142,13 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.HOST_IP }}" >> ~/.ssh/known_hosts
 
-      - name: Deploy to k3s via SSH
+      - name: Deploy via SSH
         run: |
           ssh "${{ secrets.HOST_USER }}"@"${{ secrets.HOST_IP }}" "
             cd /home/${{ secrets.HOST_USER }}/Proyectos/RetroCloud-Patolinux &&
             git stash || true &&
             git pull origin main &&
             git stash pop || true &&
-            docker compose up -d --pull always
+            docker compose build &&
+            docker compose up -d
           "

@@ -8,10 +8,7 @@ CDPATH= cd -- "$(dirname -- "$0")" >/dev/null 2>&1 || exit 1
 
 echo "[Ducky Game Hub] Iniciando servicios en segundo plano..."
 
-# 1. Levantar el stack de contenedores Docker en segundo plano si no están corriendo
+# Levantar el stack de contenedores Docker en segundo plano
 docker compose up -d
 
-# 2. Asegurar que la pantalla virtual y el sumidero de audio estén configurados en el host
-./scripts/setup_virtual_display.sh
-
-echo "[Ducky Game Hub] ¡Lanzado con éxito en el monitor virtual TV-STREAM (Workspace 10)!"
+echo "[Ducky Game Hub] ¡Stack de contenedores iniciado con éxito!"

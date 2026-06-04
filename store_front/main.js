@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.className = `toast ${type}`;
 
     let icon = 'ℹ';
-    if (type === 'success') icon = '✔';
-    if (type === 'error') icon = '✘';
-    if (type === 'warning') icon = '⚠️';
+    if (type === 'success') icon = '';
+    if (type === 'error') icon = '';
+    if (type === 'warning') icon = '';
 
     toast.innerHTML = `
       <div class="toast-icon">${icon}</div>
@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.body.classList.add('couch-mode');
           if (navTv) {
               navTv.classList.add('active');
-              navTv.textContent = '📺 MODO TELE: ON';
+              navTv.textContent = ' MODO TELE: ON';
           }
           if (forceFocus || !focusedElement) {
               setTimeout(() => {
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.body.classList.remove('couch-mode');
           if (navTv) {
               navTv.classList.remove('active');
-              navTv.textContent = '📺 MODO TELE: OFF';
+              navTv.textContent = ' MODO TELE: OFF';
           }
           if (focusedElement) {
               focusedElement.classList.remove('focused');
@@ -796,7 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (files.length === 0) {
                 downloadsView.innerHTML = `
                   <div style="text-align:center; padding: 60px 20px; color: #a0a0a0;">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">📭</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"></div>
                     <p style="font-family: 'Press Start 2P', cursive; font-size: 0.7rem; line-height: 1.8;">
                       No hay descargas activas
                     </p>
@@ -817,7 +817,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const borderColor = isComplete ? '#4cd137' : isError ? '#e84118' : isPaused ? '#fbc531' : isExtracting ? '#9b59b6' : '#3498db33';
                 const bgColor = isComplete ? '#1a2e1a' : isError ? '#2e1a1a' : isExtracting ? '#281a30' : '#2f3640';
                 
-                const statusIcon = isComplete ? '✅' : isError ? '❌' : isPaused ? '⏸' : isExtracting ? '📦' : '⬇';
+                const statusIcon = isComplete ? '' : isError ? '' : isPaused ? '' : isExtracting ? '' : '⬇';
                 const statusLabel = isComplete ? 'COMPLETADO' : isError ? 'ERROR' : isPaused ? 'PAUSADO' : isExtracting ? 'EXTRAYENDO...' : 'DESCARGANDO';
                 
                 // Console badge
@@ -840,13 +840,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             style="padding: 6px 14px; font-size: 0.55rem; font-family: 'Press Start 2P', cursive;
                                    background: ${isPaused ? '#4cd137' : '#fbc531'}; color: #000; border: 2px solid #fff;
                                    box-shadow: 2px 2px 0px #000; cursor: pointer;">
-                            ${isPaused ? '▶ REANUDAR' : '⏸ PAUSAR'}
+                            ${isPaused ? '▶ REANUDAR' : ' PAUSAR'}
                         </button>
                         <button data-file="${safeFilename}" data-action="cancelar" onclick="controlDownload('${safeFilename}', 'cancelar')"
                             style="padding: 6px 14px; font-size: 0.55rem; font-family: 'Press Start 2P', cursive;
                                    background: #e84118; color: #fff; border: 2px solid #fff;
                                    box-shadow: 2px 2px 0px #000; cursor: pointer;">
-                            🗑 CANCELAR
+                             CANCELAR
                         </button>
                     </div>`;
                 } else if (isError) {
@@ -859,13 +859,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             style="padding: 6px 14px; font-size: 0.55rem; font-family: 'Press Start 2P', cursive;
                                    background: #fbc531; color: #000; border: 2px solid #fff;
                                    box-shadow: 2px 2px 0px #000; cursor: pointer;">
-                            🔄 REINTENTAR
+                             REINTENTAR
                         </button>
                         <button data-file="${safeFilename}" data-action="limpiar" onclick="controlDownload('${safeFilename}', 'limpiar')"
                             style="padding: 6px 14px; font-size: 0.55rem; font-family: 'Press Start 2P', cursive;
                                    background: #636e72; color: #fff; border: 2px solid #fff;
                                    box-shadow: 2px 2px 0px #000; cursor: pointer;">
-                            🧹 LIMPIAR
+                             LIMPIAR
                         </button>
                     </div>`;
                 } else if (isComplete) {
@@ -875,7 +875,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             style="padding: 6px 14px; font-size: 0.55rem; font-family: 'Press Start 2P', cursive;
                                    background: #4cd137; color: #000; border: 2px solid #fff;
                                    box-shadow: 2px 2px 0px #000; cursor: pointer;">
-                            ✅ LIMPIAR
+                             LIMPIAR
                         </button>
                     </div>`;
                 }
@@ -904,7 +904,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 return `<div style="display:flex; gap:16px; margin-top:8px; font-size:0.55rem;
                                                    color:#a0a0a0; font-family:'Press Start 2P',cursive;">
                                     ${spd ? `<span>⇩ ${spd}</span>` : ''}
-                                    ${eta ? `<span>⏱ ${eta}</span>` : ''}
+                                    ${eta ? `<span> ${eta}</span>` : ''}
                                 </div>`;
                             }
                         }
@@ -1282,7 +1282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       let badge = '';
       if (asCatalog && game.downloaded) {
-          badge = '<div style="position:absolute; top:5px; right:5px; background: #4cd137; padding: 2px 5px; border-radius:3px; color:white; font-size:10px;">✓ LISTO</div>';
+          badge = '<div style="position:absolute; top:5px; right:5px; background: #4cd137; padding: 2px 5px; border-radius:3px; color:white; font-size:10px;"> LISTO</div>';
       }
 
       card.innerHTML = `
@@ -1531,7 +1531,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       let badge = '';
       if (asCatalog && game.downloaded) {
-          badge = '<div style="position:absolute; top:5px; right:5px; background: #4cd137; padding: 2px 5px; border-radius:3px; color:white; font-size:10px;">✓ LISTO</div>';
+          badge = '<div style="position:absolute; top:5px; right:5px; background: #4cd137; padding: 2px 5px; border-radius:3px; color:white; font-size:10px;"> LISTO</div>';
       }
 
       card.innerHTML = `
@@ -1605,9 +1605,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Favoritos ---
   function updateHeartButton() {
       if (currentGame && favorites.includes(currentGame.title)) {
-          favBtn.textContent = '❤️';
+          favBtn.textContent = '';
       } else {
-          favBtn.textContent = '🤍';
+          favBtn.textContent = '';
       }
   }
 
@@ -1638,7 +1638,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Restablecer el estado del botón de borrar
     deleteBtn.disabled = false;
-    deleteBtn.textContent = '🗑 BORRAR';
+    deleteBtn.textContent = ' BORRAR';
     
     updateHeartButton();
 
@@ -1658,7 +1658,7 @@ document.addEventListener('DOMContentLoaded', () => {
       downloadBtn.classList.remove('hidden');
       deleteBtn.classList.add('hidden');
       downloadBtn.disabled = game.downloaded;
-      downloadBtn.textContent = game.downloaded ? '✓ INSTALADO' : '☁ DESCARGAR';
+      downloadBtn.textContent = game.downloaded ? ' INSTALADO' : ' DESCARGAR';
 
     } else {
       // Modo Local / Jugar
@@ -1767,7 +1767,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedVersionIndex = versionSelect.value;
     const selectedVersion = currentGame.versions[selectedVersionIndex];
 
-    downloadBtn.textContent = '☁ PREPARANDO...';
+    downloadBtn.textContent = ' PREPARANDO...';
     downloadBtn.disabled = true;
     downloadBtn.style.background = '#dcdde1';
     downloadBtn.style.borderColor = '#7f8fa6';
@@ -1791,7 +1791,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(data => {
         if (data.estado === 'OK') {
           modalStatus.textContent = '>> AGREGADO A COLA CON EXITO <<';
-          downloadBtn.textContent = '✓ ¡DESCARGANDO!';
+          downloadBtn.textContent = ' ¡DESCARGANDO!';
           downloadBtn.style.background = '#2ecc71';
           downloadBtn.style.borderColor = '#27ae60';
           
@@ -1806,14 +1806,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           modalStatus.textContent = 'ERR: ' + data.detalle;
           downloadBtn.disabled = false;
-          downloadBtn.textContent = '☁ DESCARGAR';
+          downloadBtn.textContent = ' DESCARGAR';
           downloadBtn.style.background = '';
           downloadBtn.style.borderColor = '';
         }
       }).catch(err => {
         modalStatus.textContent = 'ERR DE RED';
         downloadBtn.disabled = false;
-        downloadBtn.textContent = '☁ DESCARGAR';
+        downloadBtn.textContent = ' DESCARGAR';
         downloadBtn.style.background = '';
         downloadBtn.style.borderColor = '';
       });
@@ -1838,12 +1838,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
               modalStatus.textContent = 'ERR: ' + data.detalle;
               deleteBtn.disabled = false;
-              deleteBtn.textContent = '🗑 BORRAR';
+              deleteBtn.textContent = ' BORRAR';
             }
           }).catch(err => {
             modalStatus.textContent = 'ERR DE RED';
             deleteBtn.disabled = false;
-            deleteBtn.textContent = '🗑 BORRAR';
+            deleteBtn.textContent = ' BORRAR';
           });
     }, () => {
         setTimeout(() => {
@@ -2004,7 +2004,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       parentBtn.style.padding = '12px';
                       parentBtn.style.fontSize = '0.65rem';
                       parentBtn.style.marginBottom = '4px';
-                      parentBtn.innerHTML = '<span style="color: var(--accent-cyan);">📁 .. (Subir un nivel)</span>';
+                      parentBtn.innerHTML = '<span style="color: var(--accent-cyan);"> .. (Subir un nivel)</span>';
                       parentBtn.addEventListener('click', () => {
                           loadExplorerPath(data.padre);
                       });
@@ -2018,7 +2018,7 @@ document.addEventListener('DOMContentLoaded', () => {
                           dirBtn.className = 'select-option-btn';
                           dirBtn.style.padding = '12px';
                           dirBtn.style.fontSize = '0.65rem';
-                          dirBtn.innerHTML = `📁 ${dirName}`;
+                          dirBtn.innerHTML = ` ${dirName}`;
                           dirBtn.addEventListener('click', () => {
                               const nextPath = explorerCurrentPath === '/' ? `/${dirName}` : `${explorerCurrentPath}/${dirName}`;
                               loadExplorerPath(nextPath);
@@ -2422,7 +2422,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Opción de Teclado
       const optKb = document.createElement('option');
       optKb.value = 'keyboard';
-      optKb.textContent = '⌨ TECLADO (KEYBOARD)';
+      optKb.textContent = ' TECLADO (KEYBOARD)';
       profileSelect.appendChild(optKb);
       
       // Obtener mandos conectados
@@ -2435,7 +2435,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const optGp = document.createElement('option');
               const profileVal = gpCount === 1 ? 'gamepad' : `gamepad${gpCount}`;
               optGp.value = profileVal;
-              optGp.textContent = `🎮 MANDO ${gpCount}: ${gp.id.substring(0, 20).toUpperCase()}`;
+              optGp.textContent = ` MANDO ${gpCount}: ${gp.id.substring(0, 20).toUpperCase()}`;
               profileSelect.appendChild(optGp);
           }
       });
@@ -2446,7 +2446,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const optGp = document.createElement('option');
               const profileVal = i === 1 ? 'gamepad' : `gamepad${i}`;
               optGp.value = profileVal;
-              optGp.textContent = `🎮 MANDO GENERAL ${i}`;
+              optGp.textContent = ` MANDO GENERAL ${i}`;
               profileSelect.appendChild(optGp);
           }
       }
@@ -2725,7 +2725,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
             .then(data => {
                 if (data.estado === 'OK') {
-                    steamBtn.textContent = '✓ EN EJECUCION';
+                    steamBtn.textContent = ' EN EJECUCION';
                     
                     setTimeout(() => {
                         let checkSteamInterval = setInterval(() => {
@@ -2978,7 +2978,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(res => res.json())
           .then(data => {
               if (data.estado === 'OK') {
-                  saveSettingsBtn.textContent = '✓ ¡GUARDADO CON EXITO!';
+                  saveSettingsBtn.textContent = ' ¡GUARDADO CON EXITO!';
                   saveSettingsBtn.style.background = '#2ecc71';
                   saveSettingsBtn.style.color = '#fff';
                   
@@ -3019,7 +3019,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   .then(data => {
                       if (data.estado === 'OK') {
                           showToast("Reconstrucción del catálogo iniciada en segundo plano.", "success");
-                          rebuildCatalogBtn.textContent = '✓ PROCESANDO EN FONDO';
+                          rebuildCatalogBtn.textContent = ' PROCESANDO EN FONDO';
                           rebuildCatalogBtn.style.background = '#2ecc71';
                           rebuildCatalogBtn.style.color = '#fff';
                           
@@ -3068,7 +3068,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   applyFilters();
                   
                   // Volver al estado normal con feedback exitoso
-                  refreshLibraryBtn.textContent = '✓ ¡ACTUALIZADO!';
+                  refreshLibraryBtn.textContent = ' ¡ACTUALIZADO!';
                   refreshLibraryBtn.style.background = '#2ecc71';
                   refreshLibraryBtn.style.borderColor = '#27ae60';
                   
@@ -3080,7 +3080,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   }, 1500);
               }).catch(err => {
                   console.error("Error al refrescar la biblioteca:", err);
-                  refreshLibraryBtn.textContent = '⚠ ERROR';
+                  refreshLibraryBtn.textContent = ' ERROR';
                   refreshLibraryBtn.style.background = '#e84118';
                   refreshLibraryBtn.style.borderColor = '#c23616';
                   
@@ -3306,7 +3306,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (wizardBtnPrev) wizardBtnPrev.style.visibility = step === 1 ? 'hidden' : 'visible';
       if (wizardBtnNext) {
           if (step === wizardTotalSteps) {
-              wizardBtnNext.textContent = '🏆 FINALIZAR';
+              wizardBtnNext.textContent = ' FINALIZAR';
               wizardBtnNext.style.background = '#4cd137';
               wizardBtnNext.style.borderColor = '#4cd137';
           } else {
@@ -3363,11 +3363,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnTestSsh.disabled = false;
                 btnTestSsh.textContent = 'PROBAR CONEXION SSH';
                 if (data.estado === 'OK') {
-                    sshTestStatus.textContent = 'ESTADO: ✓ CONEXION EXITOSA';
+                    sshTestStatus.textContent = 'ESTADO:  CONEXION EXITOSA';
                     sshTestStatus.style.color = '#4cd137';
                     showToast("¡Conexión SSH comprobada con éxito!", "success");
                 } else {
-                    sshTestStatus.textContent = 'ESTADO: ✘ FALLIDO';
+                    sshTestStatus.textContent = 'ESTADO:  FALLIDO';
                     sshTestStatus.style.color = '#e84118';
                     showToast(`Error SSH: ${data.detalle || 'Host inalcanzable'}`, "error");
                 }
@@ -3375,7 +3375,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => {
                 btnTestSsh.disabled = false;
                 btnTestSsh.textContent = 'PROBAR CONEXION SSH';
-                sshTestStatus.textContent = 'ESTADO: ✘ ERROR DE API';
+                sshTestStatus.textContent = 'ESTADO:  ERROR DE API';
                 sshTestStatus.style.color = '#e84118';
                 showToast("No se pudo contactar a la API de RetroCloud.", "error");
             });

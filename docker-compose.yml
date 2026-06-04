@@ -3,14 +3,54 @@ services:
   bridge_api:
     build: ./bridge_api
     container_name: bridge_api
-    ports:
-      - 8000:8000
+    network_mode: host
+    privileged: true
+    environment:
+      - DISPLAY=:0
+      - WAYLAND_DISPLAY
+      - XDG_RUNTIME_DIR=/run/user/${PUID}
+      - PUID=${PUID}
+      - PGID=${PGID}
     volumes:
       - ./bridge_api:/app
       - ./store_front:/app/store_front
-      - ./.secrets/bridge_ssh_key:/root/.ssh/id_ed25519:ro
       - ${ROMS_PATH}:/roms
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /run/user/${PUID}:/run/user/${PUID}
+      - /run/udev:/run/udev:ro
+      - ./data/retroarch:/root/.config/retroarch
+      - ./data/sunshine:/root/.config/sunshine
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+
+  sunshine:
+    build: ./bridge_api
+    container_name: sunshine
+    network_mode: host
+    privileged: true
+    environment:
+      - DISPLAY=:0
+      - WAYLAND_DISPLAY
+      - XDG_RUNTIME_DIR=/run/user/${PUID}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /run/user/${PUID}:/run/user/${PUID}
+      - /run/udev:/run/udev:ro
+      - ./data/sunshine:/root/.config/sunshine
+    command: sunshine
+    restart: unless-stopped
+
+  gamepad_daemon:
+    build: ./daemon
+    container_name: gamepad_daemon
+    network_mode: host
+    pid: "service:bridge_api"
+    devices:
+      - /dev/input:/dev/input
+    volumes:
+      - /run/udev:/run/udev:ro
+    environment:
+      - PUID=${PUID}
     restart: unless-stopped
 
   store_front:
@@ -49,5 +89,3 @@ services:
     extra_hosts:
       - "localhost:127.0.0.1"
     restart: unless-stopped
-
-

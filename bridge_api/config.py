@@ -25,5 +25,3 @@ PGID = os.getenv("PGID", "1000")
 TARGET_MONITOR = os.getenv("TARGET_MONITOR", "TV-STREAM")
 HOST_MONITOR = os.getenv("HOST_MONITOR", "DP-1")
 TARGET_WORKSPACE = os.getenv("TARGET_WORKSPACE", "10")
-
-SSH_KEY_PATH = os.getenv("SSH_KEY_PATH", "/root/.ssh/id_ed25519")

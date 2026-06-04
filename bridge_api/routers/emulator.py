@@ -1,10 +1,21 @@
 from fastapi import APIRouter
-import base64
-from config import HOST_USER, HOST_IP
-from services.ssh_helper import run_ssh_command
+import os
+import subprocess
 from routers.system import load_settings, aplicar_retroarch_ajustes
+from services.hyprland_helper import setup_virtual_display_hyprland
 
 router = APIRouter()
+
+def resolve_core_path(core_so: str) -> str:
+    paths_to_check = [
+        f"/root/.config/retroarch/cores/{core_so}",
+        f"/usr/lib/x86_64-linux-gnu/libretro/{core_so}",
+        f"/usr/lib/libretro/{core_so}"
+    ]
+    for path in paths_to_check:
+        if os.path.exists(path):
+            return path
+    return f"/root/.config/retroarch/cores/{core_so}" # Fallback
 
 @router.get("/steam/bigpicture")
 def lanzar_steam_bigpicture():
@@ -14,34 +25,25 @@ def lanzar_steam_bigpicture():
     target_monitor = versatility.get("target_monitor", "TV-STREAM")
     host_monitor = versatility.get("host_monitor", "DP-1")
     
-    env_str = (
-        "export XDG_RUNTIME_DIR=/run/user/1000 && "
-        "export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 $XDG_RUNTIME_DIR/hypr 2>/dev/null | head -n 1) && "
-        "export SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS=1 && "
-        "export DISPLAY=:0 && "
-        f"export TARGET_MONITOR=\"{target_monitor}\" && "
-        f"export TARGET_WORKSPACE=\"{target_workspace}\" && "
-        f"export HOST_MONITOR=\"{host_monitor}\""
-    )
-    cmd = (
-        f"{env_str} && "
-        f"/home/fydend/Proyectos/RetroCloud-Patolinux/scripts/setup_virtual_display.sh && "
-        f"hyprctl eval 'hl.dispatch(hl.dsp.exec_cmd([=[steam -gamepadui]=]))'"
-    )
     try:
-        resultado = run_ssh_command(cmd, use_bash=True)
-        if resultado.returncode == 0:
-            return {"estado": "OK", "mensaje": "Steam Big Picture lanzado con éxito."}
-        else:
-            return {"estado": "Error SSH", "detalle": resultado.stderr}
+        setup_virtual_display_hyprland(target_monitor, target_workspace, host_monitor)
+    except Exception as e:
+        print(f"[Emulator Router] Hyprland display setup failed: {e}", flush=True)
+        
+    env = os.environ.copy()
+    env["SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS"] = "1"
+    env["DISPLAY"] = ":0"
+    
+    try:
+        subprocess.Popen(["steam", "-gamepadui"], env=env)
+        return {"estado": "OK", "mensaje": "Steam Big Picture lanzado con éxito."}
     except Exception as e:
         return {"estado": "Error Interno", "detalle": str(e)}
 
 @router.get("/jugar")
 def jugar_retroarch(core: str, rom_path: str, console: str = None):
-    # Traducir la ruta interna del contenedor (/roms) a la ruta real del Host
-    host_rom_path = rom_path.replace("/roms", "/mnt/DiscoHDD/RetroCloud-PatoLinux/Roms", 1)
-
+    # En modo Zero-Footprint con emuladores corriendo dentro del contenedor,
+    # abrimos la ruta de la ROM directamente (/roms) sin traducir al host
     settings = load_settings()
     aplicar_retroarch_ajustes(settings)
     
@@ -79,47 +81,38 @@ def jugar_retroarch(core: str, rom_path: str, console: str = None):
         
     sdl_config = "\n".join(gp_configs)
 
-    env_str = (
-        "export DISPLAY=:0 && "
-        "export XDG_RUNTIME_DIR=/run/user/1000 && "
-        "export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 $XDG_RUNTIME_DIR/hypr 2>/dev/null | head -n 1) && "
-        "export SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS=1 && "
-        "export SDL_GAMECONTROLLER_IGNORE_DEVICES=0xbeef/0xdead && "
-        "export SDL_VIDEODRIVER=x11 && "
-        "export DISABLE_WAYLAND=1 && "
-        "export PULSE_SERVER=unix:/run/user/1000/pulse/native && "
-        "export PULSE_LATENCY_MSEC=30 && "
-        "export PIPEWIRE_LATENCY=\"128/48000\" && "
-        "export SDL_AUDIODRIVER=pulse && "
-        f"export TARGET_MONITOR=\"{target_monitor}\" && "
-        f"export TARGET_WORKSPACE=\"{target_workspace}\" && "
-        f"export HOST_MONITOR=\"{host_monitor}\" && "
-        f"export SDL_GAMECONTROLLERCONFIG=\"{sdl_config}\""
-    )
+    puid = os.getenv("PUID", "1000")
+    env = os.environ.copy()
+    env["DISPLAY"] = ":0"
+    env["SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS"] = "1"
+    env["SDL_GAMECONTROLLER_IGNORE_DEVICES"] = "0xbeef/0xdead"
+    env["SDL_VIDEODRIVER"] = "x11"
+    env["DISABLE_WAYLAND"] = "1"
+    env["PULSE_SERVER"] = f"unix:/run/user/{puid}/pulse/native"
+    env["PULSE_LATENCY_MSEC"] = "30"
+    env["PIPEWIRE_LATENCY"] = "128/48000"
+    env["SDL_AUDIODRIVER"] = "pulse"
+    env["SDL_GAMECONTROLLERCONFIG"] = sdl_config
 
     emulators_map = settings.get("emulators", {})
     mapped_emu = emulators_map.get(console, "retroarch") if console else "retroarch"
 
-    # Si la consola tiene mapeado un emulador standalone o es uno sin soporte en retroarch
     if mapped_emu == "pcsx2" or (core == "pcsx2" and mapped_emu != "retroarch"):
-        emu_cmd = f'pcsx2-qt -batch -fullscreen -- "{host_rom_path}"'
+        emu_cmd = ["pcsx2-qt", "-batch", "-fullscreen", "--", rom_path]
     elif mapped_emu == "dolphin" or (core == "dolphin" and mapped_emu != "retroarch"):
-        emu_cmd = f'dolphin-emu -b -e "{host_rom_path}"'
+        emu_cmd = ["dolphin-emu", "-b", "-e", rom_path]
     elif mapped_emu == "duckstation" or (console == "ps1" and mapped_emu == "duckstation"):
-        emu_cmd = f'duckstation -fullscreen -- "{host_rom_path}"'
+        emu_cmd = ["duckstation", "-fullscreen", "--", rom_path]
     elif mapped_emu == "ppsspp" or (core == "ppsspp" and mapped_emu != "retroarch"):
-        emu_cmd = f'PPSSPPSDL --fullscreen "{host_rom_path}"'
+        emu_cmd = ["PPSSPPSDL", "--fullscreen", rom_path]
     elif mapped_emu == "xemu" or (core == "xemu" and mapped_emu != "retroarch"):
-        if host_rom_path.endswith(".zip"):
-            host_rom_path = host_rom_path.replace(".zip", ".iso")
-        emu_cmd = f'xemu -dvd_path "{host_rom_path}"'
+        if rom_path.endswith(".zip"):
+            rom_path = rom_path.replace(".zip", ".iso")
+        emu_cmd = ["xemu", "-dvd_path", rom_path]
     elif core == "rpcs3" or mapped_emu == "rpcs3":
-        if host_rom_path.endswith(".zip"):
-            host_rom_path = host_rom_path.replace(".zip", "")
-        emu_cmd = f'rpcs3 --no-gui --fullscreen "{host_rom_path}"'
-    elif core == "xenia" or mapped_emu == "xenia":
-        env_str += f" && export STEAM_COMPAT_CLIENT_INSTALL_PATH=\"/home/{HOST_USER}/.local/share/Steam\" && export STEAM_COMPAT_DATA_PATH=\"/home/{HOST_USER}/.local/share/Xenia/proton_prefix\" && export STEAM_COMPAT_APP_ID=0 && export WINE_WM_CLASS=\"xenia\""
-        emu_cmd = f'"/home/{HOST_USER}/.local/share/Steam/steamapps/common/Proton - Experimental/proton" run "/home/{HOST_USER}/.local/share/Xenia/xenia_canary.exe" "{host_rom_path}"'
+        if rom_path.endswith(".zip"):
+            rom_path = rom_path.replace(".zip", "")
+        emu_cmd = ["rpcs3", "--no-gui", "--fullscreen", rom_path]
     else:
         # Por defecto usar RetroArch con el Core correcto
         actual_core = core
@@ -127,33 +120,19 @@ def jugar_retroarch(core: str, rom_path: str, console: str = None):
             from services.catalog_service import CORE_MAP
             actual_core = CORE_MAP.get(console, core)
         
-        # Resolver ruta del core física en el host CachyOS
         core_so = actual_core if actual_core.endswith(".so") else f"{actual_core}_libretro.so"
-        user_core_path = f"/home/{HOST_USER}/.config/retroarch/cores/{core_so}"
-        
-        emu_cmd = f'retroarch -L "{user_core_path}" "{host_rom_path}"'
-
-    launcher_content = (
-        "#!/usr/bin/env bash\n"
-        f"{env_str}\n"
-        f"mkdir -p \"/home/{HOST_USER}/.local/share/Xenia/proton_prefix\"\n"
-        f"exec {emu_cmd}\n"
-    )
-    launcher_b64 = base64.b64encode(launcher_content.encode('utf-8')).decode('utf-8')
-
-    cmd_str = (
-        f"{env_str} && "
-        f"echo '{launcher_b64}' | base64 -d > /tmp/retrocloud_launch.sh && "
-        f"chmod +x /tmp/retrocloud_launch.sh && "
-        f"/home/{HOST_USER}/Proyectos/RetroCloud-Patolinux/scripts/setup_virtual_display.sh && "
-        f"hyprctl eval 'hl.dispatch(hl.dsp.exec_cmd([=[/tmp/retrocloud_launch.sh]=]))'"
-    )
+        core_path = resolve_core_path(core_so)
+        emu_cmd = ["retroarch", "-L", core_path, rom_path]
 
     try:
-        resultado = run_ssh_command(cmd_str, use_bash=True)
-        if resultado.returncode == 0:
-            return {"estado": "OK", "mensaje": "¡Juego lanzado en CachyOS!"}
-        else:
-            return {"estado": "Error SSH", "detalle": resultado.stderr}
+        # Configurar la pantalla virtual en Hyprland antes de lanzar el emulador
+        setup_virtual_display_hyprland(target_monitor, target_workspace, host_monitor)
+    except Exception as e:
+        print(f"[Emulator Router] Hyprland display setup failed: {e}", flush=True)
+
+    try:
+        print(f"[Emulator Router] Launching emu process locally: {emu_cmd}", flush=True)
+        subprocess.Popen(emu_cmd, env=env)
+        return {"estado": "OK", "mensaje": "¡Juego lanzado en el contenedor!"}
     except Exception as e:
         return {"estado": "Error Interno", "detalle": str(e)}

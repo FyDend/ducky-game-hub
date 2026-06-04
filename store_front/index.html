@@ -65,7 +65,7 @@
         <input type="text" id="search-input" placeholder="FILTRAR TITULO..." style="margin-top: 1rem; width: 100%;">
         <select id="sort-filter" style="margin-top: 1rem; width: 100%; padding: 5px; background: #2f3640; color: white; border: 1px solid #fbc531; font-family: 'Press Start 2P', cursive; font-size: 0.6rem;">
             <option value="default">ORDENAR POR...</option>
-            <option value="popularity">★ POPULARIDAD (IGDB)</option>
+            <option value="popularity"> POPULARIDAD (IGDB)</option>
             <option value="name-asc">NOMBRE (A-Z)</option>
             <option value="name-desc">NOMBRE (Z-A)</option>
             <option value="size-desc">TAMAÑO (MAYOR)</option>
@@ -90,7 +90,7 @@
       <div id="last-played-container" class="hidden" style="margin-bottom: 2rem; background: var(--glass-bg); border: 1px solid rgba(255, 255, 255, 0.08); padding: 20px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-premium); display: flex; align-items: center; gap: 20px; width: 100%;">
         <img id="last-played-img" src="" alt="Cover" style="width: 80px; height: 110px; object-fit: cover; border-radius: var(--border-radius-md); border: 1px solid rgba(255,255,255,0.1);">
         <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--accent-gold);">★ ULTIMO JUGADO</span>
+          <span style="font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--accent-gold);"> ULTIMO JUGADO</span>
           <h3 id="last-played-title" style="font-size: 1.2rem; color: #fff; margin: 0; font-family: 'Outfit', sans-serif;">TITULO DEL JUEGO</h3>
           <div style="display: flex; gap: 15px; align-items: center; font-size: 0.75rem; color: var(--text-secondary);">
             <span id="last-played-console" style="background: rgba(0, 168, 255, 0.15); padding: 4px 8px; border-radius: 4px; font-family: 'Press Start 2P', cursive; font-size: 0.45rem; color: var(--accent-cyan);">NES</span>
@@ -208,7 +208,7 @@
                         Diseñado para cuando tienes tu TV o pantalla secundaria conectada <strong>físicamente por cable</strong> (HDMI, DisplayPort, etc.) a tu PC. RetroCloud enviará los juegos allí de forma silenciosa mientras tu PC permanece libre en su monitor principal.
                     </p>
                     <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: #fbc531; font-weight: bold; line-height: 1.5; margin: 6px 0 0 0; border: 1px dashed rgba(251, 197, 49, 0.3); padding: 8px; border-radius: var(--border-radius-sm); background: rgba(251, 197, 49, 0.05);">
-                        ⚠️ ¡ATENCION!: Para que este modo funcione correctamente, tu sistema operativo NO debe duplicar (espejar) la pantalla. Asegúrate de configurar tus pantallas en Modo Extendido en los ajustes de pantalla de tu sistema operativo CachyOS.
+                         ¡ATENCION!: Para que este modo funcione correctamente, tu sistema operativo NO debe duplicar (espejar) la pantalla. Asegúrate de configurar tus pantallas en Modo Extendido en los ajustes de pantalla de tu sistema operativo CachyOS.
                     </p>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -325,7 +325,7 @@
             </div>
             <div style="display: flex; gap: 10px; width: 100%;">
                 <input type="text" id="cfg-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; padding: 12px; border: 1px solid var(--glass-border); font-family: 'Outfit'; font-size: 0.85rem; flex: 1; border-radius: var(--border-radius-md);">
-                <button id="btn-browse-roms" class="btn-secondary" style="font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; white-space: nowrap; margin: 0;">📂 EXAMINAR</button>
+                <button id="btn-browse-roms" class="btn-secondary" style="font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; white-space: nowrap; margin: 0;"> EXAMINAR</button>
             </div>
         </div>
 
@@ -336,7 +336,7 @@
                 <p style="color: var(--text-secondary); font-size: 0.85rem;">Mantenimiento y administración global de la base de datos de Ducky Game Hub.</p>
             </div>
             <button id="rebuild-catalog-btn" class="btn-secondary" style="background: #fbc531; border-color: #fbc531; color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(251, 197, 49, 0.25); margin-bottom: 5px;">↻ RECONSTRUIR CATALOGO GLOBAL (MINERVA)</button>
-            <button id="run-wizard-btn" class="btn-secondary" style="background: var(--accent-cyan); border-color: var(--accent-cyan); color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);">⚙ EJECUTAR ASISTENTE DE CONFIGURACION (WIZARD)</button>
+            <button id="run-wizard-btn" class="btn-secondary" style="background: var(--accent-cyan); border-color: var(--accent-cyan); color: black; font-family: 'Press Start 2P'; font-size: 0.65rem; width: 100%; box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);"> EJECUTAR ASISTENTE DE CONFIGURACION (WIZARD)</button>
         </div>
 
         <!-- Guardar Botón Final -->
@@ -357,7 +357,7 @@
         <h2 id="modal-title">TITULO</h2>
         <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 1rem;">
             <p class="year" id="modal-year">1990</p>
-            <button id="fav-btn" class="fav-btn">🤍</button>
+            <button id="fav-btn" class="fav-btn"></button>
         </div>
         
         <div id="version-container" class="hidden" style="margin-bottom: 1rem;">
@@ -368,8 +368,8 @@
         <p class="status" id="modal-status"></p>
         <div class="actions">
           <button id="play-btn" class="btn-primary hidden">▶ JUGAR</button>
-          <button id="download-btn" class="btn-secondary hidden">☁ DESCARGAR</button>
-          <button id="delete-btn" class="btn-secondary hidden" style="background: #e84118; border-color: #c23616;">🗑 BORRAR</button>
+          <button id="download-btn" class="btn-secondary hidden"> DESCARGAR</button>
+          <button id="delete-btn" class="btn-secondary hidden" style="background: #e84118; border-color: #c23616;"> BORRAR</button>
         </div>
       </div>
     </div>
@@ -380,7 +380,7 @@
     <div class="modal-overlay" id="keyboard-overlay"></div>
     <div class="modal-content retro-panel" style="width: 850px; padding: 30px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
       <div style="display: flex; justify-content: center; width: 100%; align-items: center; margin-bottom: 5px;">
-        <h2 style="font-size: 0.8rem; color: var(--text-accent); font-family: 'Press Start 2P', cursive;">⌨ TECLADO VIRTUAL: BUSQUEDA QWERTY</h2>
+        <h2 style="font-size: 0.8rem; color: var(--text-accent); font-family: 'Press Start 2P', cursive;"> TECLADO VIRTUAL: BUSQUEDA QWERTY</h2>
       </div>
       
       <!-- Preview text for TV comfort -->
@@ -401,8 +401,8 @@
     <div class="modal-content retro-panel" style="width: 550px; min-height: 250px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; padding: 30px;">
       <h2 id="confirm-title" style="font-size: 0.8rem; line-height: 1.8; color: #fff; font-family: 'Press Start 2P', cursive; word-break: break-word;">¿SEGURO?</h2>
       <div style="display: flex; gap: 20px; width: 100%; justify-content: center;">
-        <button id="confirm-yes-btn" class="btn-primary" style="background: #4cd137; border-color: #4cd137; color: black; font-size: 0.75rem; padding: 12px 24px; min-width: 120px; font-family: 'Press Start 2P', cursive;">✔ SI</button>
-        <button id="confirm-no-btn" class="btn-secondary" style="background: #e84118; border-color: #e84118; color: white; font-size: 0.75rem; padding: 12px 24px; min-width: 120px; font-family: 'Press Start 2P', cursive;">❌ NO</button>
+        <button id="confirm-yes-btn" class="btn-primary" style="background: #4cd137; border-color: #4cd137; color: black; font-size: 0.75rem; padding: 12px 24px; min-width: 120px; font-family: 'Press Start 2P', cursive;"> SI</button>
+        <button id="confirm-no-btn" class="btn-secondary" style="background: #e84118; border-color: #e84118; color: white; font-size: 0.75rem; padding: 12px 24px; min-width: 120px; font-family: 'Press Start 2P', cursive;"> NO</button>
       </div>
     </div>
   </div>
@@ -448,12 +448,12 @@
 
               <!-- Step 2: SSH Connection Test -->
               <div class="wizard-step hidden" id="wizard-step-2" style="display: flex; flex-direction: column; gap: 15px; align-items: center; padding: 10px;">
-                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;">🛡️ ENLACE CON TU PC (SSH)</h3>
+                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;"> ENLACE CON TU PC (SSH)</h3>
                   <p style="font-family: 'Outfit', sans-serif; font-size: 0.88rem; text-align: center; color: var(--text-secondary); line-height: 1.6; max-width: 650px;">
                       RetroCloud corre en Docker, pero los emuladores (<strong>RetroArch, PCSX2, Dolphin...</strong>) se ejecutan directamente en tu PC para usar la GPU al 100%. La comunicación se hace por SSH.
                   </p>
                   <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 580px; background: rgba(0,0,0,0.25); padding: 14px; border-radius: var(--border-radius-md); border: 1px solid rgba(255,200,0,0.15);">
-                      <p style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-gold); margin: 0;">📝 CONFIGURACION REQUERIDA</p>
+                      <p style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-gold); margin: 0;"> CONFIGURACION REQUERIDA</p>
                       <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
                           Edita el archivo <code style="background: rgba(0,168,255,0.15); padding: 2px 6px; border-radius: 4px; color: #00a8ff;">.env</code> en la raíz del proyecto:
                       </p>
@@ -463,10 +463,10 @@
                       </p>
                   </div>
                   <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 580px; margin-top: 10px;">
-                      <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-gold);">📂 RUTA DE TUS ROMS EN EL HOST:</label>
+                      <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-gold);"> RUTA DE TUS ROMS EN EL HOST:</label>
                       <div style="display: flex; gap: 10px; width: 100%;">
                           <input type="text" id="wizard-roms-path" placeholder="/home/usuario/DuckyGameHub/Roms" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 12px; font-family: 'Outfit'; font-size: 0.85rem; border-radius: var(--border-radius-md); flex: 1;">
-                          <button id="btn-browse-wizard-roms" class="btn-secondary" style="font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; white-space: nowrap; margin: 0;">📂 EXAMINAR</button>
+                          <button id="btn-browse-wizard-roms" class="btn-secondary" style="font-family: 'Press Start 2P'; font-size: 0.6rem; padding: 12px; white-space: nowrap; margin: 0;"> EXAMINAR</button>
                       </div>
                   </div>
                   <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%; margin-top: 5px;">
@@ -477,22 +477,22 @@
 
               <!-- Step 3: Pantallas y Workspace -->
               <div class="wizard-step hidden" id="wizard-step-3" style="display: flex; flex-direction: column; gap: 15px; padding: 10px;">
-                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;">📺 CONFIGURAR PANTALLA DE JUEGOS</h3>
+                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;"> CONFIGURAR PANTALLA DE JUEGOS</h3>
                   <p style="font-family: 'Outfit', sans-serif; font-size: 0.88rem; text-align: center; color: var(--text-secondary); line-height: 1.6; max-width: 650px;">
                       ¿Cómo vas a jugar con tu sistema RetroCloud? Selecciona tu distribución física o inalámbrica.
                   </p>
 
                   <!-- Toggle simple/dual/stream en el wizard -->
                   <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 5px;">
-                      <button id="wizard-screen-mode-single" class="btn-primary" onclick="setWizardScreenMode('single')" style="font-family: 'Press Start 2P'; font-size: 0.55rem; padding: 12px 20px; background: var(--accent-gold); border-color: var(--accent-gold); color: black;">🖥️ MODO LOCAL</button>
-                      <button id="wizard-screen-mode-dual" class="btn-secondary" onclick="setWizardScreenMode('dual')" style="font-family: 'Press Start 2P'; font-size: 0.55rem; padding: 12px 20px;">📺 MODO PANTALLA SECUNDARIA</button>
-                      <button id="wizard-screen-mode-stream" class="btn-secondary" onclick="setWizardScreenMode('stream')" style="font-family: 'Press Start 2P'; font-size: 0.55rem; padding: 12px 20px;">📡 MODO STREAMING</button>
+                      <button id="wizard-screen-mode-single" class="btn-primary" onclick="setWizardScreenMode('single')" style="font-family: 'Press Start 2P'; font-size: 0.55rem; padding: 12px 20px; background: var(--accent-gold); border-color: var(--accent-gold); color: black;"> MODO LOCAL</button>
+                      <button id="wizard-screen-mode-dual" class="btn-secondary" onclick="setWizardScreenMode('dual')" style="font-family: 'Press Start 2P'; font-size: 0.55rem; padding: 12px 20px;"> MODO PANTALLA SECUNDARIA</button>
+                      <button id="wizard-screen-mode-stream" class="btn-secondary" onclick="setWizardScreenMode('stream')" style="font-family: 'Press Start 2P'; font-size: 0.55rem; padding: 12px 20px;"> MODO STREAMING</button>
                   </div>
 
                   <!-- Panel: una sola pantalla -->
                   <div id="wizard-panel-single" style="display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.25); padding: 18px; border-radius: var(--border-radius-md); border: 1px solid rgba(255, 215, 0, 0.25);">
                       <div style="border-left: 3px solid var(--accent-gold); padding-left: 10px; margin-bottom: 5px;">
-                          <p style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; margin: 0 0 6px 0;">🖥️ MODO LOCAL (Una sola pantalla)</p>
+                          <p style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; margin: 0 0 6px 0;"> MODO LOCAL (Una sola pantalla)</p>
                           <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
                               Los juegos y emuladores se abrirán <strong>en la misma pantalla</strong> en la que estás visualizando RetroCloud. Ideal si juegas directamente en tu monitor principal de PC o en una sola pantalla física.
                           </p>
@@ -509,7 +509,7 @@
                   <!-- Panel: streaming (sunshine/moonlight) -->
                   <div id="wizard-panel-stream" style="display: none; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.25); padding: 18px; border-radius: var(--border-radius-md); border: 1px solid rgba(0, 168, 255, 0.25);">
                       <div style="border-left: 3px solid var(--accent-cyan); padding-left: 10px; margin-bottom: 5px;">
-                          <p style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; margin: 0 0 6px 0;">📡 MODO STREAMING (Sunshine y Moonlight Inalámbrico)</p>
+                          <p style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; margin: 0 0 6px 0;"> MODO STREAMING (Sunshine y Moonlight Inalámbrico)</p>
                           <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
                               Optimizado para transmitir inalámbricamente a tu Smart TV o Moonlight. RetroCloud crea una <strong>pantalla virtual headless ('TV-STREAM')</strong> aislada y abre los emuladores allí para que Sunshine los capture y transmita de forma independiente.
                           </p>
@@ -517,14 +517,14 @@
                       <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 5px;">
                           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                               <div style="flex-grow: 1; max-width: 60%;">
-                                  <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-cyan); display: block; margin-bottom: 2px;">🖥️ MONITOR DE LA PC:</label>
+                                  <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-cyan); display: block; margin-bottom: 2px;"> MONITOR DE LA PC:</label>
                                   <span style="font-size: 0.72rem; color: var(--text-secondary); font-family: 'Outfit', sans-serif;">Elige el monitor principal de tu PC donde se mostrará la interfaz de RetroCloud.</span>
                               </div>
                               <select id="wizard-host-monitor-stream" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 8px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md); flex: 1; max-width: 240px;"></select>
                           </div>
                           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                               <div style="flex-grow: 1; max-width: 60%;">
-                                  <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-cyan); display: block; margin-bottom: 2px;">🗂️ WORKSPACE DE TRANSMISIÓN:</label>
+                                  <label style="font-family: 'Press Start 2P'; font-size: 0.5rem; color: var(--accent-cyan); display: block; margin-bottom: 2px;"> WORKSPACE DE TRANSMISIÓN:</label>
                                   <span style="font-size: 0.72rem; color: var(--text-secondary); font-family: 'Outfit', sans-serif;">Elige en qué escritorio virtual exclusivo de Hyprland se ejecutarán tus juegos en el monitor virtual (se recomienda el 10).</span>
                               </div>
                               <select id="wizard-workspace-stream" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 8px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md); flex: 1; max-width: 240px;">
@@ -546,32 +546,32 @@
                   <!-- Panel: dos pantallas (dual) -->
                   <div id="wizard-panel-dual" style="display: none; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.25); padding: 18px; border-radius: var(--border-radius-md); border: 1px solid rgba(0, 168, 255, 0.25);">
                       <div style="border-left: 3px solid var(--accent-cyan); padding-left: 10px; margin-bottom: 5px;">
-                          <p style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; margin: 0 0 6px 0;">📺 MODO PANTALLA SECUNDARIA (Monitor + TV Cableado)</p>
+                          <p style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; margin: 0 0 6px 0;"> MODO PANTALLA SECUNDARIA (Monitor + TV Cableado)</p>
                           <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
                               Diseñado para cuando tienes tu TV o pantalla secundaria conectada <strong>físicamente por cable</strong> a tu PC. RetroCloud enviará los juegos allí de forma silenciosa mientras tu PC permanece libre.
                           </p>
                           <p style="font-family: 'Outfit', sans-serif; font-size: 0.82rem; color: #fbc531; font-weight: bold; line-height: 1.5; margin: 6px 0 0 0; border: 1px dashed rgba(251, 197, 49, 0.3); padding: 8px; border-radius: var(--border-radius-sm); background: rgba(251, 197, 49, 0.05);">
-                              ⚠️ ¡ATENCION!: Para que este modo funcione correctamente, tu sistema operativo NO debe duplicar (espejar) la pantalla. Asegúrate de configurar tus pantallas en Modo Extendido en los ajustes de pantalla de tu sistema operativo CachyOS.
+                               ¡ATENCION!: Para que este modo funcione correctamente, tu sistema operativo NO debe duplicar (espejar) la pantalla. Asegúrate de configurar tus pantallas en Modo Extendido en los ajustes de pantalla de tu sistema operativo CachyOS.
                           </p>
                       </div>
                       <div style="display: flex; flex-direction: column; gap: 12px;">
                           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                               <div style="flex-grow: 1; max-width: 60%;">
-                                  <label style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; display: block; margin-bottom: 2px;">🖥️ MONITOR DE LA PC:</label>
+                                  <label style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; display: block; margin-bottom: 2px;"> MONITOR DE LA PC:</label>
                                   <span style="font-size: 0.72rem; color: var(--text-secondary); font-family: 'Outfit', sans-serif;">Elige el monitor principal de tu PC donde se mostrará RetroCloud y tu escritorio.</span>
                               </div>
                               <select id="wizard-host-monitor-dual" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 8px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md); flex: 1; max-width: 240px;"></select>
                           </div>
                           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                               <div style="flex-grow: 1; max-width: 60%;">
-                                  <label style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; display: block; margin-bottom: 2px;">📺 PANTALLA SECUNDARIA:</label>
+                                  <label style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; display: block; margin-bottom: 2px;"> PANTALLA SECUNDARIA:</label>
                                   <span style="font-size: 0.72rem; color: var(--text-secondary); font-family: 'Outfit', sans-serif;">Elige el monitor/TV secundario físico conectado por cable donde se abrirán los juegos.</span>
                               </div>
                               <select id="wizard-target-monitor-dual" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 8px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md); flex: 1; max-width: 240px;"></select>
                           </div>
                           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                               <div style="flex-grow: 1; max-width: 60%;">
-                                  <label style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; display: block; margin-bottom: 2px;">🗂️ WORKSPACE DE JUEGOS:</label>
+                                  <label style="font-family: 'Press Start 2P'; font-size: 0.55rem; color: #fff; display: block; margin-bottom: 2px;"> WORKSPACE DE JUEGOS:</label>
                                   <span style="font-size: 0.72rem; color: var(--text-secondary); font-family: 'Outfit', sans-serif;">Elige en qué escritorio virtual (Workspace de Hyprland) se ejecutará el juego en la TV.</span>
                               </div>
                               <select id="wizard-workspace-dual" style="background: rgba(0,0,0,0.4); color: white; border: 1px solid var(--glass-border); padding: 8px; font-family: 'Press Start 2P'; font-size: 0.55rem; border-radius: var(--border-radius-md); flex: 1; max-width: 240px;">
@@ -593,7 +593,7 @@
 
               <!-- Step 4: Audio Sink -->
               <div class="wizard-step hidden" id="wizard-step-4" style="display: flex; flex-direction: column; gap: 15px; padding: 10px;">
-                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;">🔊 REDIRECCIÓN DE AUDIO DEL STREAM</h3>
+                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;"> REDIRECCIÓN DE AUDIO DEL STREAM</h3>
                   <p style="font-family: 'Outfit', sans-serif; font-size: 0.88rem; text-align: center; color: var(--text-secondary); line-height: 1.6; max-width: 650px;">
                       <strong>¿Por qué se necesita?</strong> Para que el audio de tus emuladores se escuche en los parlantes de tu TV a través de Sunshine y no salga ruidosamente por los altavoces de tu computadora en la otra habitación.
                   </p>
@@ -608,7 +608,7 @@
 
               <!-- Step 5: Gamepad & Keyboard Test -->
               <div class="wizard-step hidden" id="wizard-step-5" style="display: flex; flex-direction: column; gap: 15px; align-items: center; padding: 10px;">
-                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;">🎮 VERIFICAR MANDOS Y CONTROL</h3>
+                  <h3 style="font-family: 'Press Start 2P', cursive; font-size: 0.65rem; color: var(--accent-gold); text-align: center;"> VERIFICAR MANDOS Y CONTROL</h3>
                   <p style="font-family: 'Outfit', sans-serif; font-size: 0.88rem; text-align: center; color: var(--text-secondary); line-height: 1.6; max-width: 650px;">
                       <strong>¿Por qué se necesita?</strong> Para garantizar una experiencia "Couch Mode" fluida, es vital que puedas navegar toda la interfaz usando tu control remoto o mandos físicos (D-Pad).
                   </p>
