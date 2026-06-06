@@ -5,7 +5,6 @@ settings.json
 # Datos generados en runtime
 games_db.json
 catalog.db
-igdb_popularity.json
 
 # Entorno virtual Python
 venv/

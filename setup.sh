@@ -80,20 +80,6 @@ else
        "$SETTINGS_FILE" > "$TMP_SETTINGS" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
 fi
 
-# 2.7 Generar bridge_api/igdb_creds.json desde .env (si las credenciales existen)
-source "$WORKSPACE_PATH/.env"
-if [ -n "$IGDB_CLIENT_ID" ] && [ -n "$IGDB_CLIENT_SECRET" ]; then
-    echo "🔑 Generando bridge_api/igdb_creds.json desde .env..."
-    cat <<IGDB_EOF > "$WORKSPACE_PATH/bridge_api/igdb_creds.json"
-{
-  "client_id": "$IGDB_CLIENT_ID",
-  "client_secret": "$IGDB_CLIENT_SECRET"
-}
-IGDB_EOF
-else
-    echo "ℹ️  IGDB_CLIENT_ID/SECRET no configurados en .env. Puedes agregarlos después para habilitar el orden por popularidad."
-fi
-
 # 3. Levantar el stack de contenedores Docker en segundo plano
 echo "🐳 Levantando servicios Docker..."
 docker compose -f "$WORKSPACE_PATH/docker-compose.yml" up -d

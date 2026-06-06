@@ -7,7 +7,6 @@ bridge_api/settings.json
 # Datos generados en runtime
 bridge_api/games_db.json
 bridge_api/catalog.db
-bridge_api/igdb_popularity.json
 data/
 
 # Entorno virtual Python

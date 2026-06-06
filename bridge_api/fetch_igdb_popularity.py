@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 """
-Script para descargar datos de popularidad de IGDB y generar igdb_popularity.json.
+Script OPCIONAL para actualizar la base de datos de popularidad de IGDB.
+
+NOTA: Ducky Game Hub ya incluye una base de datos pre-generada con ~14,000 juegos
+      y sus scores de popularidad (igdb_popularity.json). Este script solo es
+      necesario si querés actualizar esos datos con información más reciente.
 
 REQUISITOS (GRATIS):
   1. Ve a https://dev.twitch.tv/console/apps
   2. Crea una aplicación (cualquier nombre, category: "Application Integration")
   3. Genera un Client Secret
-  4. Guarda las credenciales en .secrets/igdb_creds.json:
-     {
-       "client_id": "TU_CLIENT_ID",
-       "client_secret": "TU_CLIENT_SECRET"
-     }
+  4. Configurá las credenciales en tu .env:
+     IGDB_CLIENT_ID=TU_CLIENT_ID
+     IGDB_CLIENT_SECRET=TU_CLIENT_SECRET
+  5. Ejecutá setup.sh para que genere el archivo de credenciales
 
 USO:
   docker exec bridge_api python3 /app/fetch_igdb_popularity.py
 
 RESULTADO:
-  Genera /app/igdb_popularity.json con ~10,000 juegos y sus scores de popularidad.
-  RetroCloud usará este archivo automáticamente para el orden por popularidad.
+  Actualiza /app/igdb_popularity.json con datos frescos de IGDB.
 """
 
 import requests
@@ -118,20 +120,33 @@ def main():
             break
 
     if not creds:
-        print("\n" + "="*60)
-        print("ERROR: No se encontraron credenciales de IGDB/Twitch.")
-        print("="*60)
-        print("\nPasos para obtener credenciales GRATUITAS:")
-        print("  1. Ve a https://dev.twitch.tv/console/apps")
-        print("  2. Inicia sesión con tu cuenta de Twitch (o créala gratis)")
-        print("  3. Haz clic en 'Register Your Application'")
-        print("  4. Pon cualquier nombre, OAuth Redirect URL: http://localhost")
-        print("     Category: 'Application Integration'")
-        print("  5. Genera un Client Secret")
-        print("  6. Crea el archivo .secrets/igdb_creds.json:")
-        print('     {"client_id": "TU_ID", "client_secret": "TU_SECRET"}')
-        print("\nLuego ejecuta:")
-        print("  docker exec bridge_api python3 /app/fetch_igdb_popularity.py")
+        # Verificar si ya existe una base de datos pre-generada
+        if os.path.exists(OUTPUT_PATH):
+            print("\nℹ️  No se encontraron credenciales de IGDB/Twitch, pero ya")
+            print(f"   existe una base de datos de popularidad con datos pre-generados.")
+            print(f"   Archivo: {OUTPUT_PATH}")
+            print("\n   Si querés actualizar los datos, configurá las credenciales en tu .env:")
+            print("     IGDB_CLIENT_ID=TU_CLIENT_ID")
+            print("     IGDB_CLIENT_SECRET=TU_CLIENT_SECRET")
+            print("   Y luego ejecutá setup.sh para generar el archivo de credenciales.")
+        else:
+            print("\n" + "="*60)
+            print("AVISO: No se encontraron credenciales de IGDB/Twitch.")
+            print("="*60)
+            print("\nEl filtro por popularidad no estará disponible hasta que")
+            print("configures las credenciales en tu .env:")
+            print("  IGDB_CLIENT_ID=TU_CLIENT_ID")
+            print("  IGDB_CLIENT_SECRET=TU_CLIENT_SECRET")
+            print("\nPasos para obtener credenciales GRATUITAS:")
+            print("  1. Ve a https://dev.twitch.tv/console/apps")
+            print("  2. Inicia sesión con tu cuenta de Twitch (o créala gratis)")
+            print("  3. Haz clic en 'Register Your Application'")
+            print("  4. Pon cualquier nombre, OAuth Redirect URL: http://localhost")
+            print("     Category: 'Application Integration'")
+            print("  5. Genera un Client Secret")
+            print("  6. Ejecutá setup.sh para generar el archivo de credenciales")
+            print("\nLuego ejecuta:")
+            print("  docker exec bridge_api python3 /app/fetch_igdb_popularity.py")
         return
 
     print("Obteniendo token OAuth de Twitch...")
