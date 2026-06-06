@@ -16,9 +16,9 @@ if os.path.exists(SETTINGS_FILE):
         pass
 
 # Asignación Dinámica: settings.json > env > default
-HOST_USER = _settings.get("host_user", os.getenv("HOST_USER", "fydend"))
+HOST_USER = _settings.get("host_user", os.getenv("HOST_USER", "user"))
 HOST_IP = os.getenv("HOST_IP", "172.18.0.1")
-ROMS_PATH = _settings.get("roms_path", os.getenv("ROMS_PATH", "/mnt/DiscoHDD/RetroCloud-PatoLinux/Roms"))
+ROMS_PATH = _settings.get("roms_path", os.getenv("ROMS_PATH", "/mnt/your_disk/Roms"))
 PUID = os.getenv("PUID", "1000")
 PGID = os.getenv("PGID", "1000")
 

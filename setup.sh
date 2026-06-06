@@ -43,16 +43,61 @@ if [ -z "$DETECTED_HOST_IP" ]; then
 fi
 
 echo "⚙️  Configurando archivo .env con valores dinámicos..."
-# Reemplazar valores utilizando sed
+# Reemplazar valores autodetectados utilizando sed
 sed -i "s/^HOST_USER=.*/HOST_USER=$HOST_USER/" "$WORKSPACE_PATH/.env"
 sed -i "s/^PUID=.*/PUID=$PUID/" "$WORKSPACE_PATH/.env"
 sed -i "s/^PGID=.*/PGID=$PGID/" "$WORKSPACE_PATH/.env"
 sed -i "s|^TZ=.*|TZ=$TZ|" "$WORKSPACE_PATH/.env"
 sed -i "s/^HOST_IP=.*/HOST_IP=$DETECTED_HOST_IP/" "$WORKSPACE_PATH/.env"
 
+# 2.5 Solicitar la ruta de ROMs si no está configurada
+source "$WORKSPACE_PATH/.env"
+if [ -z "$ROMS_PATH" ] || [ "$ROMS_PATH" = "/mnt/tu_disco/Roms" ]; then
+    echo ""
+    read -rp "📂 ¿Dónde están tus ROMs? (ej. /mnt/MiDisco/Roms): " USER_ROMS_PATH
+    if [ -n "$USER_ROMS_PATH" ]; then
+        sed -i "s|^ROMS_PATH=.*|ROMS_PATH=$USER_ROMS_PATH|" "$WORKSPACE_PATH/.env"
+        ROMS_PATH="$USER_ROMS_PATH"
+    fi
+fi
+
+# 2.6 Generar bridge_api/settings.json dinámico (nunca se sube a git)
+echo "📝 Generando bridge_api/settings.json..."
+SETTINGS_FILE="$WORKSPACE_PATH/bridge_api/settings.json"
+if [ ! -f "$SETTINGS_FILE" ]; then
+    cat <<SETTINGS_EOF > "$SETTINGS_FILE"
+{
+  "roms_path": "$ROMS_PATH",
+  "host_user": "$HOST_USER",
+  "host_ip": "$DETECTED_HOST_IP"
+}
+SETTINGS_EOF
+else
+    # Actualizar los campos dinámicos sin perder la configuración existente del usuario
+    TMP_SETTINGS=$(mktemp)
+    jq --arg ru "$ROMS_PATH" --arg hu "$HOST_USER" --arg hi "$DETECTED_HOST_IP" \
+       '.roms_path = $ru | .host_user = $hu | .host_ip = $hi' \
+       "$SETTINGS_FILE" > "$TMP_SETTINGS" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
+fi
+
+# 2.7 Generar bridge_api/igdb_creds.json desde .env (si las credenciales existen)
+source "$WORKSPACE_PATH/.env"
+if [ -n "$IGDB_CLIENT_ID" ] && [ -n "$IGDB_CLIENT_SECRET" ]; then
+    echo "🔑 Generando bridge_api/igdb_creds.json desde .env..."
+    cat <<IGDB_EOF > "$WORKSPACE_PATH/bridge_api/igdb_creds.json"
+{
+  "client_id": "$IGDB_CLIENT_ID",
+  "client_secret": "$IGDB_CLIENT_SECRET"
+}
+IGDB_EOF
+else
+    echo "ℹ️  IGDB_CLIENT_ID/SECRET no configurados en .env. Puedes agregarlos después para habilitar el orden por popularidad."
+fi
+
 # 3. Levantar el stack de contenedores Docker en segundo plano
 echo "🐳 Levantando servicios Docker..."
 docker compose -f "$WORKSPACE_PATH/docker-compose.yml" up -d
+
 
 # 4. Instalar el daemon de mandos (joysticks) en el host
 if [ -f "$WORKSPACE_PATH/scripts/install-daemon.sh" ]; then

@@ -117,7 +117,7 @@ jobs:
             MISSING_SECRETS=1
           fi
           if [ -z "${{ secrets.HOST_USER }}" ]; then
-            echo "::error::Falta el secreto 'HOST_USER' en GitHub. Configuralo con el nombre de usuario de tu PC (ej. fydend)."
+            echo "::error::Falta el secreto 'HOST_USER' en GitHub. Configuralo con el nombre de usuario de tu PC (ej. tu_usuario)."
             MISSING_SECRETS=1
           fi
           if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then

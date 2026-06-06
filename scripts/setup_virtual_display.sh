@@ -3,7 +3,7 @@
 # ducky-game-hub-virtual-display setup script
 # Configura una pantalla virtual para transmisión con Sunshine en Hyprland (Lua API)
 
-export XDG_RUNTIME_DIR="/run/user/1000"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 "$XDG_RUNTIME_DIR/hypr" 2>/dev/null | head -n 1)
 
 if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
@@ -41,7 +41,7 @@ fi
 
 
 # Definir variables de monitor y workspace dinámicas (por defecto para Sunshine en TV)
-SETTINGS_JSON="/home/fydend/Proyectos/RetroCloud-Patolinux/bridge_api/settings.json"
+SETTINGS_JSON="$(cd -- "$(dirname -- "$0")" > /dev/null 2>&1 && pwd)/../bridge_api/settings.json"
 if [ -f "$SETTINGS_JSON" ]; then
     if [ -z "$TARGET_MONITOR" ] || [ "$TARGET_MONITOR" = "null" ]; then
         TARGET_MONITOR=$(jq -r '.versatility.target_monitor // "TV-STREAM"' "$SETTINGS_JSON" 2>/dev/null)

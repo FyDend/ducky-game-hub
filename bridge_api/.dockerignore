@@ -1,0 +1,13 @@
+# Credenciales y configuracion local
+igdb_creds.json
+settings.json
+
+# Datos generados en runtime
+games_db.json
+catalog.db
+igdb_popularity.json
+
+# Entorno virtual Python
+venv/
+__pycache__/
+*.pyc

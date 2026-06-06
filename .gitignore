@@ -1,10 +1,13 @@
 # Secretos y configuracion local
 .env
 .secrets/
+bridge_api/igdb_creds.json
+bridge_api/settings.json
 
 # Datos generados en runtime
 bridge_api/games_db.json
 bridge_api/catalog.db
+bridge_api/igdb_popularity.json
 data/
 
 # Entorno virtual Python
@@ -17,10 +20,12 @@ bridge_api/__pycache__/
 *.PUP
 *.cache
 *.docx
+*.odt
 Plan_*.md
+progreso_*.md
+
+# IDE
+.vscode/
 
 # Datos y configuraciones dinámicas de qBittorrent
-qbittorrent/config/qBittorrent/logs/
-qbittorrent/config/qBittorrent/lockfile
-qbittorrent/config/qBittorrent/qBittorrent-data.conf
-qbittorrent/config/qBittorrent/rss/
+qbittorrent/config/
