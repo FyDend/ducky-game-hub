@@ -156,6 +156,13 @@ sed -i "s/^PGID=.*/PGID=$PGID/" "$WORKSPACE_PATH/.env"
 sed -i "s|^TZ=.*|TZ=$TZ|" "$WORKSPACE_PATH/.env"
 sed -i "s/^HOST_IP=.*/HOST_IP=$DETECTED_HOST_IP/" "$WORKSPACE_PATH/.env"
 
+# Guardar COMPOSE_CMD en .env para que el lanzador lo use con los permisos correctos
+if grep -q "^COMPOSE_CMD=" "$WORKSPACE_PATH/.env"; then
+    sed -i "s|^COMPOSE_CMD=.*|COMPOSE_CMD=$COMPOSE_CMD|" "$WORKSPACE_PATH/.env"
+else
+    echo "COMPOSE_CMD=\"$COMPOSE_CMD\"" >> "$WORKSPACE_PATH/.env"
+fi
+
 # 2.5 Solicitar la ruta de ROMs si no está configurada
 source "$WORKSPACE_PATH/.env"
 if [ -z "$ROMS_PATH" ] || [ "$ROMS_PATH" = "/mnt/tu_disco/Roms" ]; then
