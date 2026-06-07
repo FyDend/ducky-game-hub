@@ -23,8 +23,11 @@ $COMPOSE_CMD up -d
 echo "[Ducky Game Hub] ¡Stack de contenedores iniciado con éxito!"
 echo "[Ducky Game Hub] Esperando a que se cierre la aplicación..."
 
+# Obtener el ID dinámico del contenedor de la interfaz
+CONTAINER_ID=$($COMPOSE_CMD ps -q store_front)
+
 # Esperar a que el contenedor de la interfaz (store_front) termine
-$DOCKER_CMD wait store_front
+$DOCKER_CMD wait "$CONTAINER_ID"
 
 echo "[Ducky Game Hub] Cerrando servicios y limpiando contenedores..."
 # Detener y remover el stack
