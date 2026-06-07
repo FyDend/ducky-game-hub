@@ -10,11 +10,6 @@ export PUID=$(id -u)
 export PGID=$(id -g)
 export WORKSPACE_PATH=$(cd -- "$(dirname -- "$0")" > /dev/null 2>&1 && pwd)
 
-# Cargar wrappers de compatibilidad para Distrobox / dependencias
-if [ -f "$WORKSPACE_PATH/scripts/distrobox_helper.sh" ]; then
-    source "$WORKSPACE_PATH/scripts/distrobox_helper.sh"
-fi
-
 # Autodetectar la Zona Horaria del sistema operativo
 if [ -f /etc/localtime ]; then
     export TZ=$(readlink /etc/localtime | sed 's#.*/zoneinfo/##')
@@ -29,30 +24,82 @@ echo "📅 Zona Horaria: $TZ"
 echo "📂 Ruta del Proyecto: $WORKSPACE_PATH"
 echo "===================================================="
 
-# 1.5 Verificar disponibilidad de Docker y Docker Compose
-COMPOSE_OK=false
-if command -v docker &>/dev/null && docker compose version &>/dev/null; then
-    COMPOSE_OK=true
-elif command -v docker-compose &>/dev/null; then
-    COMPOSE_OK=true
-elif command -v distrobox-host-exec &>/dev/null; then
-    if distrobox-host-exec docker compose version &>/dev/null || distrobox-host-exec docker-compose version &>/dev/null; then
-        COMPOSE_OK=true
+# 1.5 Asegurar e instalar dependencias del sistema
+install_dependencies() {
+    local missing=()
+    if ! command -v jq &>/dev/null; then missing+=("jq"); fi
+    if ! command -v docker &>/dev/null; then missing+=("docker"); fi
+    
+    local compose_ok=false
+    if command -v docker &>/dev/null && docker compose version &>/dev/null; then
+        compose_ok=true
+    elif command -v docker-compose &>/dev/null; then
+        compose_ok=true
     fi
-fi
-
-if [ "$COMPOSE_OK" = false ]; then
-    echo ""
-    echo "❌ ERROR: No se encontró Docker Compose."
-    echo "   Ducky Game Hub requiere Docker + Docker Compose para levantar sus servicios (API, Sunshine, qBittorrent, etc.)."
-    if command -v distrobox-host-exec &>/dev/null; then
-        echo "   Por favor, asegúrate de tener instalado Docker y su plugin Compose en tu sistema HOST."
+    if [ "$compose_ok" = false ]; then missing+=("docker-compose"); fi
+    if ! command -v pactl &>/dev/null; then missing+=("pactl"); fi
+    
+    if [ ${#missing[@]} -eq 0 ]; then
+        return 0
+    fi
+    
+    echo "⚠️  Faltan dependencias necesarias: ${missing[*]}"
+    echo "📦 Intentando instalarlas automáticamente..."
+    
+    if command -v pacman &>/dev/null; then
+        local pkgs=()
+        for dep in "${missing[@]}"; do
+            case "$dep" in
+                jq) pkgs+=("jq") ;;
+                docker) pkgs+=("docker") ;;
+                docker-compose) pkgs+=("docker-compose") ;;
+                pactl) pkgs+=("libpulse") ;;
+            esac
+        done
+        sudo pacman -Sy --noconfirm "${pkgs[@]}"
+    elif command -v apt-get &>/dev/null; then
+        local pkgs=()
+        for dep in "${missing[@]}"; do
+            case "$dep" in
+                jq) pkgs+=("jq") ;;
+                docker) pkgs+=("docker.io") ;;
+                docker-compose) pkgs+=("docker-compose-v2") ;;
+                pactl) pkgs+=("pulseaudio-utils") ;;
+            esac
+        done
+        sudo apt-get update && sudo apt-get install -y "${pkgs[@]}"
+    elif command -v dnf &>/dev/null; then
+        local pkgs=()
+        for dep in "${missing[@]}"; do
+            case "$dep" in
+                jq) pkgs+=("jq") ;;
+                docker) pkgs+=("moby-engine") ;;
+                docker-compose) pkgs+=("docker-compose") ;;
+                pactl) pkgs+=("pulseaudio-utils") ;;
+            esac
+        done
+        sudo dnf install -y "${pkgs[@]}"
     else
-        echo "   Por favor, instala Docker y el plugin 'docker-compose-plugin' (o 'docker-compose') en tu sistema."
+        echo "❌ No se pudo detectar un gestor de paquetes soportado (pacman, apt, dnf)."
+        echo "   Por favor, instala manualmente: ${missing[*]}"
+        exit 1
     fi
-    echo ""
-    exit 1
-fi
+    
+    # Habilitar e iniciar Docker si estamos en un sistema con systemd corriendo
+    if command -v systemctl &>/dev/null && systemctl is-system-running &>/dev/null; then
+        if ! systemctl is-active --quiet docker; then
+            echo "🔌 Iniciando y habilitando servicio de Docker..."
+            sudo systemctl enable --now docker
+        fi
+        if ! groups "$USER" | grep -q "\bdocker\b"; then
+            echo "👥 Agregando usuario al grupo docker..."
+            sudo usermod -aG docker "$USER"
+            echo "⚠️  Para aplicar los permisos de Docker sin reiniciar, ejecuta: newgrp docker"
+        fi
+    fi
+}
+
+install_dependencies
 
 # 2. Asegurar directorios y configuraciones iniciales
 mkdir -p "$WORKSPACE_PATH/qbittorrent/config"
@@ -105,32 +152,9 @@ SETTINGS_EOF
 else
     # Actualizar los campos dinámicos sin perder la configuración existente del usuario
     TMP_SETTINGS=$(mktemp)
-    if command -v jq &> /dev/null; then
-        jq --arg ru "$ROMS_PATH" --arg hu "$HOST_USER" --arg hi "$DETECTED_HOST_IP" \
-           '.roms_path = $ru | .host_user = $hu | .host_ip = $hi' \
-           "$SETTINGS_FILE" > "$TMP_SETTINGS" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
-    elif command -v python3 &> /dev/null; then
-        python3 -c "
-import json
-with open('$SETTINGS_FILE', 'r', encoding='utf-8') as f:
-    data = json.load(f)
-data['roms_path'] = '$ROMS_PATH'
-data['host_user'] = '$HOST_USER'
-data['host_ip'] = '$DETECTED_HOST_IP'
-with open('$TMP_SETTINGS', 'w', encoding='utf-8') as f:
-    json.dump(data, f, indent=2, ensure_ascii=False)
-" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
-    else
-        echo "⚠️  No se encontró 'jq' ni 'python3' para actualizar bridge_api/settings.json sin perder otros campos."
-        echo "   Sobrescribiendo archivo con la configuración básica..."
-        cat <<SETTINGS_EOF > "$SETTINGS_FILE"
-{
-  "roms_path": "$ROMS_PATH",
-  "host_user": "$HOST_USER",
-  "host_ip": "$DETECTED_HOST_IP"
-}
-SETTINGS_EOF
-    fi
+    jq --arg ru "$ROMS_PATH" --arg hu "$HOST_USER" --arg hi "$DETECTED_HOST_IP" \
+       '.roms_path = $ru | .host_user = $hu | .host_ip = $hi' \
+       "$SETTINGS_FILE" > "$TMP_SETTINGS" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
 fi
 
 # 3. Levantar el stack de contenedores Docker en segundo plano

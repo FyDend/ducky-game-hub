@@ -8,11 +8,6 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Cargar wrappers de compatibilidad para Distrobox / dependencias
-if [ -f "$SCRIPT_DIR/distrobox_helper.sh" ]; then
-    source "$SCRIPT_DIR/distrobox_helper.sh"
-fi
-
 echo "[Daemon Installer] Directorio del proyecto detectado: $PROJECT_DIR"
 
 # Crear directorio de servicios de usuario si no existe

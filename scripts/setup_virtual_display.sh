@@ -3,11 +3,6 @@
 # ducky-game-hub-virtual-display setup script
 # Configura una pantalla virtual para transmisión con Sunshine en Hyprland (Lua API)
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-if [ -f "$SCRIPT_DIR/distrobox_helper.sh" ]; then
-    source "$SCRIPT_DIR/distrobox_helper.sh"
-fi
-
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 "$XDG_RUNTIME_DIR/hypr" 2>/dev/null | head -n 1)
 
