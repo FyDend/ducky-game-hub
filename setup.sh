@@ -10,6 +10,11 @@ export PUID=$(id -u)
 export PGID=$(id -g)
 export WORKSPACE_PATH=$(cd -- "$(dirname -- "$0")" > /dev/null 2>&1 && pwd)
 
+# Cargar wrappers de compatibilidad para Distrobox / dependencias
+if [ -f "$WORKSPACE_PATH/scripts/distrobox_helper.sh" ]; then
+    source "$WORKSPACE_PATH/scripts/distrobox_helper.sh"
+fi
+
 # Autodetectar la Zona Horaria del sistema operativo
 if [ -f /etc/localtime ]; then
     export TZ=$(readlink /etc/localtime | sed 's#.*/zoneinfo/##')
@@ -75,9 +80,32 @@ SETTINGS_EOF
 else
     # Actualizar los campos dinámicos sin perder la configuración existente del usuario
     TMP_SETTINGS=$(mktemp)
-    jq --arg ru "$ROMS_PATH" --arg hu "$HOST_USER" --arg hi "$DETECTED_HOST_IP" \
-       '.roms_path = $ru | .host_user = $hu | .host_ip = $hi' \
-       "$SETTINGS_FILE" > "$TMP_SETTINGS" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
+    if command -v jq &> /dev/null; then
+        jq --arg ru "$ROMS_PATH" --arg hu "$HOST_USER" --arg hi "$DETECTED_HOST_IP" \
+           '.roms_path = $ru | .host_user = $hu | .host_ip = $hi' \
+           "$SETTINGS_FILE" > "$TMP_SETTINGS" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
+    elif command -v python3 &> /dev/null; then
+        python3 -c "
+import json
+with open('$SETTINGS_FILE', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+data['roms_path'] = '$ROMS_PATH'
+data['host_user'] = '$HOST_USER'
+data['host_ip'] = '$DETECTED_HOST_IP'
+with open('$TMP_SETTINGS', 'w', encoding='utf-8') as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+" && mv "$TMP_SETTINGS" "$SETTINGS_FILE"
+    else
+        echo "⚠️  No se encontró 'jq' ni 'python3' para actualizar bridge_api/settings.json sin perder otros campos."
+        echo "   Sobrescribiendo archivo con la configuración básica..."
+        cat <<SETTINGS_EOF > "$SETTINGS_FILE"
+{
+  "roms_path": "$ROMS_PATH",
+  "host_user": "$HOST_USER",
+  "host_ip": "$DETECTED_HOST_IP"
+}
+SETTINGS_EOF
+    fi
 fi
 
 # 3. Levantar el stack de contenedores Docker en segundo plano
