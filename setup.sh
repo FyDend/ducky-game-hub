@@ -29,6 +29,31 @@ echo "📅 Zona Horaria: $TZ"
 echo "📂 Ruta del Proyecto: $WORKSPACE_PATH"
 echo "===================================================="
 
+# 1.5 Verificar disponibilidad de Docker y Docker Compose
+COMPOSE_OK=false
+if command -v docker &>/dev/null && docker compose version &>/dev/null; then
+    COMPOSE_OK=true
+elif command -v docker-compose &>/dev/null; then
+    COMPOSE_OK=true
+elif command -v distrobox-host-exec &>/dev/null; then
+    if distrobox-host-exec docker compose version &>/dev/null || distrobox-host-exec docker-compose version &>/dev/null; then
+        COMPOSE_OK=true
+    fi
+fi
+
+if [ "$COMPOSE_OK" = false ]; then
+    echo ""
+    echo "❌ ERROR: No se encontró Docker Compose."
+    echo "   Ducky Game Hub requiere Docker + Docker Compose para levantar sus servicios (API, Sunshine, qBittorrent, etc.)."
+    if command -v distrobox-host-exec &>/dev/null; then
+        echo "   Por favor, asegúrate de tener instalado Docker y su plugin Compose en tu sistema HOST."
+    else
+        echo "   Por favor, instala Docker y el plugin 'docker-compose-plugin' (o 'docker-compose') en tu sistema."
+    fi
+    echo ""
+    exit 1
+fi
+
 # 2. Asegurar directorios y configuraciones iniciales
 mkdir -p "$WORKSPACE_PATH/qbittorrent/config"
 
