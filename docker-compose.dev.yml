@@ -1,0 +1,13 @@
+services:
+
+  bridge_api:
+    build: ./bridge_api
+
+  sunshine:
+    build: ./bridge_api
+
+  gamepad_daemon:
+    build: ./daemon
+
+  store_front:
+    build: ./store_front

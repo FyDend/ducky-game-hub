@@ -149,6 +149,6 @@ jobs:
             git stash || true &&
             git pull origin main &&
             git stash pop || true &&
-            docker compose build &&
+            docker compose pull &&
             docker compose up -d
           "

@@ -1,7 +1,7 @@
 services:
 
   bridge_api:
-    build: ./bridge_api
+    image: ghcr.io/fydend/ducky-game-hub-bridge-api:latest
     container_name: bridge_api
     network_mode: host
     privileged: true
@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
 
   sunshine:
-    build: ./bridge_api
+    image: ghcr.io/fydend/ducky-game-hub-sunshine:latest
     container_name: sunshine
     network_mode: host
     privileged: true
@@ -41,7 +41,7 @@ services:
     restart: unless-stopped
 
   gamepad_daemon:
-    build: ./daemon
+    image: ghcr.io/fydend/ducky-game-hub-gamepad-daemon:latest
     container_name: gamepad_daemon
     network_mode: host
     pid: "service:bridge_api"
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   store_front:
-    build: ./store_front
+    image: ghcr.io/fydend/ducky-game-hub-store-front:latest
     container_name: store_front
     network_mode: host
     environment:
