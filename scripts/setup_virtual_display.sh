@@ -5,21 +5,7 @@
 
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
-# Helper para ejecutar comandos en el host desde contenedores si es necesario
-run_host_cmd() {
-    local cmd="$1"
-    if command -v "$cmd" &>/dev/null; then
-        "$@"
-    elif command -v distrobox-host-exec &>/dev/null; then
-        distrobox-host-exec "$@"
-    else
-        echo "⚠️  Advertencia: No se encontró '$cmd' para interactuar con el host." >&2
-        return 127
-    fi
-}
-hyprctl() { run_host_cmd hyprctl "$@"; }
-pactl() { run_host_cmd pactl "$@"; }
-systemctl() { run_host_cmd systemctl "$@"; }
+
 export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 "$XDG_RUNTIME_DIR/hypr" 2>/dev/null | head -n 1)
 
 if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then

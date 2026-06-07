@@ -8,19 +8,6 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Helper para ejecutar comandos en el host desde contenedores si es necesario
-run_host_cmd() {
-    local cmd="$1"
-    if command -v "$cmd" &>/dev/null; then
-        "$@"
-    elif command -v distrobox-host-exec &>/dev/null; then
-        distrobox-host-exec "$@"
-    else
-        echo "⚠️  Advertencia: No se encontró '$cmd' para interactuar con el host." >&2
-        return 127
-    fi
-}
-systemctl() { run_host_cmd systemctl "$@"; }
 
 echo "[Daemon Installer] Directorio del proyecto detectado: $PROJECT_DIR"
 
