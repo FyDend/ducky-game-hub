@@ -99,9 +99,9 @@ RUN wget https://github.com/LizardByte/Sunshine/releases/latest/download/sunshin
 
 WORKDIR /app
 
-# Install Python requirements
+# Install Python requirements (con retries y default-timeout para evitar errores de red)
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir --default-timeout=1000 --retries 10 -r requirements.txt
 
 # Copy application source code
 COPY . .
