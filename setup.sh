@@ -44,8 +44,14 @@ install_dependencies() {
     fi
     
     echo "⚠️  Faltan dependencias necesarias: ${missing[*]}"
-    echo "📦 Intentando instalarlas automáticamente..."
+    read -rp "📦 ¿Deseas instalarlas automáticamente con el gestor de paquetes de tu sistema? [S/n]: " CONFIRM
+    CONFIRM=${CONFIRM:-"S"}
+    if [[ ! "$CONFIRM" =~ ^[Ss] ]]; then
+        echo "❌ Instalación cancelada. Por favor instala las dependencias manualmente y vuelve a ejecutar."
+        exit 1
+    fi
     
+    echo "📦 Instalando dependencias..."
     if command -v pacman &>/dev/null; then
         local pkgs=()
         for dep in "${missing[@]}"; do
@@ -101,6 +107,29 @@ install_dependencies() {
 
 install_dependencies
 
+# 1.6 Detectar si Docker requiere privilegios de root (sudo)
+export DOCKER_CMD="docker"
+if ! docker ps &>/dev/null; then
+    if sudo docker ps &>/dev/null; then
+        echo "🔑 Se requiere 'sudo' para acceder a Docker. Los comandos se ejecutarán con privilegios."
+        export DOCKER_CMD="sudo docker"
+    else
+        echo "❌ ERROR: No se pudo conectar al daemon de Docker."
+        echo "   Por favor, asegúrate de que el servicio de Docker esté corriendo."
+        exit 1
+    fi
+fi
+
+# Detectar el ejecutable correcto de docker-compose
+export COMPOSE_CMD="$DOCKER_CMD compose"
+if ! $DOCKER_CMD compose version &>/dev/null; then
+    if command -v docker-compose &>/dev/null; then
+        export COMPOSE_CMD="docker-compose"
+    elif sudo docker-compose version &>/dev/null; then
+        export COMPOSE_CMD="sudo docker-compose"
+    fi
+fi
+
 # 2. Asegurar directorios y configuraciones iniciales
 mkdir -p "$WORKSPACE_PATH/qbittorrent/config"
 
@@ -113,7 +142,7 @@ fi
 # Detectar la IP del host en la red de docker. Si existe docker0, usar esa. Si no, buscar la primera ip de interfaces virtuales de docker o fallback a 172.17.0.1
 DETECTED_HOST_IP=$(ip -4 addr show docker0 2>/dev/null | grep -o 'inet [0-9.]*' | cut -d' ' -f2 | head -n1)
 if [ -z "$DETECTED_HOST_IP" ]; then
-    DETECTED_HOST_IP=$(docker network inspect bridge --format '{{range .IPAM.Config}}{{.Gateway}}{{end}}' 2>/dev/null || echo "172.17.0.1")
+    DETECTED_HOST_IP=$($DOCKER_CMD network inspect bridge --format '{{range .IPAM.Config}}{{.Gateway}}{{end}}' 2>/dev/null || echo "172.17.0.1")
 fi
 if [ -z "$DETECTED_HOST_IP" ]; then
     DETECTED_HOST_IP="172.17.0.1"
@@ -159,7 +188,7 @@ fi
 
 # 3. Levantar el stack de contenedores Docker en segundo plano
 echo "🐳 Levantando servicios Docker..."
-docker compose -f "$WORKSPACE_PATH/docker-compose.yml" up -d
+$COMPOSE_CMD -f "$WORKSPACE_PATH/docker-compose.yml" up -d
 
 
 # 4. Instalar el daemon de mandos (joysticks) en el host
